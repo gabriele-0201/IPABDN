@@ -1,0 +1,4 @@
+bastian (bkchr)
+`This will be wrong in the long term and I also already highlighted this multiple times by now. The overall goal will need to be conformance testing. Yes we will need to prepare all these things, but the assumption that all nodes will run the same code is nothing we should assume or even think about. When we hit such a bug, we will need to check what happened, reproduce and then use Polkadot governance to revert slashes.`
+
+arrived -> https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519/15?u=gabriele-0201
