@@ -1,0 +1,311 @@
+
+* What is it?
+`WebAssembly, shortened to Wasm, is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable target for the compilation of high-level languages like C/C++/Rust, enabling deployment on the web for client and server applications.`(https://wiki.polkadot.network/docs/learn-wasm)
+
+
+* Why?
+`WebAssembly is a platform-agnostic binary format, meaning it will run the exact instructions across whatever machine it operates on. Blockchains need determinacy to have reliable state transition updates across all nodes in the peer-to-peer network without forcing every peer to run the same hardware.` (https://wiki.polkadot.network/docs/learn-wasm)
+
+`Wasm is an excellent fit for reliability among the diverse set of machines. Wasm is both efficient and fast. The efficiency means that it can be uploaded onto the chain as a blob of code without causing too much state bloat while keeping its ability to execute at near-native speeds.`(https://wiki.polkadot.network/docs/learn-wasm)
+
+
+* WebAssemply SPEC
+https://webassembly.github.io/spec/core/
+
+** Introduction
+`WebAssembly (abbreviated Wasm [1]) is a safe, portable, low-level code format designed for efficient execution and compact representation`
+
+
+*** Design Goal of WASM:
+**** Fast, safe and portable semantics
++ Fast :: executes with near native code performance, taking advantage of capabilities common to all contemporary hardware
++ Safe :: code is validated and executes in a memory-safe [2], sandboxed environment preventing data corruption or security breaches
++ Well-defined :: fully and precisely defines valid programs and their behavior in a way that is easy to reason about informally and formally
++ Hardware-independent :: can be compiled on all modern architectures, desktop or mobile devices and embedded systems alike.
++ Language-independent :: does not privilege any particular language, programming model, or object model.
++ Platform-independent :: can be embedded in browsers, run as a stand-alone VM, or integrated in other environments.
++ Open :: programs can interoperate with their environment in a simple and universal manner
+**** Efficient and portable representation
++ Compact :: ...
++ Modular :: ...
++ Efficient :: ...
++ Streamable :: ...
++ Parallelizable :: ...
++ Portable :: ...
+*** Scope
+`WebAssembly is a virtual instruction set architecture (virtual ISA).`
+
+INTERESING -> the core part of the spec does NOT make ANY assumption on the evironment ... just: `defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation`
+
+*** Security Consideration
+
+`WebAssembly provides no ambient access to the computing environment in which code is executed. Any interaction with the environment, such as I/O, access to resources, or operating system calls, can only be performed by invoking functions provided by the embedder and imported into a WebAssembly module`
+
+`Because WebAssembly is designed to be translated into machine code running directly on the host’s hardware, it is potentially vulnerable to side channel attacks on the hardware level. In environments where this is a concern, an embedder may have to put suitable mitigations into place to isolate WebAssembly computations.`
+
+** Overview
+Concepts important in WASM:
+*** Values
+`WebAssembly provides only four basic number types`, integers and IEEE 754 (32 and 64 bits)
+
+`32 bit integers also serve as Booleans and as memory addresses`
+
+`values can consist of opaque references that represent pointers towards different sorts of entities. Unlike with other types, their size or representation is not observable.`
+*** Instructions
+`The computational model of WebAssembly is based on a stack machine`
+
+`Instructions manipulate values on an implicit operand stack [1] and fall into two main categories`
+    + Simple instructions perform basic operations on data. They pop arguments from the operand stack and push results back to it
+    + Control flow is structured, meaning it is expressed with well-nested constructs such as blocks, loops, and conditionals.
+*** Traps
+`certain instructions may produce a trap, which immediately aborts execution. Traps cannot be handled by WebAssembly code, but are reported to the outside environment...`
+*** Functions
+`Code is organized into separate functions. Each function takes a sequence of values as parameters and returns a sequence of values as results`
+-> `Functions may also declare mutable local variables that are usable as virtual registers.`
+*** Table
+`A table is an array of opaque values of a particular element type. ` -> WHAT?!??!?!?!
+*** Linear Memory
+`A linear memory is a contiguous, mutable array of raw bytes. Such a memory is created with an initial size but can be grown dynamically. A program can load and store values from/to a linear memory at any byte address (including unaligned). Integer loads and stores can specify a storage size which is smaller than the size of the respective value type. A trap occurs if an access is not within the bounds of the current memory size.`
+*** Modules
+`WebAssembly binary takes the form of a module that contains definitions for functions, tables, and linear memories, as well as mutable or immutable global variables` + `Definitions can also be imported` + exported stuff
+*** Embedder
+`A WebAssembly implementation will typically be embedded into a host environment. This environment defines how loading of modules is initiated, how imports are provided (including host-side definitions), and how exports can be accessed. `
+
+*** Sematic Phases
+**** Decoding
+Decode to and abstract syntax tree the well known binary format!
+**** Validation
+a dedoced module COULD be invalid, what is done is: `type checking of functions and the instruction sequences in their bodies, ensuring for example that the operand stack is used consistently`
+**** Execution
+Instantiation and invocation are operations within the embedding environment.
+***** Instantiation
+`A module instance is the dynamic representation of a module, complete with its own state and execution stack. Instantiation executes the module body itself, given definitions for all its imports. It initializes globals, memories and tables and invokes the module’s start function if defined. It returns the instances of the module’s exports.`
+***** Invocation
+`Once instantiated, further WebAssembly computations can be initiated by invoking an exported function on a module instance. Given the required arguments, that executes the respective function and returns its results.`
+
+
+* MEMORY in WASM
+https://hacks.mozilla.org/2017/07/memory-in-webassembly-and-why-its-safer-than-you-think/
+
+*Everything beteenw `` is a quote from this article*
+
+`With WebAssembly, you have direct access to the raw bytes… and`
+
+Memory in wasm is jsut a piece of memory passed through a MemoryObject, this can then grow if requested from wasm and the index of the 'array' that the env. give to wasm will become the address of the wasm program
+
+`Handling WebAssembly’s memory as an ArrayBuffer :
+ 1. makes it easy to pass values between JS and WebAssembly
+ 2. helps make the memory management safe
+`(ArrayBuffer = JS object)
+
+-> of course the previous stuff si the same for every environment
+
+** Why this is safe?
+There is NO memory leak in the environment and there is completely memory isolation.
+
+`Whenever there’s a load or a store in WebAssembly, the engine does an array bounds checks to make sure that the address is inside the WebAssembly instance’s memory.`
+
+`If the code tries to access an out-of-bounds address, the engine will throw an exception. This protects the rest of the memory.`
+
+
+* TABLE IMPORRTS
+https://hacks.mozilla.org/2017/07/webassembly-table-imports-what-are-they/
+
+kinds of imports that a web assembly module instance can have:
++ values
++ function imports
++ memory
++ tables
+
+In javascript all functions are just JS objects -> theey are js pbjects so they live in memory address OUTSIDE the wasm memory\
+
+tables enbale having pointer to functions that live OUTSIDE wasm memory => `A table is an array that lives outside of WebAssembly’s memory. The values are references to functions.`
+
+WebAssembly have only accesso to the INDECES of the table but not the references inside the table! -> a function will be provided: `call_indirect(index_table)` that will take the index inside the table and call the function at that index, BUT the environment will access the memory and effectively call the function
+
+-> addedd just to manage functions pointer, used in c and c++
+
+
+* WASMI - WASM Interpreter
+https://github.com/paritytech/Wasmi
+
+`wasmi is an efficient WebAssembly interpreter with low-overhead and support for embedded environment such as WebAssembly itself.`
+
+`At Parity we are using wasmi in Substrate as the execution engine for our WebAssembly based smart contracts. Furthermore we run wasmi within the Substrate runtime which is a WebAssembly environment itself and driven via Wasmtime at the time of this writing. As such wasmi's implementation requires a high degree of correctness and Wasm specification conformance.`
+
+** Distinct Features
++ `Focus on simple, correct and deterministic WebAssembly execution.`
++ `Can itself run inside of WebAssembly.`
++ `Low-overhead and cross-platform WebAssembly runtime.`
++ `Loosely mirrors the Wasmtime API.`
++ `Built-in support for fuel metering.`
++ `100% official WebAssembly spec testsuite compliance.`
+
+
+* WASM instruments
+https://github.com/paritytech/wasm-instrument
+
+Mainly two functionalitues:
+** Gas Metering
+`Add gas metering to your platform by injecting the necessary code directly into the wasm module. This allows having a uniform gas metering implementation across different execution engines (interpreters, JIT compilers).`
+** Stack Height Limiter
+`Neither the wasm standard nor any sufficiently complex execution engine specifies how many items on the wasm stack are supported before the execution aborts or malfunctions. Even the same execution engine on different operating systems or host architectures could support a different number of stack items and be well within its rights.
+
+This is the kind of indeterminism that can lead to consensus failures when used in a blockchain context.To address this issue we can inject some code that meters the stack height at runtime and aborts the execution when it reaches a predefined limit.`
+
+(the limit is sufficently small to be hitten before any hardware specific limit)
+
+
+* binaryen - WASM optimizer
+https://github.com/WebAssembly/binaryen
+
+`Binaryen is a compiler and toolchain library for WebAssembly, in C++`
+
+`Read, write, and transform wasm`
+
+`Does wasm minification, like we have minifiers for JavaScript, CSS, etc.`
+
+Binaryen is a compiler and toolchain infrastructure library for WebAssembly, written in C++. It aims to make compiling to WebAssembly easy, fast, and effective:
++ Easy
++ Fast
++ Effective
+  `Binaryen's optimizer has many passes (see an overview later down) that can improve code size and speed. These optimizations aim to make Binaryen powerful enough to be used as a compiler backend by itself. One specific area of focus is on WebAssembly-specific optimizations (that general-purpose compilers might not do), which you can think of as wasm minification, similar to minification for JavaScript, CSS, etc., all of which are language-specific.`
+
+Binaryen also provides a set of toolchain utilities that can:
++ Parse and emit WebAssembly. In particular this lets you load WebAssembly, optimize it using Binaryen, and re-emit it, thus implementing a wasm-to-wasm optimizer in a single command.
++ ...
+
+`
+Binaryen's internal IR is designed to be
++ Flexible and fast for optimization.
++ As close as possible to WebAssembly so it is simple and fast to convert it to and from WebAssembly.
+`
+
+The repository contains a lot of tools, main used:
++ wasm-opt: Loads WebAssembly and runs Binaryen IR passes on it.
+
+wasm-opt optimization phases:
+`
++ CoalesceLocals - Key “register allocation” pass. Does a live range analysis and then reuses locals in order to minimize their number, as well as to remove copies between them.
++ CodeFolding - Avoids duplicate code by merging it (e.g. if two if arms have some shared instructions at their end).
++ CodePushing - “Pushes” code forward past branch operations, potentially allowing the code to not be run if the branch is taken.
++ DeadArgumentElimination - LTO pass to remove arguments to a function if it is always called with the same constants.
++ DeadCodeElimination
++ Directize - Turn an indirect call into a normal call, when the table index is constant.
++ DuplicateFunctionElimination - LTO pass.
++ Inlining - LTO pass.
++ LocalCSE - Simple local common subexpression elimination.
++ LoopInvariantCodeMotion
++ MemoryPacking - Key "optimize data segments" pass that combines segments, removes unneeded parts, etc.
++ MergeBlocks - Merge a block to an outer one where possible, reducing their number.
++ MergeLocals - When two locals have the same value in part of their overlap, pick in a way to help CoalesceLocals do better later (split off from CoalesceLocals to keep the latter simple).
++ MinifyImportsAndExports - Minifies them to “a”, “b”, etc.
++ OptimizeAddedConstants - Optimize a load/store with an added constant into a constant offset.
++ OptimizeInstructions - Key peephole optimization pass with a constantly increasing list of patterns.
++ PickLoadSigns - Adjust whether a load is signed or unsigned in order to avoid sign/unsign operations later.
++ Precompute - Calculates constant expressions at compile time, using the built-in interpreter (which is guaranteed to be able to handle any constant expression).
++ ReReloop - Transforms wasm structured control flow to a CFG and then goes back to structured form using the Relooper algorithm, which may find more optimal shapes.
++ RedundantSetElimination - Removes a local.set of a value that is already present in a local. (Overlaps with CoalesceLocals; this achieves the specific operation just mentioned without all the other work CoalesceLocals does, and therefore is useful in other places in the optimization pipeline.)
++ RemoveUnsedBrs - Key “minor control flow optimizations” pass, including jump threading and various transforms that can get rid of a br or br_table (like turning a block with a br in the middle into an if when possible).
++ RemoveUnusedModuleElements - “Global DCE”, an LTO pass that removes imports, functions, globals, etc., when they are not used.
++ ReorderFunctions - Put more-called functions first, potentially allowing the LEB emitted to call them to be smaller (in a very large program).
++ ReorderLocals - Put more-used locals first, potentially allowing the LEB emitted to use them to be smaller (in a very large function). After the sorting, it also removes locals not used at all.
++ SimplifyGlobals - Optimizes globals in various ways, for example, coalescing them, removing mutability from a global never modified, applying a constant value from an immutable global, etc.
++ SimplifyLocals - Key “local.get/set/tee” optimization pass, doing things like replacing a set and a get with moving the set’s value to the get (and creating a tee) where possible. Also creates block/if/loop return values instead of using a local to pass the value.
++ Vacuum - Key “remove silly unneeded code” pass, doing things like removing an if arm that has no contents, a drop of a constant value with no side effects, a block with a single child, etc.
+
+“LTO” in the above means an optimization is Link Time Optimization-like in that it works across multiple functions, but in a sense Binaryen is always “LTO” as it usually is run on the final linked wasm.
+
+Advanced optimization techniques in the Binaryen optimizer include SSAification, Flat IR, and Stack/Poppy IR.
+`
+
+
+* WASMTIME
+wasmtime book: https://docs.wasmtime.dev/
+
+Wasmtime is a Bytecode Alliance project that is a standalone wasm-only optimizing runtime for WebAssembly and WASI. It runs WebAssembly code outside of the Web, and can be used both as a command-line utility or as a library embedded in a larger application.
+
+** Security
+`One of WebAssembly (and Wasmtime's) main goals is to execute untrusted code in a safe manner inside of a sandbox.`
+
+`WebAssembly is inherently sandboxed by design`
+
+*** WebAssemly Core
+
+Descriptio of WHY by itself wasm is SECURE:
+`
+The core WebAssembly spec has several features which create a unique sandboxed environment:
++ *The callstack is inaccessible*. Unlike most native execution environments, return addresses from calls and spilled registers are not stored in memory accessible to applications. They are stored in memory that only the implementation has access to, which makes traditional stack-smashing attacks targeting return addresses impossible.
++ *Pointers*, in source languages which have them, are compiled to offsets into linear memory, so implementations details such as virtual addresses are hidden from applications. And all accesses within linear memory are checked to ensure they stay in bounds.
++ All control transfers—direct and indirect branches, as well as direct and indirect calls—are to known and type-checked destinations, so it's not possible to accidentally call into the middle of a function or branch outside of a function.
++ All interaction with the outside world is done through imports and exports. There is no raw access to system calls or other forms of I/O; the only thing a WebAssembly instance can do is what is available through interfaces it has been explicitly linked with.
++ There is no undefined behavior. Even where the WebAssembly spec permits multiple possible behaviors, it doesn't permit arbitrary behavior.
+`
+*** Defense-in-depth
+`While WebAssembly is designed to be sandboxed bugs or issues inevitably arise so Wasmtime also implements a number of mitigations which are not required for correct execution of WebAssembly but can help mitigate issues if bugs are found:`
++ Linear memories by default are preceded with a 2GB guard region. WebAssembly has no means of ever accessing this memory but this can protect against accidental sign-extension bugs in Cranelift where if an offset is accidentally interpreted as a signed 32-bit offset instead of an unsigned offset it could access memory before the addressable memory for WebAssembly.
++ -> this is relly NOT comprensible -> ` Wasmtime uses explicit checks to determine if a WebAssembly function should be considered to stack overflow, but it still uses guard pages on all native thread stacks. These guard pages are never intended to be hit and will abort the program if they're hit. Hitting a guard page within WebAssembly indicates a bug in host configuration or a bug in Cranelift itself. `
++ Where it can Wasmtime will zero memory used by a WebAssembly instance after it's finished. This is not necessary unless the memory is actually reused for instantiation elsewhere but this is done to prevent accidental leakage of information between instances in the face of other bugs. This applies to linear memories, tables, and the memory used to store instance information itself.
++ The choice of implementation language, Rust, for Wasmtime is also a defense in protecting the authors for Wasmtime from themselves in addition to protecting embedders from themselves. Rust helps catch mistakes when writing Wasmtime itself at compile time. Rust additionally enables Wasmtime developers to create an API that means that embedders can't get it wrong. For example it's guaranteed that Wasmtime won't segfault when using its public API, empowering embedders with confidence that even if the embedding has bugs all of the security guarantees of WebAssembly are still upheld. (TRANSALTION -> wasmtime can't panic, even if the wasm code does)
++ Wasmtime is in the process of implementing control-flow-integrity mechanisms to leverage hardware state for futher guaranteeing that WebAssembly stays within its sandbox. In the event of a bug in Cranelift this can help mitigate the impact of where control flow can go to.
+
+*** FileSystem Access
+`Wasmtime implements the WASI APIs for filesystem access`
+
+*** Terminal Output
+`Our first priority is to protect users, so Wasmtime now filters writes to output streams when they are connected to a terminal to translate escape sequences into inert replacement sequences.`
+
+-> there is still work on how manager ANSI-style stuff if redirected to the terminal (dangerous side effects)
+
+*** Spectre
+Didn't understad at all... still wip
+
+
+* wasm-tools
+https://github.com/bytecodealliance/wasm-tools
+
+
+* Playing with Wasmtime and Web Assembly's linear memory
+https://adlrocha.substack.com/p/adlrocha-playing-with-wasmtime-and
+
+`We have a universal bytecode, and a set of standards for the seamless execution of binaries over different target architectures`
+
+* WASI
+https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/
+
+`Just as WebAssembly is an assembly language for a conceptual machine, WebAssembly needs a system interface for a conceptual operating system, not any single operating system. This way, it can be run across all different OSs.
+
+This is what WASI is — a system interface for the WebAssembly platform.`
+
+** What's a system interface?
+
+`WebAssembly is an assembly language for a conceptual machine, not a real machine. In the same way, WebAssembly needs a system interface for a conceptual operating system, not a real operating system.`
+
+the interface must respect:
++ portability
++ security
+
+** how start a modular wasm interface?
+
++ Create a modular set of standard interfaces
++ Start with standardizing the most fundamental module, wasi-core
+
+wasi-core contain a lot of similarity to posix (withouth certain things as fork..)
+
+-> wasi-sysroot -> library usable in a rust or C, this enable the use of wasi-core
+
+
+
+**
+
+* How wasm can be executed
+
+** JIT -> wasmtime
+** interpreted -> wasmi
+*** NOT true, wasi convert wasm into another IR that will be interpreted
+** compiled -> wasmtime (?)
+** stream compiled
+two resource.. not sure how much used in polkadot right now
+https://www.parity.io/blog/lightbeam-webassembly-compiler/ (not sure if this is a stream or single pass compiler)
+https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/
+** single pass compiled -> wasmer

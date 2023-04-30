@@ -1,0 +1,94 @@
+#TITLE: APB
+
+* What's an Agnostic Platform Bytecode?
+
+** What's an APB?
+
+Definition of an Agnostic Platform Bytecode is a bytecode that respect those characteristics:
++ Turing completness
++ Support for tooling that makes it exacutable on every machine
+
+** Which are the key features of an APB?
+Pretty much every general bytecode can be an APB but there are more suitable bytecode then others, the characteristics that makes an APB better than another are:
++ sandboxing property
++ efficency
+  This cover all the execution possibilities, examples:
+  + Interpreter
+  + Single pass Interpreter
+  + JIT
+  + Compilation
++ Simplicity of the tooling
++ Support to be compiled by many languages
+
+** Where APB are used right now?
++ Inside the Linux Kernel -> eBPF
++ Inside browsers -> WASM
++ Inside Blockchains -> WASM
+  + Full nodes
+  + Light nodes (WASM inside WASM)
++ Compilation Toolchain(?) -> LLVM IR
+
+
+* Where an APB is requested in the polkadot protocol?
+ ABP is requested to have the same deterministic code that runs on different machines (nodes)
+
+** STF -> State Transition Function
+
+Where we can find STFs?
+
+*** Inside each collector (STF, parachain runtime)
+*** Inside each validator (STF, relay-chain runtime)
+*** Inside the STVF (State Transition Validation Function)
+Contained in the POV (with a lot of other stuff)
+
+** SmartContracts (STF inside an STF)
+Arbitrary code executed by the STF
+
+** SPREE
+SPREE modules are code that stays on the realy chain and can be an XCM endpoint
+
+
+* Which are the feature requested for an APB in a decentralized network?
+
+** In General
++ efficency
++ 'gas measuring'
++ sandboxing
+
+** In Polkadot
+```
+quote by koute https://forum.polkadot.network/t/exploring-alternatives-to-wasm-for-smart-contracts/2434
+
++ Simple.
++ Easy to secure.
++ Easy to write a singlepass JIT compiler for (which still generates fast code).
++ Fast to execute.
++ Fast to JIT-compile (with the assumption that the generated code is fast).
++ Compact.
++ Portable.
++ Well defined, standardized and has an existing ecosystem.
++ Already supported by rustc and LLVM.
++ Guaranteed to be supported by rustc and LLVM into the future.
++ Has enough features to compile existing programs without much trouble.
++ Doesn’t have features (or has them but they’re optional) which we don’t need.
+```
+
+
+* Current APB blockchain solutions:
+
++ Ethereum -> EVM
++ Solana -> (custom version) eBPF
++ Cosmos -> CosmWasm
++ Polkadot -> Wasm
+
+* What is WASM?
+
+* Why is even considered switching to RISC-V?
+
+Quote by koute in response to Jeff Badgers
+```
+Using this for PVFs would be an entirely different conversation. (:
+
+For now we’re only looking at this from smart contracts’ perspective and we have no plans whatsoever of even attempting to use this for PVFs. However, if it goes really well for smart contracts then it might be a conversation worth having. Unlike the relay chain runtime (which is trusted) the PVFs (which are untrusted) do share some similarities with smart contracts where we really care about things like Alcatraz-level security sandboxing, O(n) JIT compilation and in general just keeping things simple to make the whole thing predictable and secure.
+```
+*

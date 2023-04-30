@@ -1,0 +1,19 @@
+* Plan
+1. [x] Diagonal read whitepaper
+2. [x] Diagonal read polkadot overview
+3. [x] Extract WHERE an agnostic platform bytecode is important
+4. [\] Read about current agnostic bytecode (wasm, LLVM IR, solana eBPF, EVM, ...)
+5. [x] Start write down more or less proper structure
+6. [x] Understand if the thesis should be on polkadot or on an agnostic bytecode
+7. [x] End of the weekend -> decide if continue or NOPE -> make an abstract -> write to BOLDRING
+8. [x] Wait for a response
+9. [ ] Reading -> taking notes
+10. [ ] Colletting every kind of usefull stuff to read
+11. [ ] When I think I read enough to have a general knowledge -> decide more precisely which topics I should explain (so go deeper) in the thesis:
+    1. [ ] WASM
+    2. [ ] Polkadot
+    3. [ ] Usage of WASM in polkadot -> cryptography and everything else
+    4. [ ] Rivals
+       1. [ ] RISC - V
+12. [ ] start write down stuff
+13. [ ] let's see how stuff goes and where I can put more or less focus!

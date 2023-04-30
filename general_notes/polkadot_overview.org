@@ -1,0 +1,449 @@
+
+#TITLE A more or less deep overview around polkadot, NOTES
+#author Gabriele Miotti
+
+* Whitepaper (2016)
+** Introduction
+*heterogeneous multi-chain*
+
+`The heterogeneous nature of this architecture enables many highly divergent types of consensus systems interop-
+erating in a trustless, fully decentralised “federation”, allowing open and closed networks to have trust-free access to
+each other.`
+
+Blockchains -> never saw `significant real-world deployment of present technology`, 5 failure points:
++ Scalability
++ Isolatability :: 'Can the divergent needs of multiple parties and applications be addressed to a near- optimal degree under the same framework?'
++ Developability
++ Governance :: `Can the network remain flexible to evolve and adapt over time? Can decisions be made with sufficient inclusivity, legitimacy and transparency to provide effective leadership of a decentralised system?`
++ Applicability
+
+
+Descrizione dello stato dell'arte attuale (piu' o meno) e dimostrazione di come quello che segue ha senso:
+`It seems clear, therefore, that one reasonable direction to explore as a route to a scalable decentralised compute platform is to decouple the consensus architecture from the state-transition mechanism. And, perhaps unsurpris- ingly, this is the strategy that Polkadot adopts as a solu- tion to scalability.`
+
+2.1 -> `This paper nonetheless describes Polkadot under the context of a public network`
+
+3.0 :
++ `This paper nonetheless describes Polkadot under the context of a public network`
++ `Polkadot provides the bedrock “relay-chain” upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side.`
++ polkadot: set of independent chain except for two point:
+  + pooled security
+  + trust-free interchain transactability
+
+3.1 -> Philosophy
++ `To manage chain upgrades, Polkadot will inherently support some sort of governance structure, likely based on existing stable political systems and having a bicam- eral aspect similar to the Yellow Paper Council [24].`
++ Polkadot primary tenets and rules:
+  + Minimal
+  + Simple
+  + General
+  + Robust
+
+4.0 -> Participation in polkadot
++ 4 basic roles:
+  + collator :: third parties nodes that will produce candadate para-blocks
+  + fisherman :: a weird role ->  `independent “bounty hunters” motivated by a large one-off reward`
+  + nominator :: stake-holding parties, the only role is to risk capital as sign to trust a vlaidator (they get rewards with validators)
+  + validator :: must run a relay-chain client implementation, `At each block the node must be ready to accept the role of ratifying a new block on a nominated parachain. This process involves receiving, validating and republishing candidate blocks`, they are nominated to accept block from a parachain in a deterministic but unpredictable in advance way
+    + What  validator does: `Once all new parachain blocks have been properly rat- ified by their appointed validator subgroups, validators must then ratify the relay-chain block itself. This involves updating the state of the transaction queues (essentially moving data from a parachain’s output queue to another parachain’s input queue), processing the transactions of the ratified relay-chain transaction set and ratifying the final block, including the final parachain changes.`
+    + Validator that does not behave correclty get slashed (reduce or completely removed `security bond`) depends on what the validators does
+
+5.0 Design Overview
++ consensus :: Bizantine Fault Tolerance algorithm
++ Proving the stake :: NPoS (really interesting to going into -> linear programming)
++ Parachan and Collaors :: really good explnation -> also talking about consensus alg. etch (maybe better to read this in the overview)
+
+6.0 Protocol In Depth
++ Divide in :
+  + Consensus Mechanism
+  + Parachain interface
+  + interchain transaction routing
+
+-> maybe better read Polkadot Overview
+
+7.0 Praticalities of the protocol
+... idk
+
+8.0 conclusion
+`We have outlined a direction one may take to author a scalable, heterogeneous multi-chain protocol with the po- tential to be backwards compatible to certain, pre-existing blockchain network`
+
+* Polkadot Overview
+** Abstract
+`Polkadot aims to provide a scalable and interoperable framework for multiple chains with pooled security that is achieved by the collection of components described in this paper.`
+** Introduction
+`The Internet was originally designed for and built upon decentralised protocols such as TCP/IP, however, its commercialisation has led to the centralisation of all popular web applications today. We refer not to any centralisation of physical infrastructure, but rather to the logical centralisation of power and control over the infrastructure. Two prominent examples are giant corporations like Google and Facebook: while they maintain servers all around the world in a physically decentralised
+fashion, these are ultimately controlled by a single entity.`
+
+`With all the current interest related to personal data ownership, there is a growing need for a better security, freedom and control for net users, and with this a countermovement for more decentralised applications where no single entity controls the system. This tendency towards decentralisation is not new; it has been used in a number of areas of the development of web and other systems, such as the free software movement.`
+
+of course to achieve this is a decentralized manner there are a lot of problems, scalability, security, efficency, ...
+
+`run many chains in parallel, often called sharding`
+
+`Briefly: Polkadot utilises a central chain called the relay chain which communicates with mul- tiple heterogeneous and independent sharded chains called parachains (portmanteau of parallel chains). The relay chain is responsible for providing shared security for all parachains, as well as trust-free interchain transactability between parachains. In other words, the issues that Polkadot aims to address are those discussed above: interoperability, scalablility, and weaker security due to splitting the security power.`
+** Synopsis
+Describe main functionalities without going too much in details
+
+`The Polkadot system consists of a single open collaborative decentralised network called the relay chain, that interacts with many other external chains run in parallel called parachains. From a high-level perspective, parachains are clients of the relay chain, which provides a security service to these clients, including secure communication.`
+
+`The internal details of parachains are not a concern of the relay chain; parachains need only ad-
+here to the interface we specify.`
+
+*** Security model
+No assumption is made on the parachain internals and every comunication is made through an interface.
+
+The security model, so the protocol works to ensure the relay chain externally as a whole si TRUSTABLE -> not the single nodes
+
+*** Nodes and roles
++ Nodes :: network-level entities (may perform multiple roles)
++ Roles :: protocol-level entities
+
+On the relay chain the network level is OPEN and the types of nodes are:
++ Light client :: Those nodes does not perform ANY service for the others but just retain data for the users (no avaiability assumption)
++ Full client :: retrives all data, stores and propagate ... must hbe highly avaiable
+
+relay chain Full node -> First job of nodes is distribuite DATA, then other roles could be done:
++ Validator :: `performs the bulk of the security work.`, must be a full node
++ Nominaotor :: `stakeholder who backs and selects validator candidates (Section 4.1). This can
+be done from a light client, and they need not have any awareness of parachains.`
+
+parachain can have their intenral structure but the comunication will follow:
++ collator ::  `collects and submits parachain data to the relay chain, subject to protocol rules
+described below. They are chosen as defined by the parachain, and must be full nodes of it.`
++ fishermen :: `performs additional security checks on the correct operation of the parachain`
+
+*** Protocol
+1. Each parachain:
+   1. collectors run full relay chain node to keep up the latest state
+   2. build new block on top of this latest state and submit blocks to the parachain's validator
+   3. parachian's validator produce the new relay chain block candidate
+2. validator block producing behaviour ..
+3. substrotocol to ensure data sharding
+4. managing of messagging between parachians
+5. validators submit votes to resolve forks and have a single head
+** Preliminares
+*** Roles
+**** Validators
+
+`A validator is the highest in charge and helps seal new blocks on the Polkadot network. The validators role is contingent upon a sufficiently high bond being deposited, though we allow other bonded parties to nominate one or more validators to act for them and as such some portion of the validators bond may not necessarily be owned by the validator itself but rather by these nominators.`
+
+`At each block the node must be ready to accept the role of ratifying a new block on some parachain, and may be required to double check a few more. This process involves receiving, validating and republishing candidate blocks.`
+
+`Once all new parachain blocks have been properly ratified by their appointed validator subgroups, validators must then ratify the relay-chain block itself.`
+
+-> managing of messages
+
+`A validator provably not fulfilling their role will be slashed i.e. part or all of their bond will be taken`
+
+**** Nominators
+
+`is a stake-holding party who contributes to the security bond of a validator`
+
+**** Collators
+
+`Transaction collators (collators for short) are parties who assist validators in pro- ducing valid parachain blocks.`
+
+-> fuul node of parachain, retain all necessary information to author
+
+`Under normal circumstances, they will collate and execute transactions to create an unsealed block, and provide it, together with a proof of validity, to one or more validators presently responsible for proposing a parachain block.`
+
+**** Fishermen
+
+Independently bounty hunters motivated by large one-off reward
+
+They need to bond something to proove some missbehavoir -> to avoid syboling attack
+
+=> they are part of the protocol but the chain is secure also without them
+
+*** Really beautiufl image: Figure 1
+
+*** Adversarial model of Polkadot
+
+`We assume that three quarters of nominators’ stake belong to honest ones. As a result of this assumption, more than two third of validators who are elected by nominators are honest.`
+
+`We do not have any limit on number of malicious fishermen since their malicious behaviours are detectable and punishable`
+
+NO assumptions made on the parachaiin collators honesyt BUT -> `Parts of the protocol assume that every parachain has at least one reachable honest member;`
+
+`We assume that validators and collators are in a partially synchronous network. It means that a message sent by a validator or a collator arrives at all parties in the network at most ∆ units of time later where ∆ is an unknown parameter.`
+
+`We also assume that collators and fishermen can connect to the relay chain network to submit their reports.`
+** Components and sub-protocols
+`Polkadot’s validators are selected by the NPoS scheme` -> `Nominated Proof-of-Stake or NPoS is our adaptation of PoS where an unlimited amount of token holders can participate as nominators, backing with their stake a large but limited set of validators` + altre cose fighe sul NPOS che se volgio posso approfondire qui
+
+candidates are nominated every era (an eara is a set of epoch and each epoch is divided in slots, slots are 12 seconds long)
+
+`The security goal of Polkadot is to be Byzantine fault tolerant when the participants are rational`
+
+Validator are divided into ROTATING subset -> one for each parachain and those groput must attest the validity of the block before the block is added in the realy chain block
+
+Really difficult to attack EVEN if the subgroup of validators for a parachain is SMALL
+
+context for the follwing phrase: taking about how sharding data of the parachins across validator makes everything more secure and reliable
+`We guarantee availability by using erasure coding of each parachain block to make the validators collectively and robustly responsible for the availability of these blocks without breaking scalability.`
+
+BUT to make what described before possible and not a waste of time is requested to being able to revert the chainges (and also all the stuff saved in the validators) -> forkes, those make possible to reorganize the chain in reasonable way
+
+BABE is the block production mechanism, this algorithm uses Longest chain rule as consensus mechanisms and the NEXT block producer is NOW known in advance
+
+Than GRANDPA (finality gadget) is used to achieve faster finality (Byzatine agreement), completely separated from block production. -> Remain a probabilitsc finality BUT that will never be reverted
+
+XCMP -> protocol to correct managing multichain comunication, really weird because if forks happend than everything is extremely difficult to not make mistake -> parachain with XCMP make sure that everything is managed if is part of the polkadto history...
+
+SPREE ??? something sandboxed from the rest that can't be BOH
+
+`On the side of economics (Section 4.5), we aim to have a controlled near-constant yearly inflation rate.`
+
+rational strategy of the validators must be behve correctly -> through NPSO that is able to spread the stack correclty amount all the validatos
+
+code upgradability -> `The ultimate arbiters of Polkadot are the Dot token holders and so all important decisions, such as code changes, are made by state-weighted ref- erenda` -> MORE on open gov 3
+
+** NPoS
+
+** Relay Chain State Machine
+`Formally, Polkadot is a replicated sharded state machine where shards are the parachains and the Polkadot relay chain is part of the protocol ensuring global consensus among all the parachains. Therefore, the Polkadot relay chain protocol, can itself be considered as a replicated state machine on its own.`
+
+*** State
+associative array -> composed by (key, value) pair, key and values are finite bytes array (key is unique in the array), this associative structure is arranged in a `Merkle radix-16 tree` -> the radix of the tree identify the current state of the chain (with merkle tree is also possible create proof of inlcusions, log n complexity space and efficency)
+
+*** State transition
+`Like any transaction-based transition system, Polkadot state changes via an
+executing ordered set of instructions, known as extrinsics`,  Polkadot relay chain divided in:
+    1. Runtime -> contain the state transition logic, compiled into WASM and stored as part of the state (under well known keys), in this way the state transition logic can be upgraded
+    2. Runtime environment / Client -> contian all the remaining blockchain relted stuff
+*** Extrinsics
+HEADER + BODY, solite cose
+
+*** Relay Chain block format
+`A priori, each validator privately knows the times during which it is supposed to produce a block`
+
+    1. `transactions ranging from the validated parachain block hash, transfer, staking, nomination or slashing for protocol violation are submitted to the relay chain validators.`
+    2. `validators examine the validity of the transactions and store them in their transaction pool.`
+    3. `Once the time slot during which the validator is expected to produce the block has arrived, the validator estimates the block which most likely represents the state which is going to be finalised by the finality protocol and set it as the current state of the relay chain. Then the validator selects valid transactions with from the transaction pool, executes them and updates the state accordingly.`
+    4. stuff with a cryptografic digest (somethign like an hash on what's done)
+    5. `Finally the validator signs and publishes the built block.`
+    6. `Upon receiving the new block, other validators examine the producer’s adherence to the protocol as well as the validity of included transactions and store the block in the block tree which represents all possible candidates for a final state transition of the relay chain.`
+    7. `Simultaneously, the set of validators votes on various branches of the block tree (see 4.3.2) and prunes branches which conflict with the version agreed upon by the supermajority of the validators. In that way, they eventually agree on a canonical state of the relay chain.`
+
+** Consensus
+Hybrid consensus:
++ BABE -> block production mechanism with probabilistic finalty
++ GRANDPA -> which provide deterministic finality (over BFT)
+
+`Informally probabilistic finality implies that after certain time passes, a block in the relay chain will be finalised with very high probability (close to 1) and deterministic finality implies a finalised block stays final forever`
+
+WHY DETERMINISTIC FINALITY IS IMPORTANT: `Furthermore provable finality means that we can prove to parties not actively involved in the consensus that a block is final.`
+
+BUT also a finalized block COULD be reverted but the stake  that would be slashed is SO high that make it REALLY unlikly
+
+A decision of separate as much as possible the block production alg. and the finality is made because:
++ finalization depends on block validation (if a block is appended to the tree then it does not mean 100% that is valid), some time is request for BABE (still probability finality with longest chain)
++ XCMP -> messaging travell across block prduction speed and if something is reverted THAN something really complex needs to be managed -> so this does not depend on finality time
+
+*** BABE - Blind Assingment for Blockchain Extension
+BABE assaings validator to *Block Production Slots* (=`A block production slot is a division of time when a block producer may produce a block.`). The assignment are COMPLETELY private until a validator produce a block (commit reveal scheme).
+
+IS it possible to have empty slots, so a slots where BABE did not assign no one -> Secondary Block Production mechanism is: *Aura* (assign validators publicaly, some sort of Round Robin)
+
+`BABE [2] consists of another time division called epochs (e1, e2, ...), where each epoch consists of a number of sequential block production slots (ei = {sli 1, sli 2, . . . , sli t}) up to the bound R.`
+
+`Each validator knows in which slots it is supposed to produce a block at the beginning of every epoch. When the time for its slot comes, the validator produces the block by proving that it is assigned to this slot.`
+
+*Blind Assignment*
+Based on VRF(verifiable random function)
+
++ more stuff on the paper
+
+`The best chain selection rule in BABE says that ignore the Aura blocks and select the longest chain that includes the last finalised GRANDPA block.`
+
+How validators get randomness is described in the paper (really weird)
+
+**** Relative Time Protocol
+(described in the paper)
+**** Security Overview
+***** Common Prefix
+(BABE-> if output of the VRF is under a thrashold than it will produce a block, smaller trhashold make more probability of selecting only honest validators)
+-> paper
+***** Chain Quality
+***** Chain Growth
+***** Chain Density
+
+*** GRANDPA
+Only change required to BABE is to use NOT only the longest chain  but the longest chain that contains all the FINALIZED blocks
+
+`Intuitively GRANDPA is a Byzantine agreement protocol that works to agree on a chain, out of many possible forks, by following some simpler fork choice rule, which together with the block production mechanism would give probabilistic finality if GRANDPA itself stopped finalising blocks.`
+
+`To make this more robust, we try to agree on the prefix of the chain that 2/3 of validators agree on.`
+
+`There are two voting phases in a round of GRANDPA: prevote and precommit. Firstly valida- tors prevote on a best chain. Then they apply the 2/3-GHOST rule, g, to the set of prevotes V they see and precommit to g(V ). Then similarly they take the set of precommits C they see and finalise g(C).`
+
+REALLY COMPLEX BUT EXTREMELY BEAUTIFUL
+** PARACHAINS
+*** Block Productions
+
+`In outline, a collator produces a parachain block, sends it to the parachain validators, who sign its header as valid, and the header with enough signatures is placed on the relay chain. At this point, the parachain block is as canonical as the relay chain block its header appeared in`
+
+*MOST INTERESTING PART HERE*
+
+`Because the parachain validators switch parachains frequently, they are stateless clients of the parachain.`  -> Stuff on what the POV is and what the collator gives to the validator -> the validators need to coordinate to agree on the para-block they want to verify.
+
+STVF -> State Transition Validation Function
+
+*** Validity and Avaiability
+
+`We want to find an efficient solution to ensure PoV blocks from any recently created parachain blocks are available.`
+
+`A parachain block is canonical when its header is in the relay chain.`
+
+`We would like the consensus participants, here the validators, to collectively guarantee the availability rather than relying on a few nodes. To this end we designed an availability scheme that uses erasure coding (see e.g. [4]) to distribute the PoV block to all validators.`
+
+ReedSalom distribution of the data (or something like this)
+
+Ereasur coding allow to:
++ share piece and rebulding it
++ verify the PoV reconstructed
+
+three-level of validity checks in Polkadot:
+1. `The first validity check of a PoV block is executed by the corresponding parachain validators`
+2. `If they verify the PoV block then they sign and distribute the erasure codes of the blob, including the PoV block, to each validator`
+3. the third security is given by the fact that each validator will (reasonably) act as Fisherman because it has ALREADY valid stake to use to call a fraud proof -> `If an invalid parachain block is detected, the validators who signed for its validity are slashed.`
+4. `We wait for enough of these randomly assigned checkers to check the block before voting on it in GRANDPA.`
+*** Cross-chain message parsing (XCMP)
+TODO?
+** Economics and Incentive Layer
+*** Staking rewards and inflation
+*** Staking rate, interest rate, inflation rate
+*** Rewards across validator supports:
+*** Rewards within a validator slot
+
+*** Relay-chain block limits and transaction fees
+Transaction per block are bounded in : time, data and resource
+
+how? worst case scenario benchmarks
+*** Transaction fees
+fee level:
++ type
++ on chain length
++ expeced resource usafe (weight 2d will use also storage usage, not only time consumed)
+
+Franction of the fees goes to the vlock produce, fraction to the treasury,
+
+other stuff
+
+** Governance
+
+Stuff that propababily is replaced by open gov v3
+
+*** Allocation of parachain slots
+Auction -> highest bid get a slot and LOCK the bid, unlocked at the end of the period
+
+CANDEL AUCTION is adopted
+
+there is various way of bid for different amount of time in the slot
+
+The goal of the design is to incentivise parties to bid early and AVOIS sniping, to give more opportunities to the less founded projects
+
+
+*** Traasury
+
+A lot of stuff
+
+** Cryptography
+*** Account Keys
+**** Suported schemes:
+***** ed25519
+***** Schnorrkel/ser25519
+provide Hierarchical Deterministi Key Derivation (HDKD) and multi-sig
+
+`In particular, Schnorrkel/sr25519 uses the Ristretto implementation [21] of Mike Hamburg’s Decaf [18, §7], which provide the 2-torsion free points of the Ed25519 curve as a prime order group. Avoiding the cofactor like this means Ristretto makes implementing more complex pro- tocols significantly safer. We employ Blake2b for most conventional hashing in Polkadot, but Schnorrkel/sr25519 itself uses STROBE128 [19], which is based on Keccak-f(1600) and provides a hashing interface well suited to signatures and non-interactive zero-knowledge proofs (NIZKs).`
+
+*** Session Keys
+`Session keys each fill roughly one particular role in consensus or security. As a rule, session keys gain authority only from a session certificate, signed by some controller key, that delegates appropriate stake.`
+
+-> talking about randomness in VRF function
+
+INTERESTING to notice that currently GRANDPA lives on top of 128 bit secuirity alg. (BLS12-381) and this could drop under 128 of security
+
+ALSO libp2p keys are sessions keys -> they ensure transport key for sentry nods
+
+** Networking
+`Of course, in a real-world decentralised system the networking part also must be decentralised - it’s no good if all communication passes through a few central servers, even if the high-level protocol running on top of it is decentralised with respect to its entities.`
+
+Consideration on:
++ securty assumption (BFT) is made on NODES
++ but not on connection / communication /edges between those
+
+`if the underlying communications network is centralised, this can give the central parties the ability to corrupt > 1/3 of nodes within the model thereby breaking its security assumptions, even if they don’t actually have arbitrary execution rights on that many nodes.`
+
+*** Networking overview
+
+1. Relay chain requires:
+   + accept transactions and distribuite them
+   + distributing artefacts of the collation subprotocol (NO encoding, gossiping)
+   + distributing artefacts of the finalization subprotocol (NO encoding, gossiping)
+   + sync previusly finalized state
+2. Interaction between parachian and relaychain
+   + accept parachain blocks from collators
+   + distribuite parachain metadata with validity attestation (NO encoding, gossiping)
+   + distribuite parachain blocks for a time (auditing process) (`Briefly, data is erasure-encoded so that different recipients receive a small part; pieces are sent directly via QUIC.`)
+3. Interaction between parachains:
+   + distribuite messages between parachinas
+
+*** Gossiping
+`The Polkadot relay chain network forms a gossip overlay network on top of the physical commu- nications network, as an efficient way to provide a decentralised broadcast medium.`
+
+*stuff on the order of sending to avoid common spam attacks*
+
+-> interesing: a lot of constraint on gossiping happen on application level, this enable the node to discard some received messages
+
+*sentry nodes*
+
+-> stuff on the security and topology of the network, currently a probelm, there are multiple solutions
+
+*** Distributed Service
+
+STUFF, mainly current problems
+
+*** Storage and availability
+
+`Recall that for scalability, Polkadot does not require everyone to store the state of the whole system, namely all of the state pointed to by all of the blocks. Instead, every parachain blockis split into pieces by erasure-coding, such that there is 1 piece for every validator for a total of N pieces, the erasure threshold being ceil(N/3) blocks for security reasons explained elsewhere. `
+
+The pieces are selectevely distribuited folloing those phases:
+1. Distribution
+2. Retrieval
+3. Further Retrieval
+
+The pieces must be retriavable for the validator for a valid amount of time, for the retriaval is followed a `bit-torrent protocol`: ...
+
+
+-> Reasons why a structured overlay is not used... for what I understood the main part is: each piece is sent to specific people and not to every one
+
+*** Cross-chain message
+
+*** Sentry Nodes
+`Polkadot supports running full-nodes as the sentry nodes of another full- node that is only reachable by these sentry nodes. This works best when one runs several sentry nodes for a single private full-node.`
+
+
+Something about sentry nodes that are connected to the network and a private node. -> maybe: multiple sentry nodes are attached to a private node to protect against DoS, manage load-balangin and other stuff
+
+*** Authenitication, transport and dicovery
+
+`entities refer to each other by their
+cryptographic public keys`
+
+KADEMLIA is used, `Kademlia is a DHT that uses the XOR distance metric, and is often used for networks with high churn`
+
+`We use Protocol Labs’ libp2p Kademlia implementation with some changes for this purpose`
+
+Polkadto may use a modified versionof the Kademlia Address book
+** SPREE
+
+NEXT QUOTE ARE FROM:  https://wiki.polkadot.network/docs/learn-spree
+
+*Shared Protected Runtime Execution Enclaves* (or 'trust wormholes')
+
+`SPREE modules are fragments of logic (in concrete terms they are blobs of WebAssembly code) that are uploaded onto Polkadot through a governance mechanism or by parachains. The SPREE module would retain its own storage independent of the parachain, but would be callable through an interface with the parachain. Parachains will send messages to the SPREE module synchronously.`
+
+`The SPREE module would retain its own storage independent of the parachain, but would be callable through an interface with the parachain. Parachains will send messages to the SPREE module synchronously.`
+
+TLDR: upstream bytecode on the relay chain to make it callable by XCMP -> this means that some chain does not need to trust the execution by someone but everything is on the relay chain side, SO *SPREE module* just get called as an XCM endpoint and can do other stuff as send new XCM messages
+(really good examle in the blog post)

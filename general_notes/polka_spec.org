@@ -1,0 +1,123 @@
+#TITLE POLKA SPEC HOST NOTES
+
+`The Runtime comprises the state transition logic for the Polkadot protocol and is designed and be upgradable via the consensus engine without requiring hard forks of the blockchain. The Polkadot Host provides the necessary functionality for the Runtime to execute its state transition logic, such as an execution environment, I/O, consensus and network interoperability between parachains.`
+
+* Overview
+** Light client
+** Full node
+`It maintains full state of the blockchain by executing the extrinsics in blocks. Their role in consesus mechanism is limited to following the chain and not producing the blocks.`
+** Authoring node
+`The authoring node covers all the features of the full node but instead of just passivly following the protocol, it is an active participant, producing blocks and voting in Grandpa.` + has a bunch of functional requirements
+** Relaying Node
+`The relaying node covers all the features of the authoring node, but also participants in the availability and validity process to process new parachain blocks as described in Chapter 8.`
+
+* State and Transitions
+
+** Definiotions
+*** Discrete State Machine
+*** Path graph
+*** Blockchain
+B_1 -> B_2 where:
++ B_2 is parent of B_1
++ B_1 is child of B_2
+
+B_2 := P(B_1)
+
+The parent refer to the child through his hash value
+
+*** Block Tree (=BT)
+When a block is finalized there is opportunity to PRONE the tree by the impossible to finalize blocks
+
+*** Pruned Block Tree (=PBT)
+prune: BT -> PBT
+
+*** Subchain
+mmhh
+*** Longest Chain
+
+IMP: for the perspective of the host the longest chain between two chains of the same legth is the one arrived before
+
+*** Longest Path
+*** Descendant and Ancestor
+
+** State Replication
+
+** OTHER STUFF
+
+** Runtime Interactions
+`Polkadot’s state is changed by executing an ordered set of instructions(extrinsics)`
+
+`For easy upgradability this Runtime is presented as a Wasm blob`
+
+extrinsics are:
++ submitted
++ pre-processed
++ validate by the Runtime
++ queue to be applied to the current state
+
+To keep the replecation feasible -> polkadot journals and bathes series of transactions into a structure called BLOCK (standard blockchain blocks) (section 2.2)
+
+*** Interacting with RUNTIME (IMP: HOW INTERACTIO WORKS)
+`The Runtime (Definition 1) is the code implementing the logic of the chain`
+
+`code is decoupled from the Polkadot Host to make the the logic of the chain easily upgradable without the need to upgrade the Polkadot Host itself.`
+
+Crucial parts (really awfull pseudo-code):
+kwnowing: Runtime Entry Point, hash of the previous state, arguments to be passed
+1. get the state at the end of the prev block
+2. get something with A
+3. call the runtime passing a lot of stuff
+
+*** Loading the Runtime Code
+WASM blob (compiled) -> under ':code' key
+
+`calls to Runtime can change the Runtime code itself.`
+
+Is crucial WHICH runtime was take.
+
+Initial is in the genesis state
+
+`By R_B​, we refer to the Runtime code stored in the state storage at the end of the execution of block BB`
+
+*** Code executor
+
+`The Polkadot Host executes the calls of Runtime entrypoints inside a Wasm Virtual Machine (VM), which in turn provides the Runtime with access to the Polkadot Host API` (Executor)
+
+`It is acceptable behavior that the Runtime panics during execution of a function in order to indicate an error. The Polkadot Host must be able to catch that panic and recover from it.`
+
+spec for the RUNTIME API -> https://spec.polkadot.network/chap-runtime-api
+
+**** Memory Managment
+
+https://spec.polkadot.network/chap-host-api#sect-allocator-api -> `The Polkadot Runtime does not include a memory allocator and relies on the Host API for all heap allocations` -> the heap should be provided under the 'memory' symbol
+
+The size of the provided WASM memory should be based on the value of the storage key (an unsigned 64-bit integer), where each page has the size of 64KB.
+
+`all runtime entrypoints have the following identical Wasm function signatures` -> because everything is passed through SCALE ecoded
+
+`In each invocation of a Runtime entrypoints, the argument(s) which are supposed to be sent to the entrypoint, need to be SCALE encoded into a byte array BB (Section A.2.2.) and copied into a section of Wasm shared memory managed by the shared allocator described in Section 2.6.3.1..`
+
+-> two integers are given to the wasm function:
++ memory address
++ legth of the encoded memory
+
+SAME for returnig stuff(an i64 that contain address and length) -> ALL OF THIS IS FFI
+
++ Something about RUNTIME VERSION
+
+**** Sending data to a Runtime Entrypoint
+spec for the host functions -> https://spec.polkadot.network/chap-host-api#sect-allocator-api
+* Syncronization
+TODO
+* Networking
+TODO
+* Block Production
+TODO
+* Finality
+TODO
+* Liggt clients
+TODO
+* Availability & validity
+TODO
+* HOST API
+* RUNTIME API

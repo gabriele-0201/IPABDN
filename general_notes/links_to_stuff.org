@@ -1,0 +1,58 @@
+* Maybe interesting topics:
+
+* Maybe usefull link
++ web 3 publications: https://research.web3.foundation/en/latest/Publications.html
+
+* TO READ:
+** Spec:
++ https://spec.polkadot.network/ (those changed literally the day before I started reading those)
+
++ Web3 Research specs (REALLY interesting): https://research.web3.foundation/en/latest/index.html
+
++ Data Avaiability end stuff  https://research.web3.foundation/en/latest/polkadot/networking/3-avail-valid.html
+
++ wasmi: https://github.com/paritytech/Wasmi
+
++ wasmtime
++ wasmer
+
+** Blogs:
+1. https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519
+2. https://forum.polkadot.network/t/weight-v2-discussion-and-updates/227
+3. https://forum.polkadot.network/t/implement-crypto-primitives-and-confidential-transfer-pallet/2569
+4. https://forum.polkadot.network/t/what-are-some-differences-between-substrate-and-cosmos-sdk/1354
+5. https://forum.polkadot.network/t/polkadot-protocol-proposals-rfc-process/1421
+6. https://forum.polkadot.network/t/polkadot-deep-dives-series/1708
+7. genaralized storage proofs, touch a lot of stuff, including APB https://forum.polkadot.network/t/generalized-storage-proofs/1315
+8. smoldot not so small after all: https://blog.apillon.io/polkadots-smoldot-not-so-small-after-all-d7c349830a24
+9. light client stuff web3: https://research.web3.foundation/en/latest/polkadot/LightClientsBridges/index.html
+10.
+lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
+
+
+** Papers:
++ bitcoin whitepaper: https://bitcoin.org/bitcoin.pdf
++ collection of papars by web3: https://research.web3.foundation/en/latest/Publications.html
+
+
+
+* READED:
+
+** Spec:
++ wasm-instruments: https://github.com/paritytech/wasm-instrument
++ binaryen: https://github.com/WebAssembly/binaryen
+
+** Papers:
++ polkadot whitepaper: https://assets.polkadot.network/Polkadot-whitepaper.pdf
++ polkadot overview(2020): https://arxiv.org/pdf/2005.13456.pdf
++ wasm spec (just introduction and overview): https://www.ngzhian.com/relaxed-simd/core/_download/WebAssembly.pdf
+
+** Blogs:
++ SPREE:  https://wiki.polkadot.network/docs/learn-spree
++ eBPF alternative: https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084
++ RISC-V alternative: https://forum.polkadot.network/t/exploring-alternatives-to-wasm-for-smart-contracts/2434
++ memory in wasm : https://hacks.mozilla.org/2017/07/memory-in-webassembly-and-why-its-safer-than-you-think/
++ tables in wasm: https://hacks.mozilla.org/2017/07/webassembly-table-imports-what-are-they/
++ wasmtime book security: https://docs.wasmtime.dev/security.html
++ (almost useless) https://adlrocha.substack.com/p/adlrocha-playing-with-wasmtime-and
++ blog on what and why wasi https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/
