@@ -7,14 +7,11 @@
 ** Spec:
 + https://spec.polkadot.network/ (those changed literally the day before I started reading those)
 
++ implementors guide: https://paritytech.github.io/polkadot/book
+
 + Web3 Research specs (REALLY interesting): https://research.web3.foundation/en/latest/index.html
 
 + Data Avaiability end stuff  https://research.web3.foundation/en/latest/polkadot/networking/3-avail-valid.html
-
-+ wasmi: https://github.com/paritytech/Wasmi
-
-+ wasmtime
-+ wasmer
 
 ** Blogs:
 1. https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519
@@ -26,8 +23,8 @@
 7. genaralized storage proofs, touch a lot of stuff, including APB https://forum.polkadot.network/t/generalized-storage-proofs/1315
 8. smoldot not so small after all: https://blog.apillon.io/polkadots-smoldot-not-so-small-after-all-d7c349830a24
 9. light client stuff web3: https://research.web3.foundation/en/latest/polkadot/LightClientsBridges/index.html
-10.
-lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
+10. WAMR: https://www.intel.com/content/www/us/en/developer/articles/technical/webassembly-interpreter-design-wasm-micro-runtime.html
+11. lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
 
 
 ** Papers:
@@ -56,3 +53,4 @@ lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-weba
 + wasmtime book security: https://docs.wasmtime.dev/security.html
 + (almost useless) https://adlrocha.substack.com/p/adlrocha-playing-with-wasmtime-and
 + blog on what and why wasi https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/
++ https://levelup.gitconnected.com/just-in-time-jit-and-ahead-of-time-aot-compilation-in-angular-8529f1d6fa9d

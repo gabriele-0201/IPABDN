@@ -7,13 +7,21 @@
 6. [x] Understand if the thesis should be on polkadot or on an agnostic bytecode
 7. [x] End of the weekend -> decide if continue or NOPE -> make an abstract -> write to BOLDRING
 8. [x] Wait for a response
-9. [ ] Reading -> taking notes
-10. [ ] Colletting every kind of usefull stuff to read
-11. [ ] When I think I read enough to have a general knowledge -> decide more precisely which topics I should explain (so go deeper) in the thesis:
-    1. [ ] WASM
-    2. [ ] Polkadot
-    3. [ ] Usage of WASM in polkadot -> cryptography and everything else
-    4. [ ] Rivals
-       1. [ ] RISC - V
-12. [ ] start write down stuff
-13. [ ] let's see how stuff goes and where I can put more or less focus!
+9. [ ] Study and take notes on (cross when I think I have a proper understand to summarize stuff... is ok to leave some stuff behind):
+   1. [x] WASM
+      -> cover almost everything... maybe worth to go in wasmtime / wasmi implementation
+   2. [ ] Polkadot
+      1. [ ] Parachian registration -> PVF registration
+      2. [ ] parablock -> PoV
+      3. [ ] Runtime in polkadot node
+      4. [ ] Runtime managment in Substrate / Cumulus
+      5. [ ] Host functions
+      6. [ ] Runtime API
+      7. [ ] Cryptography in runtime
+   3. [ ] Rivals
+      1. [ ] EVM
+      2. [ ] Sonala eBPF
+      3. [ ] CosmosWASM
+      4. [ ] RISC - V
+10. [ ] start write down stuff
+11. [ ] let's see how stuff goes and where I can put more or less focus!

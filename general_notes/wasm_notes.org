@@ -135,11 +135,18 @@ https://github.com/paritytech/Wasmi
 
 ** Distinct Features
 + `Focus on simple, correct and deterministic WebAssembly execution.`
+  + *REALLY IMPORTANT DETERMINISM* (https://forum.holochain.org/t/wasmi-vs-wasmer/1929/1) -> there's not too much inside here
 + `Can itself run inside of WebAssembly.`
 + `Low-overhead and cross-platform WebAssembly runtime.`
 + `Loosely mirrors the Wasmtime API.`
 + `Built-in support for fuel metering.`
 + `100% official WebAssembly spec testsuite compliance.`
+
+** WASMI IR
+proposal to switch from a stack based ir to registy based ir https://github.com/paritytech/wasmi/issues/361
+
+paper explaining the efficency of translating wasm to registry based code https://www.intel.com/content/www/us/en/developer/articles/technical/webassembly-interpreter-design-wasm-micro-runtime.html
+
 
 
 * WASM instruments
@@ -261,14 +268,11 @@ The core WebAssembly spec has several features which create a unique sandboxed e
 Didn't understad at all... still wip
 
 
-* wasm-tools
-https://github.com/bytecodealliance/wasm-tools
-
-
 * Playing with Wasmtime and Web Assembly's linear memory
 https://adlrocha.substack.com/p/adlrocha-playing-with-wasmtime-and
 
 `We have a universal bytecode, and a set of standards for the seamless execution of binaries over different target architectures`
+
 
 * WASI
 https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/
@@ -298,6 +302,7 @@ wasi-core contain a lot of similarity to posix (withouth certain things as fork.
 
 **
 
+
 * How wasm can be executed
 
 ** JIT -> wasmtime
@@ -309,3 +314,25 @@ two resource.. not sure how much used in polkadot right now
 https://www.parity.io/blog/lightbeam-webassembly-compiler/ (not sure if this is a stream or single pass compiler)
 https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/
 ** single pass compiled -> wasmer
+
+** JIT vs AOT
+
+https://levelup.gitconnected.com/just-in-time-jit-and-ahead-of-time-aot-compilation-in-angular-8529f1d6fa9d
+Just in Time compiled VS Ahed Of Time Compiled
+
+`In computing, just-in-time (JIT) compilation (also dynamic translation or run-time compilations) is a way of executing computer code that involves compilation during execution of a program — at run time — rather than prior to execution.`
+
+`A just-in-time (JIT) compiler is a feature of the run-time interpreter, that instead of interpreting bytecode every time a method is invoked, will compile the bytecode into the machine code instructions of the running machine, and then invoke this object code instead.`
+
+`In computer science, ahead-of-time compilation (AOT compilation) is the act of compiling a higher-level programming language such as C or C++, or an intermediate representation such as Java bytecode or .NET Framework Common Intermediate Language (CIL) code, into a native (system-dependent) machine code so that the resulting binary file can execute natively.` (wikipedia quoted in the blog)
+
+
+* Compiling BOMB
+
+* MISSING THINGS TO EXPLORE:
++ wasm-tools: https://github.com/bytecodealliance/wasm-tools
++ wasmtime implementation
++ wasmi implementation
++ wasmer
++ lightbeam
++ WAMR
