@@ -14,24 +14,26 @@
 + Data Avaiability end stuff  https://research.web3.foundation/en/latest/polkadot/networking/3-avail-valid.html
 
 ** Blogs:
-1. https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519
-2. https://forum.polkadot.network/t/weight-v2-discussion-and-updates/227
-3. https://forum.polkadot.network/t/implement-crypto-primitives-and-confidential-transfer-pallet/2569
-4. https://forum.polkadot.network/t/what-are-some-differences-between-substrate-and-cosmos-sdk/1354
-5. https://forum.polkadot.network/t/polkadot-protocol-proposals-rfc-process/1421
-6. https://forum.polkadot.network/t/polkadot-deep-dives-series/1708
-7. genaralized storage proofs, touch a lot of stuff, including APB https://forum.polkadot.network/t/generalized-storage-proofs/1315
-8. smoldot not so small after all: https://blog.apillon.io/polkadots-smoldot-not-so-small-after-all-d7c349830a24
-9. light client stuff web3: https://research.web3.foundation/en/latest/polkadot/LightClientsBridges/index.html
-10. WAMR: https://www.intel.com/content/www/us/en/developer/articles/technical/webassembly-interpreter-design-wasm-micro-runtime.html
-11. lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
 
+1. path of a parachain block: https://polkadot.network/blog/the-path-of-a-parachain-block
+2. crypto -> https://spec.polkadot.network/ - https://wiki.polkadot.network/docs/learn-cryptography
+3. runtime_api -> https://spec.polkadot.network/
+4. host functions -> https://spec.polkadot.network/
+5. https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519
+6. https://forum.polkadot.network/t/weight-v2-discussion-and-updates/227
+7. https://forum.polkadot.network/t/implement-crypto-primitives-and-confidential-transfer-pallet/2569
+8. https://forum.polkadot.network/t/what-are-some-differences-between-substrate-and-cosmos-sdk/1354
+9. https://forum.polkadot.network/t/polkadot-protocol-proposals-rfc-process/1421
+10. https://forum.polkadot.network/t/polkadot-deep-dives-series/1708
+11. genaralized storage proofs, touch a lot of stuff, including APB https://forum.polkadot.network/t/generalized-storage-proofs/1315
+12. smoldot not so small after all: https://blog.apillon.io/polkadots-smoldot-not-so-small-after-all-d7c349830a24
+13. light client stuff web3: https://research.web3.foundation/en/latest/polkadot/LightClientsBridges/index.html
+14. WAMR: https://www.intel.com/content/www/us/en/developer/articles/technical/webassembly-interpreter-design-wasm-micro-runtime.html
+15. lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
 
 ** Papers:
 + bitcoin whitepaper: https://bitcoin.org/bitcoin.pdf
 + collection of papars by web3: https://research.web3.foundation/en/latest/Publications.html
-
-
 
 * READED:
 
@@ -54,3 +56,4 @@
 + (almost useless) https://adlrocha.substack.com/p/adlrocha-playing-with-wasmtime-and
 + blog on what and why wasi https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/
 + https://levelup.gitconnected.com/just-in-time-jit-and-ahead-of-time-aot-compilation-in-angular-8529f1d6fa9d
++ polkadot wiki parachains (everything): https://wiki.polkadot.network/docs/learn-parachains

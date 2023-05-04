@@ -1,0 +1,78 @@
+
+* Introduction
+`Parachains are sovereign blockchains connected to the Polkadot network. Like other blockchains, parachains are deterministic state machines, meaning that each parachain has a state, executes a batch of state transitions called a block, and achieves a new state.`
+
+`Each parachain[1] within Polkadot has its own state. The Relay Chain links all of these into one state — a “state of states” — in a tactic called “sharding”. Each parachain is a shard of Polkadot, with unique state transition rules.`
+
+* Match Making
+`Collators only need to create blocks that extend their finalized chain.` -> they do not offer security guarantees because polkadot does this
+
+`Polkadot provides the security and validity guarantees, parachains are not subject to normal blockchain attack scenarios, like a 51% attack. Polkadot validators will reject invalid blocks, so a parachain only needs a single honest collator to submit blocks.`
+
+A set of validators is assigned to each parachain, the set use the same randomness produce by BABE to understand which parachain follow next -> so the set assigned is RANDOM between all the validators and also change frequently
+
+`Each validator assigned to a parachain will import the correct state transition function to validate that parachain. Now that collators and validators share a connection and common logic, a collator can send a block to one of the validators.`
+
+`
+To recapitulate this first phase from the perspective of a single parachain:
+
+    The parachain selects a collator to submit a block to the relay chain,
+    Polkadot assigns a set of validators to this parachain, and
+    The collators and validators open connections to submit a block.
+`
+
+* Block Preparation
+
+`
+a validator can verify a state transition without having access to the entire state. It only needs:
++ The block (list of state transitions),
++ The values in the parachain’s database that the block modifies, and
++ The hashes of the unaffected points in the Merkle tree.
+`
+
+those informations define the *Validity Proof*
+
+`Polkadot does not guarantee a valid state; it guarantees a valid state transition. Polkadot validators do not inspect every value in a parachain’s state, only those that are modified, where it ensures that the modification is valid. If a chain joins the Polkadot network with a valid state and executes all of its transitions under the umbrella of Polkadot security, then it will have a valid state.`
+
+`Once a validator has the proof of validity, it gossips this information amongst the other validators who are assigned to that parachain. Once more than half of them agree that the block represents a valid state transition, they can start preparing to announce its validity. Validators will construct a “candidate receipt” — this is what actually goes into the Relay Chain block — and an erasure coding that they will send to all validators in the network.` => half of them -> half of the validators assigned to that parachain
+
+** Candidate Recepie
+pushing on the realy chain the pov is too much if scaling is the goal, so on the relay chain is saved a:
+'candidate receipts' composed by:
+
+`
+A validator constructs a candidate receipt for a parachain block by signing:
++ The parachain ID
++ The collator’s ID and signature
++ A hash of the parent block’s candidate receipt
++ A Merkle root of the block’s erasure coding
++ A Merkle root of any outgoing messages
++ A hash of the block
++ The state root of the parachain before executing the block
++ The state root of the parachain after executing the block
+`
+
+This recepeit is CONSTANT size and contain all the information needed (hash of the previous candidate recepeit) and all the hash of the state needed to verify that the state change follow the PoV
+
+`the state roots of the parachain and the hash of the block allow anyone to verify this state transition by obtaining the proof of validity`
+
+** Erasure Coding
+`Now for the erasure coding. Prior to sending this candidate receipt to the Relay Chain transaction queue, the validator who constructs the candidate receipt must also construct an erasure coding of the parachain block.`
+
+The erasure coding message is created from: ParachainBlock + PoV => the result chunk is sent to the other validators *with the candidate recepie*
+
+NOW validators store the chunk of the erasure code and add the candidate recepeit in the relay chain queue
+
+`The validators who receive a candidate receipt along with an erasure coding chunk will include the candidate receipt in the Relay Chain transaction queue, where an author can include it in a block.`
+
+WHY Erausre Coding is important? TLDR -> to not allow malicius collators to block entirely a parachain proposing valid blocks but with unknown input (this would make create the new state of the storage impossible)
+
+`
+Although erasure coding may be a bit dry, why we perform the erasure coding is far more interesting than how it works.
+
+Imagine that a malicious collator submits a valid block to the validators and then immediately goes offline. The attack here is not to create an invalid transaction, it is to completely shut down the parachain, which would — broadly speaking — make everyone’s lives miserable.
+
+If the validators only checked this block for validity and then finalized it in the Relay Chain, the collators would be left with their previous state and their current state root, without knowing what changes to make to create the current state root. Since they would no longer have their state, they could no longer create new blocks.
+
+Therefore, collators must be able to retrieve and reconstruct a block for their parachain before it becomes final.
+`
