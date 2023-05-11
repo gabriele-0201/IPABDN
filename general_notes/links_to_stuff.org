@@ -15,21 +15,21 @@
 
 ** Blogs:
 
-1. path of a parachain block: https://polkadot.network/blog/the-path-of-a-parachain-block
-2. crypto -> https://spec.polkadot.network/ - https://wiki.polkadot.network/docs/learn-cryptography
-3. runtime_api -> https://spec.polkadot.network/
-4. host functions -> https://spec.polkadot.network/
-5. https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519
-6. https://forum.polkadot.network/t/weight-v2-discussion-and-updates/227
-7. https://forum.polkadot.network/t/implement-crypto-primitives-and-confidential-transfer-pallet/2569
-8. https://forum.polkadot.network/t/what-are-some-differences-between-substrate-and-cosmos-sdk/1354
-9. https://forum.polkadot.network/t/polkadot-protocol-proposals-rfc-process/1421
-10. https://forum.polkadot.network/t/polkadot-deep-dives-series/1708
-11. genaralized storage proofs, touch a lot of stuff, including APB https://forum.polkadot.network/t/generalized-storage-proofs/1315
-12. smoldot not so small after all: https://blog.apillon.io/polkadots-smoldot-not-so-small-after-all-d7c349830a24
-13. light client stuff web3: https://research.web3.foundation/en/latest/polkadot/LightClientsBridges/index.html
-14. WAMR: https://www.intel.com/content/www/us/en/developer/articles/technical/webassembly-interpreter-design-wasm-micro-runtime.html
-15. lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
+1. really usefull info about POV and PVF: https://substrate.stackexchange.com/questions/5940/what-is-the-parachain-validation-function-pvf (and all realted SUB LINKS)
+2. host functions -> https://spec.polkadot.network/
+3. wasm in smart contract -> https://www.parity.io/blog/wasm-smart-contract-development/
+4. https://forum.polkadot.network/t/ux-implications-of-pvf-executor-environment-versioning/2519
+5. https://forum.polkadot.network/t/weight-v2-discussion-and-updates/227
+6. https://forum.polkadot.network/t/implement-crypto-primitives-and-confidential-transfer-pallet/2569
+7. https://forum.polkadot.network/t/what-are-some-differences-between-substrate-and-cosmos-sdk/1354
+8. https://forum.polkadot.network/t/polkadot-protocol-proposals-rfc-process/1421
+9. https://forum.polkadot.network/t/polkadot-deep-dives-series/1708
+10. genaralized storage proofs, touch a lot of stuff, including APB https://forum.polkadot.network/t/generalized-storage-proofs/1315
+11. smoldot not so small after all: https://blog.apillon.io/polkadots-smoldot-not-so-small-after-all-d7c349830a24
+12. light client stuff web3: https://research.web3.foundation/en/latest/polkadot/LightClientsBridges/index.html
+13. WAMR: https://www.intel.com/content/www/us/en/developer/articles/technical/webassembly-interpreter-design-wasm-micro-runtime.html
+14. lightbeam old substrate wasm compiler: https://www.parity.io/blog/lightbeam-webassembly-compiler/
+15. crypto in depth -> https://spec.polkadot.network/
 
 ** Papers:
 + bitcoin whitepaper: https://bitcoin.org/bitcoin.pdf
@@ -40,6 +40,7 @@
 ** Spec:
 + wasm-instruments: https://github.com/paritytech/wasm-instrument
 + binaryen: https://github.com/WebAssembly/binaryen
++ (READED JSUT THE INTRO, useless to read all of this for now) runtime_api -> https://spec.polkadot.network/
 
 ** Papers:
 + polkadot whitepaper: https://assets.polkadot.network/Polkadot-whitepaper.pdf
@@ -57,3 +58,5 @@
 + blog on what and why wasi https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/
 + https://levelup.gitconnected.com/just-in-time-jit-and-ahead-of-time-aot-compilation-in-angular-8529f1d6fa9d
 + polkadot wiki parachains (everything): https://wiki.polkadot.network/docs/learn-parachains
++ path of a parachain block: https://polkadot.network/blog/the-path-of-a-parachain-block
++ polkadot wiki crypto: https://wiki.polkadot.network/docs/learn-cryptography

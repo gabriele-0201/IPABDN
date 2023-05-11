@@ -1,0 +1,44 @@
+* General info
+`The Polkadot Host assumes that at least the constants and functions described in this Chapter are implemented in the Runtime Wasm blob.`
+
+All of the following functions will be used in the node client to execute propertly the extrinsics and reate a rpoper block
+
+** JSON-RPC API for external services
+
+* Runtime Constants
+
+** __heap_base
+
+* Runtime Call Convention
+
+`
+Runtime API Call Convention describes that all functions receive and return SCALE-encoded data and as a result have the following prototype signature:
+`
+
+```wasm
+(func $generic_runtime_entry
+  (param $ptr i32) (parm $len i32) (result i64))
+```
+
+`ptr points to the SCALE encoded tuple of the parameters passed to the function`
+`len is the length of this data`
+`result is a pointer-size (Definition Definition 203) to the SCALE-encoded return data.`
+*** Runtime pointer-size
+unsigned 64-bit integer, representing two consecutive integers.
+least significant => *Runtime pointer* (this is the pointer used to excahnge information with the host, should be the 32bit pointer in the wasm linear memory)
+most significant => size of the pointed scale-encoded object
+
+* Module Core
+** Core Version
+`can be read directly from the Wasm custom section with the name runtime_version. The content is a SCALE encoded structure as described in Section C.4.1..
+
+Retrieving the Runtime version this way is preferred over calling the Core_version entrypoint since it involves significantly less overhead.`
+
+there is a method that return a complex table with a lot of stuff,
+
+*** ApisVersion
+a lot of stuff
+
+
+** Core execute block
+`This function executes a full block and all its extrinsics and updates the state accordingly.`

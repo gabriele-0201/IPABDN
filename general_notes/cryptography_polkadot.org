@@ -1,0 +1,76 @@
+
+* Hashing Alg.
+Blake2b -> considered cryptographic hash function
+
+* Keypairs and Signing
+
+`Polkadot uses Schnorrkel/Ristretto x25519 ("sr25519") as its key derivation and signing algorithm.`
+
+`The names Schnorrkel and Ristretto come from the two Rust libraries that implement this scheme, the Schnorrkel library for Schnorr signatures and the Ristretto library that makes it possible to use cofactor-8 curves like Curve25519.`
+
+https://github.com/w3f/schnorrkel/tree/master
+
+* Keys
+** Account Keys
+`
+Account keys are keys that are meant to control funds. They can be either:
+
+    The vanilla ed25519 implementation using Schnorr signatures.
+    The Schnorrkel/Ristretto sr25519 variant using Schnorr signatures.
+    ECDSA signatures on secp256k1
+`
+
+** "Controller" and "Stash" Keys
+Both keys are types of account keys
+
+`The controller key is a semi-online key that will be in the direct control of a user, and used to submit manual extrinsics. For validators or nominators, this means that the controller key will be used to start or stop validating or nominating.`
+
+`The stash key is a key that will, in most cases, be a cold wallet, existing on a piece of paper in a safe or protected by layers of hardware security`
+
+** "Session" Keys
+`Session keys are hot keys that must be kept online by a validator to perform network operations`
+
+`They are not meant to control funds and should only be used for their intended purpose`
+
+`Polkadot uses six session keys:
++ Authority Discovery: sr25519
++ GRANDPA: ed25519
++ BABE: sr25519
++ I'm Online: sr25519
++ Parachain Assignment: sr25519
++ Parachain Validator: ed25519
+`
+
+WHY for GRANPA is used ed25519? -> in a future for granpa is planned to use BLS key to make more efficient signatura aggregation
+
+BABE needs to be used in Verifiable Random Function -> that's why Sr25519
+
+
+** sr 25519 + FAQ
+REALLY INTERESTING BUT I DO NOT HAVE TIME NOW
+
+* Randomness
+`Randomness in Proof of Stake blockchains is important for a fair and unpredictable distribution of validator responsibilities.`
+
+THe following are ways to introduce randomness on chain
+
+** VRF
+used byte polkadot
+
+`Slots are discrete units of time six seconds in length. Each slot can contain a block, but may not. Slots make up epochs - on Polkadot, 2400 slots make one epoch, which makes epochs four hours long.`
+
+`
+In every slot, each validator "rolls a die". They execute a function (the VRF) that takes as input the following:
+
+    The "secret key", a key specifically made for these die rolls.
+    An epoch randomness value, which is the hash of VRF values from the blocks in the epoch before last (N-2), so past randomness affects the current pending randomness (N).
+    The slot number.
+    The output is two values: a RESULT (the random value) and a PROOF (a proof that the random value was generated correctly).
+
+The RESULT is then compared to a threshold defined in the implementation of the protocol (specifically, in the Polkadot Host). If the value is less than the threshold, then the validator who rolled this number is a viable block production candidate for that slot. The validator then attempts to create a block and submits this block into the network along with the previously obtained PROOF and RESULT. Under VRF, every validator rolls a number for themselves, checks it against a threshold, and produces a block if the random roll is under that threshold.
+`
+
+** RANDAO
+mmhhh.. weird... many hash to produce randmness
+*** VDFs
+verifiable delay functions...

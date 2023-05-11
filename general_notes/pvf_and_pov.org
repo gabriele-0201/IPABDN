@@ -1,0 +1,136 @@
+
+* https://substrate.stackexchange.com/questions/5940/what-is-the-parachain-validation-function-pvf
+
+* PVF
+#BEGIN_SRC rust
+/// A struct that carries code of a parachain validation function and its hash.
+///
+/// Should be cheap to clone.
+#[derive(Clone)]
+pub struct Pvf {
+    pub(crate) code: Arc<Vec<u8>>,
+    pub(crate) code_hash: ValidationCodeHash,
+}
+#END_SRC
+
+
+** Pre-Checking
+https://paritytech.github.io/polkadot/book/pvf-prechecking.html
+
+*** Problem
+What happen if the PVF compilation takes too long?
+Compilation makes optimization on the wasm blob to create fast and suitable machine code, this rely on very complicated algoritms and this means that is possible to find bug or strategy to create code the require really much time to the compiler. This problem could end up with:
+`
++ In backing, inclusion may be slow due to backing groups being unable to execute the block
++ In approval checking, there may be many no-shows, leading to slow finality
++ In disputes, neither side may reach supermajority. Nobody will get slashed and the chain will not be reverted or finalized.
+`
+
+`we need a fairly hard guarantee that the PVFs of registered parachains/threads can be compiled within a reasonable amount of time.`
+
+*** Solution
+When a new validation code is included (PVF) there is a pre-chekcing process.
+
+There is only two cases when a PVF is stored on the rely-chain -> it is when:
++ new parachain or parathread is registered
++ existing parachain or parathread signaled an upgrade of its validation code
+
+The pvf-precheking process require all the validator to vote AND if and only if the super-majority (2/3 of validators) vote for accept the PVF thenm the PCF is accepted.
+
+`Each validator checks the list of PVFs available for voting. The vote is binary, i.e. accept or reject a given PVF. As soon as the threshold of votes are collected for one of the sides of the vote, the voting is concluded in that direction and the effects of the voting are enacted.`
+
+`Only validators from the active set can participate in the vote. *The set of active validators can change each session.* That's why we reset the votes each session. A voting that observed a certain number of sessions will be rejected.`
+
+ALLORA: *tentativo di spiegazione*
+
+2 cose succedono per la quale una nuova PVF deve essere salvata onchain, trattiamo il caso piu' semplice: registrazione di una nuova parachain
+
+ADESSO inizia a girare la PVF tra i validator e nel codice di polkadot (relay chain) e' presente una RUNTIME API che torna le PVF che devono essere sottoposte al processo ppvf-prechecking e quindi necessitano una votazione -> quello che fa ora il client (nodo polkadot) e' compilare la pvf ed assicurarsi che sia valida per poi creare una transazione (che rappresenta il voto) che verra' gossippata a tutti gli altri validator
+
+UNA volta che un validator possiede PIU' della super majority di transazioni che attestano la validaita' della PVF allora questo chiama un'altra RUNTIME API per salvare sullo stato di polkadto il fatto che quella PVF e' stata valiata e quindi accettata (attenzione, sara' la transazione che conferma il superamento della supermajority a triggerare questo, quindi il BABE relay-chain block producer fara' questa chiamata)
+
+puo' non essere validato SE
++ supera un certo numero di sessioni (poiche' il set di validator che deve votare per la pcf cambia ogni sessione)
++ poiche' non si capisce un cazzo superto un certo numero di sessioni
+
+CASO PIU" COMPLICATO: se c'e' un upgrade per la maggior parte delle cose e' UGUALE solo che non ho idea di che PVF venga utilizzata per il delta di blocchi che vengono prodotti TRA la transazione di UPGRADE del runtime e quella di validazione della PVF
+
+PENSO venga utilizzta la PVF vecchia e solo dal blocco successivo alla validazione venga sostituita (poiche' cambia l'hash associato alla pvf di un ParaId all'interno dello stato di polkadot)
+
+ANDRONIK:
+`Until the pre-checking is finished, runtime upgrade cannot be enacted. So all blocks in between use old runtime.
+Cumulus takes care of producing blocks with the right runtime.`
+*** CUMULUS - Runtime Upgrade - notes
+https://github.com/paritytech/cumulus/blob/master/docs/overview.md#block-building
+
+`A Parachain will follow the same paradigm, but the relay chain needs to be informed before the update. Cumulus will provide functionality to notify the relay chain about the runtime update. The update will not be enacted directly; instead it takes X relay blocks (a value that is configured by the relay chain) before the relay chain allows the update to be applied. The first Parachain block that will be included after X relay chain blocks needs to apply the upgrade. If the update is applied before the waiting period is finished, the relay chain will reject the Parachain block for inclusion. The Cumulus runtime pallet will provide the functionality to register the runtime upgrade and will also make sure that the update is applied at the correct block.`
+
+`After updating the Parachain runtime, a Parachain needs to wait a certain amount of time Y (configured by the relay chain) before another update can be applied.`
+
+`The WASM blob update not only contains the Parachain runtime, but also the validate_block function provided by Cumulus. So, updating a Parachain runtime on the relay chain involves a complete update of the validation WASM blob.`
+PROBLEM: `validate_block` is something really weird...
+
+** Essentialy What is it?
+
+The PVF is composed by the parachain runtime and a `validate_block` function
+
+It is literally the wasm code of the Runtime of the parachian + a function that is able to run the runtime wasm code with the witness data ( and the previuous parablock header)
+
+comuls build this PVF
+
+*** Validate Block
+https://github.com/paritytech/cumulus/blob/master/docs/overview.md
+
+`When the Parachain validator calls the validate_block function, it passes the PoVBlock (See Block building for more information) and the parent header of the Parachain that is stored on the relay chain. From the PoVBlock witness data, Cumulus reconstructs the partial trie. This partial trie is used as storage while executing the block. Cumulus also redirects all storage related host functions to use the witness data storage. After the setup is done, Cumulus calls execute_block with the transactions and the header stored in the PoVBlock. On success, the new Parachain header is returned as part of the validate_block result.`
+
+IMPORTANT TO NOTICE: validate_block is REPLACING all the host function of the runtime to the funcion itself to be able to provide all the storage access(the function reconstructed the trie based on the witness data and previous state and other stuff) and everything else needed
+
+IN THE CODE:
+https://github.com/paritytech/cumulus/blob/cc4038c46cab9d1cdae60def06cf6025b2c26f5b/pallets/parachain-system/src/validate_block/implementation.rs#L72
+
+Steps of the validate parachain blocks:
+1. `We decode the [`ParachainBlockData`] from the `block_data` in `params`.`
+2. `some security checks`
+3. `construct the sparse in-memory database from the storage proof inside the block data and then ensure that the storage root matches the storage root in the `parent_head`.
+4. `We replace all the storage related host functions with functions inside the wasm blob. This means instead of calling into the host, we will stay inside the wasm execution. This is very important as the relay chain validator hasn't the state required to verify the block. But we have the in-memory database that contains all the values from the state of the parachain that we require to verify the block.`
+5. `run `check_inherents``
+6. `The last step is to execute the entire block in the machinery we just have setup. Executing the blocks include running all transactions in the block against our in-memory database and ensuring that the final storage root matches the storage root in the header of the block. In the end we return back the [`ValidationResult`] with all the required information for the validator`
+
+
+IMPORTANT: THE FUNCTION JUST REPLACE THE IMPLEMENTATION OF THE HOST FUNCTION BUT *DOES NOT* EXECUTE THE RUNTIME IN ANOTHER ENVIRONMENT
+
+The replace seems tu just be something INTERNAL to the wasm blob, instead of going to the host function it is "overwritten". -> BUT I'm not sure if the replacement is client level or runtime level, I think is runtime level
+** Where is stored?
+it is stored in the 'paras' module
+
+#BEGIN_SRC rust
+/// The validation code hash of every live para.
+///
+/// Corresponding code can be retrieved with [`CodeByHash`].
+#[pallet::storage]
+#[pallet::getter(fn current_code_hash)]
+pub(super) type CurrentCodeHash<T: Config> =
+    StorageMap<_, Twox64Concat, ParaId, ValidationCodeHash>;
+#END_SRC
+
+as we can see, the code is Hashed and saved in the storage of the relay chain with a map where the paraId is the id of the parachain and the ValidationCodeHash is the HashOfThe PVF (and of course somewhere else is stored also the map of ValidationCodeHash and PVF struct)
+
+
+* POV
+When the parachain produces a new block, it sends a "Proof of Validity" (PoV) block to the Relay chain. This PoV-block or PoV is a parachain block with witness data.
+** Cumulus - Block Building
+https://github.com/paritytech/cumulus/blob/master/docs/overview.md#block-building
+
+`Polkadot requires that a Parachain block is transmitted in a fixed format.` -> `PoVBlock`
+
+PoVBlock contains:
++ header
++ transactions of the Parachain as opaque blobs (Vec<u8>)
++ witness data
++ outgoing messages
+
+`validator needs to validate a given PoVBlock, but without requiring the full state of the Parachain`
+To make this possibel the witness data are used:
+-> `The witness data is a proof that is collected while building the block. The proof will contain all trie nodes that are read during the block production.`
+
+`These are messages from the Parachain the block is built for to other Parachains or to the relay chain itself.`

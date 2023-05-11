@@ -76,3 +76,40 @@ If the validators only checked this block for validity and then finalized it in 
 
 Therefore, collators must be able to retrieve and reconstruct a block for their parachain before it becomes final.
 `
+* Relay chain block Construction
+`Each parachain got a small set of validators randomly assigned for a block. These validators had to connect to parachain collators, compute state roots, look up parent blocks, and create and distribute erasure coding chunks to every other validator in the network. They arranged all that work into a candidate receipt that represents it all.`
+
+`candidate receipt goes into the Relay Chain transaction queue and validators gossip it around the network just like other transactions. When a validator wins BABE slot leadership, it will select candidate receipts to build a Relay Chain block`
+
+
+Selection of the candidate recepeit to include in the network criteria:
+1. `block author will only include candidate receipts that have a parent candidate receipt in an earlier Relay Chain block`
+2. `block author will only include candidate receipts for which the author has an erasure coding chunk`
+
+REALLY INTERESTING TOPICS:
+`I’ve mentioned before that one strategy for scalability is to push information to the edges of the system. One of our ideas with Polkadot is to make Polkadot itself a parachain. As in, all the transactions for token transfers, staking, governance, etc. would take place in a Polkadot parachain with its candidate receipts finalized by the Relay Chain. In this case, the Relay Chain blocks would comprise solely candidate receipts.`
+
+* FINALE
+What happened before and what will happen in the process describe HOW every shard has the same security keeping very limited the validators assigned for each parachain
+
+`By separating block production (BABE) from finality (GRANDPA), Polkadot can perform extra validity checks after a block is produced but before it is finalized.` (beacause when a block is produced with BABE only the 50% of the assigned set of validators -> so the following step is to make sure everything created is CORRECT)
+
+`Once a block is added to the Relay Chain, it begins a verification phase where randomly selected validators must perform secondary checks to test the availability and validity of the candidate receipts inside. A secondary check involves requesting enough erasure coding chunks to reconstruct the encoded block and proof of validity to validate the state transition.`
+
+// ERESURE CODING AVAILABILITY CHECK
+`When a validator creates a new block, it sends the block to its connections in the network, who forward the new block on to their connections. When a validator imports a block, it will check to see if it has an erasure coding chunk for each candidate receipt in the block. If any chunks are missing, then the validator will alert the others. If more than one-third of the validators send missing-chunk alerts within a set time period, then the block is discarded.`
+
+NOW HAAPPEN THE SECONDARY CHECKS:
+how many checks will happend per candidate recepeit? -> it depends on the report from collators and Fisherman
+
+=> if the reports are high for a block than that block will be checked more than others
+
+----> `if more than one-third of the validators report a block as invalid, the block is discarded`
+
+The checks by collators and fisherman makes EVERYTHING more scalable because it makes lower the effort required by the validators
+
+`After enough secondary checks have been performed on all the candidate receipts within a block, validators can finally vote for that block (and by extension, all previous blocks) in GRANDPA. Once it has more than two-thirds of pre-commits, the block is in the finalized chain.`
+
+https://lh4.googleusercontent.com/oMz9SZ0C2nIVglVqtJrnGfrkjr8dJhAUvk_qPcUNumGzqRW-gBQxM5oLGxkVY-ZdR3ySSDEw6AYCtWSpIPGto9tifOmaMYycbJQ18WRlKKOGHP-J-AxNR7BaOUIEK4MszoI-F-Hg
+
+`Validators cannot vote on blocks until validators have performed enough secondary checks. This feature gives the Relay Chain three zones: the finalized chain, the GRANDPA voting zone with valid candidates for finalization, and the fishing zone where blocks need availability and validity checks.`
