@@ -1,0 +1,20 @@
+* EVM -> Ethereum Virtual Machine
+** From ledger to state machine
+
+*** State
+enormous data structure -> modified merkle patricia trie
+
+*** Transaction
+1. result in a message call
+2. result in contract creation
+
+** EVM Instructions
++ EVM executes a stack machine with a depth of 1024 items.
++ each item: 256bit
++ There is a transient linear memory for each contract
++ Contracts contains also a merke Patricia Storage related to the account that is part of the global state
++ Compiled contract -> bytecode -> made by *opcode*
+  + stack machine standard opcodes + blockchain related instrucitons
+
+#+ATTR_HTML: :width 100px
+[[https://ethereum.org/static/9628ab90bfd02f64cf873446cbdc6c70/302a4/gas.png]]

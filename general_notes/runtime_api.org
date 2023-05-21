@@ -42,3 +42,30 @@ a lot of stuff
 
 ** Core execute block
 `This function executes a full block and all its extrinsics and updates the state accordingly.`
+
+`This function should be called when a fully complete block is available that is not actively being built on, such as blocks received from other peers. State changes resulted from calling this function are usually meant to persist when the block is imported successfully.`
+
+** Core initialize block
+`Sets up the environment required for building a new block as described in Build-Block.`
+
+* Module Metadata
+
+* Module BlockBuilder
+`All calls in this module require Core_initialize_block (Section C.4.3.) to be called beforehand.`
+* Module TaggedTransactionQueue
+
+* Module OffchainWorkerApi
+
+* Module ParachainHost
+
+* Module GrandpaApi
+
+* Module BabeApi
+
+* Module SessionKeys
+
+* Module AccountNonceApi
+
+* Module TransactionPaymentCallApi
+
+* Module Nomination Pools

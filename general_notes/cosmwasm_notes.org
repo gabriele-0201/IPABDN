@@ -1,0 +1,11 @@
+
+* WebAssembly Smart Contracts for the Cosmos SDK.
+https://github.com/CosmWasm/cosmwasm -> it's writte in RUST, lol
+
+Here are contained a lot of tools to write cosmos smart contract, everything will build to wasm and they are proving a lot of tools to make life easier
+
+Later this is executed utilizing `wasmer` (that alex defined slower than wasmi)
+
+`cosmwasm-vm - A crate in this workspace. Uses the wasmer engine to execute a given smart contract. Also contains code for gas metering, storing, and caching wasm artifacts.`
+
+Seems to follow same patterns, host function, runtime api, ... just called in another way

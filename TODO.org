@@ -10,18 +10,22 @@
 9. [ ] Study and take notes on (cross when I think I have a proper understand to summarize stuff... is ok to leave some stuff behind):
    1. [x] WASM
       -> cover almost everything... maybe worth to go in wasmtime / wasmi implementation
-   2. [ ] Polkadot
-      1. [ ] Parachian registration -> PVF registration
-      2. [ ] parablock -> PoV
-      3. [ ] Runtime in polkadot node
-      4. [ ] Runtime managment in Substrate / Cumulus
-      5. [ ] Host functions
-      6. [ ] Runtime API
-      7. [ ] Cryptography in runtime
-   3. [ ] Rivals
-      1. [ ] EVM
-      2. [ ] Sonala eBPF
-      3. [ ] CosmosWASM
-      4. [ ] RISC - V
-10. [ ] start write down stuff
-11. [ ] let's see how stuff goes and where I can put more or less focus!
+   2. [x] Polkadot
+      1. [x] Parachian registration -> PVF registration
+      2. [x] parablock -> PoV
+      3. [x] Runtime in polkadot node       |-> very related
+      4. [x] Runtime managment in Substrate |
+      5. [x] Cumulus
+         1. [x] PoV
+         2. [x] PVF
+      6. [x] Host functions
+      7. [x] Runtime API
+      8. [x] Cryptography in runtime
+   3. [\] Rivals -> Could be done better BUT I don't know how much I will go deep in this topic
+      1. [\] EVM
+      2. [\] Sonala eBPF
+      3. [\] CosmosWASM
+      4. [\] RISC - V
+10. [x] How the runtime is entered when a block needs to be validate and authored?
+11. [ ] start write down stuff
+12. [ ] let's see how stuff goes and where I can put more or less focus!

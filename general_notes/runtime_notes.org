@@ -1,0 +1,11 @@
+* Polkadot Host and Runtime
+very baautiful image to explain what is in the host and what is Runtime: https://wiki.polkadot.network/assets/images/updated_pre-d5849e650527f0dc796f8cad044d1f35.png
+
+** Code Executor (part inside the runtime)
+`The Polkadot Host executes the calls of Runtime entrypoints inside a Wasm Virtual Machine (VM), which in turn provides the Runtime with access to the Polkadot Host API`
+
+* What is a NODE
+** Composed by host and runtime
+* What is an host and the runtime in polkadot
+* How substrate provide an almos ready to use host and a very configurable runtime
+* Connection between host and runtime in substrate / polkadot

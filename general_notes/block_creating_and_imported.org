@@ -1,0 +1,7 @@
+    Really Bad Description
+    + I'm a client and I just imported a new block, I have to check the validity, how? Using the `core_execute_block` runtime api that will execute the block and check the state root with the what's specified in the header
+    + I'm a client I have to author a new block, I will prepare a bunch of transactions and given those transactions I will call one by one the api `BlockBuilder_apply_extrinsic` and at the end with the new state root and all the executed transactions I will prepare the Header and then the block
+
+    Descripion of BlockBuildingProcess: https://spec.polkadot.network/sect-block-production#sect-block-building
+
+    Importing a new Block: https://spec.polkadot.network/sect-block-production#sect-block-building

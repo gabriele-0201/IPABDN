@@ -1,0 +1,56 @@
+* RISC-V Instruction Set Manual
+https://github.com/riscv/riscv-isa-manual
+
+`
+The RISC-V Instruction Set Manual is organized into the following volumes:
+
+    Volume I: User-Level ISA
+    Volume II: Privileged Architecture
+`
+
+
+* Unprivileged Specification
+https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMAFDQC/riscv-spec-20191213.pdf
+
+`RISC-V (pronounced “risk-five”) is a new instruction-set architecture (ISA)`
+
+*** Introduction
+
+`goals in
+defining RISC-V include`
++ `completely open ISA`
++ `real ISA suitable for direct native hardware implementation`
++ `avoids “over-architecting”`
++ `ISA separated into a small base integer ISA, usable by itself`
++ `32-bit and 64-bit address space`
++ ...
+
+**** RISC-V Hardware Platform Terminology
+TODO
+**** RISC-V Software Execution Environments and Harts
+TODO
+**** RISC-V ISA Overview
+`A RISC-V ISA is defined as a base integer ISA, which must be present in any implementation, plus optional extensions to the base ISA`
+
+Currently there are 4 main base ISAs
+`Each base integer instruction set is characterized by the width of the integer registers and the corresponding size of the address space and by the number of integer registers`
+
++ RV32I and RV64I provide 32-bit or 64-bit address spaces respectively
++ RV32E -> has been added to support small microcontrollers, and which has half the number of integer registers
+
+ATTENTION -> RV32I is NOT a subset of RV64I
+
+**** Memory
+TODO
+**** Base Instruction-Length Encoding
+(support for variable length encodign)
+TODO
+**** Exceptions, Traps, and Interrupts
+TODO
+**** UNSPECIFIED Behaviors and Values
+TODO
+
+** RV32I
+
+* Privileged Specification
+https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf

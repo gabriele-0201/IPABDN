@@ -1,0 +1,13 @@
+* Rust project to riscv32i-unknown-none-elf (Runtime)
+There is a simple rust project with an implementation of an allocator (dmalloc, a port in rust of something created in c)  for now a simple bump allocator, then a panic handler and a simple main that print some simple stuff with the implementation of the panic handler and the print using the 'ecall' function that is something used to call system call (i think)
+
+* riscv32i-unknown-none-elf VM (Host)
+
+This load the elf file (executable riscf32 bytecode) then parse the elf (using a library to extract the text and all the important segments)
+
+after COMPILE the extracted code, HOW? using a library called `iced_x86`, the implementatiopn I think iterate over the code and then transalte everything to amd86 bytecode (I think there's also a lexer or something like this and LATER the transposition andh than creatiopn of the x86 bytecode)
+
+AFTER using 'nix' (library that astract *nix call) the memory area ofg the new bytecode is changed to executable and read (the persmissions)
+than the pointer to the beginning is casted to a function (using transmute to a type `extern "C" fn(usize)`) that later is literally CALLED
+
+PROBLEM -> the bytecode itself was sandboxed because the elf has only refecence to the inside so the called function can't (more or less) access the host envirnonment, only at the end of the "function/program"
