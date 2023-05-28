@@ -1,0 +1,38 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  21 MAY 2023 19:24
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/home/gabriele/Documents/university/IPABDN/thesis/sections/pab.tex
+(/home/gabriele/Documents/university/IPABDN/thesis/sections/pab.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22>
+(/usr/share/texmf-dist/tex/latex/subfiles/subfiles.cls
+Document Class: subfiles 2020/11/14 v2.2 Multi-file projects (class)
+Preamble taken from file `../main.tex'
+(/usr/share/texmf-dist/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
+)
+
+! LaTeX Error: File `../main.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.45 \input{\preamble@file}
+                           ^^M
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 85 strings out of 476025
+ 1996 string characters out of 5796533
+ 1849388 words of memory out of 5000000
+ 20624 multiletter control sequences out of 15000+600000
+ 512287 words of font info for 32 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,0n,48p,236b,18s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -1,14 +1,11 @@
-
-#TITLE A more or less deep overview around polkadot, NOTES
-#author Gabriele Miotti
+#+TITLE A more or less deep overview around polkadot, NOTES
+#+author Gabriele Miotti
 
 * Whitepaper (2016)
 ** Introduction
 *heterogeneous multi-chain*
 
-`The heterogeneous nature of this architecture enables many highly divergent types of consensus systems interop-
-erating in a trustless, fully decentralised “federation”, allowing open and closed networks to have trust-free access to
-each other.`
+`The heterogeneous nature of this architecture enables many highly divergent types of consensus systems interoperating in a trustless, fully decentralised “federation”, allowing open and closed networks to have trust-free access to each other.`
 
 Blockchains -> never saw `significant real-world deployment of present technology`, 5 failure points:
 + Scalability
@@ -79,7 +76,7 @@ of course to achieve this is a decentralized manner there are a lot of problems,
 
 `run many chains in parallel, often called sharding`
 
-`Briefly: Polkadot utilises a central chain called the relay chain which communicates with mul- tiple heterogeneous and independent sharded chains called parachains (portmanteau of parallel chains). The relay chain is responsible for providing shared security for all parachains, as well as trust-free interchain transactability between parachains. In other words, the issues that Polkadot aims to address are those discussed above: interoperability, scalablility, and weaker security due to splitting the security power.`
+`Briefly: Polkadot utilises a central chain called the relay chain which communicates with multiple heterogeneous and independent sharded chains called parachains (portmanteau of parallel chains). The relay chain is responsible for providing shared security for all parachains, as well as trust-free interchain transactability between parachains. In other words, the issues that Polkadot aims to address are those discussed above: interoperability, scalablility, and weaker security due to splitting the security power.`
 ** Synopsis
 Describe main functionalities without going too much in details
 
@@ -206,8 +203,7 @@ code upgradability -> `The ultimate arbiters of Polkadot are the Dot token holde
 associative array -> composed by (key, value) pair, key and values are finite bytes array (key is unique in the array), this associative structure is arranged in a `Merkle radix-16 tree` -> the radix of the tree identify the current state of the chain (with merkle tree is also possible create proof of inlcusions, log n complexity space and efficency)
 
 *** State transition
-`Like any transaction-based transition system, Polkadot state changes via an
-executing ordered set of instructions, known as extrinsics`,  Polkadot relay chain divided in:
+`Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics`,  Polkadot relay chain divided in:
     1. Runtime -> contain the state transition logic, compiled into WASM and stored as part of the state (under well known keys), in this way the state transition logic can be upgraded
     2. Runtime environment / Client -> contian all the remaining blockchain relted stuff
 *** Extrinsics

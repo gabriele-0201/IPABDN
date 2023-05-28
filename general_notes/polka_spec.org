@@ -1,4 +1,4 @@
-#TITLE POLKA SPEC HOST NOTES
+#+TITLE POLKA SPEC HOST NOTES
 
 `The Runtime comprises the state transition logic for the Polkadot protocol and is designed and be upgradable via the consensus engine without requiring hard forks of the blockchain. The Polkadot Host provides the necessary functionality for the Runtime to execute its state transition logic, such as an execution environment, I/O, consensus and network interoperability between parachains.`
 

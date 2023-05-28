@@ -1,0 +1,71 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+\section{Polkadot}
+\subsection{What's Polkadot?}
+Polkadot is an heterogeneous multi-chain system.
+
+Polkadot provides the bedrock “relay-chain” upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side (polkadot whitepaper)
+
+Polkadot aims to provide a scalable and interoperable framework for multiple chains with pooled security that is achieved by the collection of components described in this paper (polkadot overview paper)
+
+Briefly: Polkadot utilises a central chain called the relay chain which communicates with multiple heterogeneous and independent sharded chains called parachains (portmanteau of parallel chains). The relay chain is responsible for providing shared security for all parachains, as well as trust-free interchain transactability between parachains. In other words, the issues that Polkadot aims to address are those discussed above: interoperability, scalablility, and weaker security due to splitting the security power. (polkadot overview)
+
+\subsection{Polkadot's protocol}
+
+\begin{enumerate}
+  \item Each parachain:
+        \begin{enumerate}
+                \item collectors run full relay chain node to keep up the latest state
+                \item build new block on top of this latest state and submit blocks to the parachain's validator
+                \item parachian's validator produce the new relay chain block candidate
+        \end{enumerate}
+    \item validator block producing behaviour ...
+    \item substrotocol to ensure data sharding
+    \item managing of messagging between parachians
+    \item validators submit votes to resolve forks and have a single head
+\end{enumerate}
+
+(from polkadot overview)
+
+Explanation of the STATE TRANSITION FUNCTION
+
+`Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics`
+(from polkadot overview)
+
+Polkadot relay chain is divided in:
+    1. Runtime -> contain the state transition logic, compiled into WASM and stored as part of the state (under well known keys), in this way the state transition logic can be upgraded
+    2. Runtime environment / Client -> contian all the remaining blockchain relted stuff
+
+QUESTION -> technically this section could require 100 pages, is it ok to explain here ONLY the relevant part to understand the next section?
+
+\subsection{WASM in Polkadot}
+
+% Runtime Interactions
+`Polkadot’s state is changed by executing an ordered set of instructions(extrinsics)`
+
+`For easy upgradability this Runtime is presented as a Wasm blob`
+
+(from polkadot spec)
+
+% MAYBE -> \subsubsection{Key features for an PAB}
+\subsubsection{Usage a WAMS in Polkadot}
+\paragraph{STF}
+
+Talking about SUBSTRATE and how facilate the construction of the client and runtime
+
+\paragraph{PVF}
+
+talking about cumulus, PVF and PoV
+% Somewhere I have to put also this -> \subparagraph{PoV}
+\paragraph{SmartContracts}
+
+talking about pallet-contracts that enable you to uplaod smart contracts onchain
+
+\paragraph{SPREE}
+
+???
+
+\end{document}

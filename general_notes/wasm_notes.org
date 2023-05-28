@@ -329,6 +329,15 @@ Just in Time compiled VS Ahed Of Time Compiled
 
 * Compiling BOMB
 
+* Different Stacks of Wasm
+https://hackmd.io/@pepyakin/SkmPKGhiq
+
+`Whenever wasm compiled into machine code those stack values are mapped into machine registers. The number of machine registers is limited. intel has ≈16 registers. The stack is on the other hand is not limited by physical constraints. So the goal is to map the unlimited stack values onto the limited set of registers. This is called register allocation. Not all of them will fit but not all of them are needed in registers at the same time. To keep around those not fit values until they actually needed they are “spilled” into the (native) stack.`
+
+`Then, when you compile a high-level language such as Rust into wasm you won’t be able to get away with only the value stack. One of the reasons why not is because the value stack is opaque and is not addressable. The only defined operations on it is push and pop and that’s it. However, you might have noticed that in Rust you are able to put a variable in stack and then take its address as a pointer. For those cases, Rust/LLVM emulates a shadow stack via the wasm memory. To work with it, Rust/LLVM allocates a global variable for the stack pointer. Roughly, to push a value on the stack it decrements (the stack grows from top to bottom) the stack pointer and then writes the value at that location. To pop a value it just increments the stack pointer. To get an address of an item you just copy the value of the stack pointer.
+
+LLVM/LLD allocates the shadow stack. There is a configuration value and it is or was controlled by the wasm-builder. By default it was generous 1 MiB. LLD puts it the first thing in the wasm memory. Literally, 0-1 MiB is occupied by the stack. This layout is useful because whenever the stack overflows, literally, when the stack pointer is 0 and by pushing another value there it will be at the 0xFFFFFFxx range. When a write is performed, assuming that the wasm memory is less than 4 GiB, then OOB write trap will be produced.`
+
 * MISSING THINGS TO EXPLORE:
 + wasm-tools: https://github.com/bytecodealliance/wasm-tools
 + wasmtime implementation

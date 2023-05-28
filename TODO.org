@@ -27,5 +27,9 @@
       3. [\] CosmosWASM
       4. [\] RISC - V
 10. [x] How the runtime is entered when a block needs to be validate and authored?
-11. [ ] start write down stuff
-12. [ ] let's see how stuff goes and where I can put more or less focus!
+11. [ ] start write down stuff -> make a first version, giving a lot of things for granted
+12. [ ] How much pages I wrote?
+    + if less than 20 then I have to expand something somewhere
+    + if more than 20 -> perfect, start revisioning it
+    + if a lot more than 20 -> make some tldr and give MORE things for granted
+13. [ ] let's see how stuff goes and where I can put more or less focus!
