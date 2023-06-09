@@ -5,15 +5,31 @@
 
 \section{Polkadot}
 \subsection{What's Polkadot?}
-Polkadot is an heterogeneous multi-chain system.
+\href{https://assets.polkadot.network/Polkadot-whitepaper.pdf}{polkadot-whitepaper}
+\href{https://arxiv.org/pdf/2005.13456.pdf}{polkadot-overview}
+
+Polkadot is an heterogeneous multi-chain system (polkadot-whitepaper), the aim is to provide a scalable and interoperable framework for multiple chains with shared security(polkadot-overview).
+
+\
+
+At the center of the entire system there is the 'relay chain', responsible for providing shared security to the other chains that are part of the system. Those chains are called 'para chains', they can be heterogeneous and independent between eachothers; the central point (RelayChain) is making possible a trust-free interchain transactability and the pooled security. (polkadot-overview)
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{polkadot_architecture.png}
+  \caption{Polkadot's Architecture}
+  \label{fig:polkadot_arch}
+\end{figure}
 
 Polkadot provides the bedrock “relay-chain” upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side (polkadot whitepaper)
 
-Polkadot aims to provide a scalable and interoperable framework for multiple chains with pooled security that is achieved by the collection of components described in this paper (polkadot overview paper)
-
-Briefly: Polkadot utilises a central chain called the relay chain which communicates with multiple heterogeneous and independent sharded chains called parachains (portmanteau of parallel chains). The relay chain is responsible for providing shared security for all parachains, as well as trust-free interchain transactability between parachains. In other words, the issues that Polkadot aims to address are those discussed above: interoperability, scalablility, and weaker security due to splitting the security power. (polkadot overview)
+In the Figure \ref{fig:polkadot_arch} you can see in the middle the relay chain that connects multiple parachains.
 
 \subsection{Polkadot's protocol}
+
+Briefly the Polkadot system consists of a single open collaborative decentralised network (relay chain), that interacts with many other external chains (para chains)(polkadot-overview). For the realy chain the internals of the parachians are not relevant, parachains need only to adhere to a specific interface. The relay chain then ensure that the parachain is trustable as a whole, not single nodes.
+
+TODO explain roles and the protocol in general
 
 \begin{enumerate}
   \item Each parachain:

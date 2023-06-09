@@ -345,3 +345,4 @@ LLVM/LLD allocates the shadow stack. There is a configuration value and it is or
 + wasmer
 + lightbeam
 + WAMR
++ WASIX -> https://wasmer.io/posts/announcing-wasix
