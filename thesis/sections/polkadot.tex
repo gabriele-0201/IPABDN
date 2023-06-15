@@ -12,7 +12,7 @@ Polkadot is an heterogeneous multi-chain system (polkadot-whitepaper), the aim i
 
 \
 
-At the center of the entire system there is the 'relay chain', responsible for providing shared security to the other chains that are part of the system. Those chains are called 'para chains', they can be heterogeneous and independent between eachothers; the central point (RelayChain) is making possible a trust-free interchain transactability and the pooled security. (polkadot-overview)
+At the center of the entire system there is the 'relay chain', responsible for providing shared security to the other chains that are part of the system. Those chains are called 'parachains', they can be heterogeneous and independent between eachothers; the central point (relay chain) is making possible a trust-free interchain transactability and the pooled security. (polkadot-overview)
 
 \begin{figure}
   \centering
@@ -21,7 +21,7 @@ At the center of the entire system there is the 'relay chain', responsible for p
   \label{fig:polkadot_arch}
 \end{figure}
 
-Polkadot provides the bedrock “relay-chain” upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side (polkadot whitepaper)
+Polkadot provides the bedrock relay-chain upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side (polkadot whitepaper)
 
 In the Figure \ref{fig:polkadot_arch} you can see in the middle the relay chain that connects multiple parachains.
 
@@ -29,59 +29,106 @@ In the Figure \ref{fig:polkadot_arch} you can see in the middle the relay chain 
 
 Briefly the Polkadot system consists of a single open collaborative decentralised network (relay chain), that interacts with many other external chains (para chains)(polkadot-overview). For the realy chain the internals of the parachians are not relevant, parachains need only to adhere to a specific interface. The relay chain then ensure that the parachain is trustable as a whole, not single nodes.
 
-TODO explain roles and the protocol in general
+The ecosystem expect multiple actors to make the protocol to work, the main are:
+\begin{itemize}
+  \item Validator, performs the bulk of the security work
+  \item Nonimator, stakeholder who backs and selects validator candidates
+  \item Collator, collects and submits parachain data to the relay chain
+\end{itemize}
+(polkadot-overview)
+
+The protocol is composed by multiple phases and it defines the communication between parties, the main processes are:
 
 \begin{enumerate}
-  \item Each parachain:
+  \item The parachain:
         \begin{enumerate}
                 \item collectors run full relay chain node to keep up the latest state
                 \item build new block on top of this latest state and submit blocks to the parachain's validator
-                \item parachian's validator produce the new relay chain block candidate
         \end{enumerate}
-    \item validator block producing behaviour ...
-    \item substrotocol to ensure data sharding
-    \item managing of messagging between parachians
-    \item validators submit votes to resolve forks and have a single head
+  \item The realy chain:
+    \begin{enumerate}
+      \item validator associeted to parachians produce the new relay chain block candidate
+      \item validator follow a substrotocol to ensure data sharding
+      \item validators submit votes to resolve forks and have a single head
+      \item managing of messagging between parachians
+    \end{enumerate}
 \end{enumerate}
-
 (from polkadot overview)
 
-Explanation of the STATE TRANSITION FUNCTION
+\subsubsection{State Transition Function}
 
-`Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics`
-(from polkadot overview)
+The protocol demonstrate how the main goal is to verify what's happened on parachains, this is described by the parachain logic. One of the few required thing to a parachain is indeed a State Transition Function, this describe the parachain logic and produce the transition between two states. Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics(polkadot-overview).
 
-Polkadot relay chain is divided in:
-    1. Runtime -> contain the state transition logic, compiled into WASM and stored as part of the state (under well known keys), in this way the state transition logic can be upgraded
-    2. Runtime environment / Client -> contian all the remaining blockchain relted stuff
+The STF is also present in every validator nodes because it describe the relay chain logic. Generally STFs in parachain or relay chain are wasm blob, currently all STFs in the polkadot ecosystem are written in wasm.
 
-QUESTION -> technically this section could require 100 pages, is it ok to explain here ONLY the relevant part to understand the next section?
+Every parachain or relay chain node can be divided in two parts: the STF (or Runtime)  and the Client, the Client implement everything else required to make the protocol to work, from storage management to gossip transactions.
+
+The runtime is compiled into WASM and stored as part of the state, in this way the state transition logic can be upgraded.
+
+% QUESTION -> technically this section could require 100 pages, is it ok to explain here ONLY the relevant part to understand the next section?
 
 \subsection{WASM in Polkadot}
 
-% Runtime Interactions
-`Polkadot’s state is changed by executing an ordered set of instructions(extrinsics)`
+Substrate is a framework to build block chain, it is separate from Polkadot, with it you're able to build so called Solo Chains, that do not care about the polkadot protocols.
 
-`For easy upgradability this Runtime is presented as a Wasm blob`
+Substrate is the main, and only for now, framework used to build blockchains in the Polkadot ecosystem, even the relay chain is built with substrate. What does substrate is abstract all the complexity of writing client and runtime code, you have already almost everything done at client level and you have the freedom of developing whatever you want in the runtime, the state transition function of the blockchain you are building.
 
-(from polkadot spec)
+Substrate compiles the runtime to wasm and the client has an embedder, wasmtime, able to run the STF. As long as the chain is a Solo Chain substrate manage everything, it compiles the runtime in wasm and implements all the costum logic to make the client and the runtime communicating through the embedder wasmtime.
 
-% MAYBE -> \subsubsection{Key features for an PAB}
-\subsubsection{Usage a WAMS in Polkadot}
-\paragraph{STF}
+The problems occur when you want to be part of the polkadot ecosystem, where there is pooled security and the logic not only must be executed by the nodes that compose the parachain but also by the validators of the relay chain. This is made possible following a protocol made by multiple phases that is built on top of two building blocks: the Proof Validation Function and the Proof of Validity
+(from polkadot spec).
 
-Talking about SUBSTRATE and how facilate the construction of the client and runtime
+\subsubsection{PVF}
 
-\paragraph{PVF}
+Using Substrate you end up with a Substrate-Runtime, it is only a wasm blob that implements the State Transition Function of you're blockchain but to be a parachain you need to provide to the relay chain somethig that differs a bit form the Substrate-Runtime.
+The protocol requires a Proof of Validity that is composed by the Substrate Runtime and another function called 'validate\_block' and the reason why this function is required is related to a constraint of the relay chiain: polkadot does not know anything about all previous state of the parachain.
 
-talking about cumulus, PVF and PoV
-% Somewhere I have to put also this -> \subparagraph{PoV}
-\paragraph{SmartContracts}
+Everything needed by the Runtime is not present in the validators node but is provided in the block proposed by the collators, that's called: PoVBlock, the structure of the PoV will be explained later, important to know that every information needed in the execution of the PVF indeed here.
 
-talking about pallet-contracts that enable you to uplaod smart contracts onchain
+The 'validate\_block' function is the glue between the parachain'STF and the PoVBlock, it accept the PoVBlock and reconstruct the previous state, applies all the extrinsics using the runtime and then check that the new state is consistent with the one proposed by the collators.
 
-\paragraph{SPREE}
+Both relay chain and parachain implements the same HostFunctions for the runtime, this means that the STF of the parachain would accesses the storage thorough the same functions in the relay chain and in the parachain but what is known by the nodes is different.
 
-???
+As was just said the relay chain does not know the previous state of the parachain but the information resides in the PoV. The function 'validate\_block' override the host functions to let the STF access the reconstructed internal state instead of going into the relay chain client.
+
+This encapsulation with a substitution of the host functions makes  validator able to execute different STFs without knowing anything about the parachain that is validating.
+
+\subsubsection{PoV}
+(\href{https://github.com/paritytech/cumulus/blob/master/docs/overview.md}{cumulus-notes})
+
+The Proof of Validity is made by all the things needed by Runtime Validation, it is mainly composed by:
+
+\begin{itemize}
+  \item Header of the new block
+  \item Transactions included in the block
+  \item Witness Data
+  \item Outgoing messages
+\end{itemize}
+
+The third and the fourth elements in the list are really peculiar to the polkadot protocol.
+
+The witness data is what makes possible the state transition validation withouth knowing the entire state of the parachain by the relay-chain.
+
+The state in polkadot is managed as a Merkle-Patricia Base 16 Trie where the hash of the root define the state proof, the state proof of the previous block is stored in the relay chain and the witness data are:
+
+\begin{itemize}
+  \item Data used in the state transition by the collator
+  \item Alongside their inclusion proof in the previous state
+\end{itemize}
+
+Instead the Outgoing messages are everything that need to be delivered to other parachains, the underneath protocol is XCMP/XCM which enables the parachain communication between parachain or the relay chain itself.
+
+\subsection{SmartContracts}
+
+SmartContracts are arbitrary code that can be upload on the chain and executed in the states transition.
+
+% Smart Contracts are arbitrary code that can be uploaded on the chain and executed in the states transition function itself.
+
+% In polkadot the code is stored as part of the state and it is then executed in sandboxed environment inside the use sandboxed environment
+
+PEPEEE
+
+% \subsubsection{SPREE}
+
 
 \end{document}

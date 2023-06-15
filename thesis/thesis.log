@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.5)  5 JUN 2023 19:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.11)  15 JUN 2023 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -342,22 +342,22 @@ vi-ron-ment, this makes it com-pletely contraint-
  []
 
 [4] [5] [6] [7] [8]) (./sections/polkadot.tex
-<sections//polkadot_architecture.png, id=168, 1606.0pt x 1425.325pt>
+<sections//polkadot_architecture.png, id=180, 1606.0pt x 1425.325pt>
 File: sections//polkadot_architecture.png Graphic file (type png)
 <use sections//polkadot_architecture.png>
 Package pdftex.def Info: sections//polkadot_architecture.png  used on input lin
 e 19.
 (pdftex.def)             Requested size: 177.42868pt x 157.46043pt.
- [9] [10 <./sections//polkadot_architecture.png>]) (./sections/rivals.tex) [11]
- (./thesis.aux)
+ [9] [10 <./sections//polkadot_architecture.png>] [11] [12]) (./sections/rivals
+.tex) [13] (./thesis.aux)
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 04E1DE6DB53BA9063E8877D222565321;3387.
+(rerunfilecheck)             Checksum: C14F5C0CE8EA9A0B61B2C64C70F0BA06;3680.
  ) 
 Here is how much of TeX's memory you used:
- 9238 strings out of 476025
- 147129 string characters out of 5796533
+ 9243 strings out of 476025
+ 147231 string characters out of 5796532
  1859388 words of memory out of 5000000
- 29520 multiletter control sequences out of 15000+600000
+ 29524 multiletter control sequences out of 15000+600000
  517830 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,6n,76p,634b,639s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -369,10 +369,10 @@ r12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1000.pfb>
-Output written on thesis.pdf (11 pages, 334182 bytes).
+Output written on thesis.pdf (13 pages, 337714 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 246 words of extra memory for PDF output out of 10000 (max. 10000000)
 
