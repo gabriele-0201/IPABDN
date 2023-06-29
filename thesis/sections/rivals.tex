@@ -9,15 +9,48 @@ WASM is not the only PAB used in the blockchain space, other technologies use di
 
 \subsection{EVM}
 
-Ethereum
+Ethereum Virtual Machine's bytecode is one of the first PAB used in blockchain, it does not follow the features used to describe a perfect PAB, it was created to be a perfect blockchain's bytecode and the Ethereum Virtual Machine is the glue that makes it executable on every machine.
 
-Ethereum Virtual Machine is one of the first
-
-Explain what is EVM Bytecode and how is used in Ethereum
+The EVM is the building block of all the Etherum stack, it executes stack based code and manage all the memory and access to the storage, follows therefore the same principles of an embedder for code wasm with many features tied to the measurement of the computation onchain, called gas.
 
 \subsection{eBPF}
 
-Explanation over eBPF, how Solana is using it and then how and why is not a good fit for polkadot (https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084)
+\subsubsection{What is eBPF}
+
+\href{https://ebpf.io/what-is-ebpf/}{what-is-ebpf}
+
+eBPF stands for 'Extended Berkeley Packet Filter', what is now eBPF makes the acronym an incorrect representation of it.
+
+Linux brought eBPF into the kernel, enabling sandboxed programs to run inside a privileged context (OS level). For lot of different reasons keeping the kernel upgraded was a difficult task and eBPF intend to solve this problem.
+
+How can a new feature be developed once and be added to the Linux kernel? Keeping in mind that running arbitrary code developed by whoever in the kernel is absolutely not safe and the same code must be able to run on different architectures?
+
+The operating system guarantee efficiency ans security through a JIT compiler and a verification engine for every eBPF program. To achieve that every kernel contains an eBPF VM able to checks the termination of the problem and the security guarantees.
+
+Main points of eBPF to make the verification process possible are:
+\begin{enumerate}
+  \item There are no functions in the code, there is only an unique blanket of code
+  \item Limited control flow
+  \item Loops need to be statically defined, they are unrolled at compilation time
+  \item The execution can't pass twice on the same code
+\end{enumerate}
+
+\subsubsection{Solana eBPF}
+
+\href{https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084}{solana in polkadot}
+
+Not every program can compile to eBPF but a distributed systems need to execute arbitrary code and limitation as strict as normal eBPF are too much, Solana then (a blockchain) forked the eBPF backend of LLVM and removed lots of constraint, keeping the finality guarantee by the standard gas metering.
+
+Solana also create a new virtual machine for eBPF, \href{https://github.com/qmonnet/rbpf}, able to check, compile and execute the code on the blockchain.
+
+eBPF is a perfect PAB for some use cases, as the linux kernel, but it does not seem to be a good fit for blockchains, examples are:
+\begin{enumerate}
+  \item limited control flow
+  \item limited loops
+  \item 64 bit usage implies lot of checks on the memory access
+  \item 8 bytes instructions are too long
+\end{enumerate}
+
 
 \subsection{RISC-V}
 

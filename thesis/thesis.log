@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.18)  18 JUN 2023 17:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.19)  29 JUN 2023 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -327,9 +327,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 25.
  (./sections/pab.tex [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts
-/enc/dvips/cm-super/cm-super-ts1.enc}]
-[2]) (./sections/wasm.tex
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]) (./sections/wasm.tex
 Overfull \hbox (24.20012pt too wide) in paragraph at lines 12--13
 []\OT1/cmr/m/n/10 WebAssembly, short-ened to Wasm, is a bi-nary in-struc-tion f
 or-mat for a stack-based vir-tual machine(wasm-
@@ -342,37 +340,47 @@ vi-ron-ment, this makes it com-pletely contraint-
  []
 
 [4] [5] [6] [7] [8]) (./sections/polkadot.tex
-<sections//polkadot_architecture.png, id=184, 1606.0pt x 1425.325pt>
+<sections//polkadot_architecture.png, id=196, 1606.0pt x 1425.325pt>
 File: sections//polkadot_architecture.png Graphic file (type png)
 <use sections//polkadot_architecture.png>
 Package pdftex.def Info: sections//polkadot_architecture.png  used on input lin
 e 17.
 (pdftex.def)             Requested size: 177.42868pt x 157.46043pt.
  [9] [10 <./sections//polkadot_architecture.png>] [11] [12]) (./sections/rivals
-.tex) [13] [14] (./thesis.aux)
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 5367E4B5066B35D3282162D1D0B35E94;3946.
+.tex [13] [14]) [15] (./thesis.aux)
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: 65A921311F7D1D2DBEAC7BCBF72E3954;4355
+(rerunfilecheck)             After:  833866CAF1131A9095EDBBF38FA58C26;4206.
  ) 
 Here is how much of TeX's memory you used:
- 9246 strings out of 476025
- 147278 string characters out of 5796532
+ 9260 strings out of 477985
+ 147444 string characters out of 5840058
  1859388 words of memory out of 5000000
- 29525 multiletter control sequences out of 15000+600000
+ 29275 multiletter control sequences out of 15000+600000
  517830 words of font info for 50 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,6n,76p,634b,639s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/cm-super/sfrm1000.pfb>
-Output written on thesis.pdf (14 pages, 339717 bytes).
+ 14 hyphenation exceptions out of 8191
+ 75i,6n,76p,634b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{subsubsection.4.2.3} has been referenced but does n
+ot exist, replaced by a fixed one
+
+ </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on thesis.pdf (15 pages, 337562 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 240 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 306 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 278 words of extra memory for PDF output out of 10000 (max. 10000000)
 
