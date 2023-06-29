@@ -10,9 +10,7 @@
 
 Polkadot is an heterogeneous multi-chain system (polkadot-whitepaper), the aim is to provide a scalable and interoperable framework for multiple chains with shared security(polkadot-overview).
 
-\
-
-At the center of the entire system there is the 'relay chain', responsible for providing shared security to the other chains that are part of the system. Those chains are called 'parachains', they can be heterogeneous and independent between eachothers; the central point (relay chain) is making possible a trust-free interchain transactability and the pooled security. (polkadot-overview)
+At the center of the entire system there is the 'relay chain', responsible for providing shared security to the other chains that are part of the system. Those chains are called 'parachains', they can be heterogeneous and independent between each others; the central point (relay chain) is making possible a trust-free inter-chain transactability and the pooled security. (polkadot-overview)
 
 \begin{figure}
   \centering
@@ -40,28 +38,28 @@ The ecosystem expect multiple actors to make the protocol to work, the main are:
 The protocol is composed by multiple phases and it defines the communication between parties, the main processes are:
 
 \begin{enumerate}
-  \item The parachain:
+  \item The parachain's collators:
         \begin{enumerate}
-                \item collectors run full relay chain node to keep up the latest state
-                \item build new block on top of this latest state and submit blocks to the parachain's validator
+                \item run full relay chain node to keep up the latest state
+                \item build new block on top of the latest state and submit blocks to the parachain's validator
         \end{enumerate}
-  \item The realy chain:
+  \item The realy chain's validators:
     \begin{enumerate}
-      \item validator associeted to parachians produce the new relay chain block candidate
-      \item validator follow a substrotocol to ensure data sharding
-      \item validators submit votes to resolve forks and have a single head
-      \item managing of messagging between parachians
+      \item the ones associeted to parachians produce the new relay chain block candidate
+      \item follow a substrotocol to ensure data sharding
+      \item submit votes to resolve forks and have a single head
+      \item manage messages between parachians
     \end{enumerate}
 \end{enumerate}
 (from polkadot overview)
 
 \subsubsection{State Transition Function}
 
-The protocol demonstrate how the main goal is to verify what's happened on parachains, this is described by the parachain logic. One of the few required thing to a parachain is indeed a State Transition Function, this describe the parachain logic and produce the transition between two states. Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics(polkadot-overview).
+The protocol demonstrate how the main goal is to verify what's happened on parachains, described by the parachain logic. One of the few required thing to a parachain is indeed a State Transition Function, this describe the parachain logic and produce the transition between two states. Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics(polkadot-overview).
 
-The STF is also present in every validator nodes because it describe the relay chain logic. Generally STFs in parachain or relay chain are wasm blob, currently all STFs in the polkadot ecosystem are written in wasm.
+The STF is also present in every validator node because it describe the relay chain logic. Generally STFs in polkadot are wasm blob, currently all STFs are written in wasm, for a parachain would be possible to use different PAB to create the STF but with complex solutions to respect what will be described later.
 
-Every parachain or relay chain node can be divided in two parts: the STF (or Runtime)  and the Client, the Client implement everything else required to make the protocol to work, from storage management to gossip transactions.
+Every parachain or relay chain node can be divided in two parts: the STF (or Runtime) and the Client, it implements everything else required to make the protocol to work, from storage management to gossip transactions.
 
 The runtime is compiled into WASM and stored as part of the state, in this way the state transition logic can be upgraded.
 
@@ -118,17 +116,27 @@ The state in polkadot is managed as a Merkle-Patricia Base 16 Trie where the has
 
 Instead the Outgoing messages are everything that need to be delivered to other parachains, the underneath protocol is XCMP/XCM which enables the parachain communication between parachain or the relay chain itself.
 
-\subsection{SmartContracts}
+\subsubsection{SmartContracts}
 
-SmartContracts are arbitrary code that can be upload on the chain and executed in the states transition.
+SmartContracts are arbitrary code that can be upload on the chain and be executed in the states transition function. Even the STF is arbitrary code that can be updated but the convenience of SmartContracts are the easiness of create and upload custom logic on chain. To make this technology different blockchain came up with different ideas and the one used by Polkadot is to have a recursive embedder.
 
-% Smart Contracts are arbitrary code that can be uploaded on the chain and executed in the states transition function itself.
+The Client is the embedder of the STF and the STF becomes also the embedder of the SmartContracs, this made possible thanks to wasmi, the wasm environment able to be executed even in wasm itself. To make the execution of arbitrary, possibly malicius code, secure there are different solutions:
 
-% In polkadot the code is stored as part of the state and it is then executed in sandboxed environment inside the use sandboxed environment
+\begin{itemize}
+  \item Gas / Fuel measuring
+  \item Storage usage deposit
+\end{itemize}
 
-PEPEEE
+Where the first one has the aim to limit the number of operations that can be executed in the STF and the second instead is to limit the amount of used storage.
+
+\subsection{The crucial Role of WASM in Polkadot}
+
+As you may understood from the above sections, the distributed algorithms, the security assumptions, all the cryptography that makes all of this possible would be useless if nodes can't execute in a secure and deterministic manner code that implements all the just described features.
+
+The amount of tools and projects that are using WASM makes it very suitable for polkadot, a blockchain is a resource constrained environment, there is limited space on every block and also every state transition must be computed in a limited amount of time, this makes all the already existing optimizer a perfect solution to make wasm even better for polkadot.
+
+Important tools is \href{https://github.com/WebAssembly/binaryen}{Binaryen} with the wasm-opt optimization phases, largely used in polkadot, that loads WebAssembly and runs Binaryen IR passes on it to make it more space and complexity efficient.
 
 % \subsubsection{SPREE}
-
 
 \end{document}
