@@ -11,6 +11,8 @@
     "graphicx"
     "subfiles"
     "enumitem"
-    "hyperref"))
+    "hyperref")
+   (LaTeX-add-bibliographies
+    "refs"))
  :latex)
 

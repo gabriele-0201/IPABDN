@@ -1,5 +1,4 @@
 \documentclass[../main.tex]{subfiles}
-\graphicspath{{\subfix{../images/}}}
 
 \begin{document}
 
@@ -9,8 +8,8 @@
 A Platform-Agnostic Bytecode (PAB) is a bytecode that follows those two main principles:
 
 \begin{itemize}
-    \item Turing Completness
-    \item Support for tooling that makes it exacutable on every machine
+    \item Turing Completeness
+    \item Support for tooling that makes it executable on every machine
 \end{itemize}
 
 A bytecode like this ideally is designed to be executed on a virtual machine that follows general patters. This design should make easier the compilation to another real machine's bytecode. Examples of real architectures with specified bytecode are AMD and Intel with x86 or ARM with aarch64. % TODO: check this last sentence
@@ -19,51 +18,57 @@ A bytecode like this ideally is designed to be executed on a virtual machine tha
 
 PABs require multiple phases of Compilation, the first one is encountered when you want to compile your High-Level language to the PAB using a Cross-Compiler. Once you have the arbitrary PAB code, you should be able to run it on every machine using another compiler that will create the final executable code.
 
-Re-compiling is not the only way to execute a PAB, another common solution is to implement a VirtualMachine (VM) able to run aribitrary PAB code interpreting it.
+Re-compiling is not the only way to execute a PAB, another common solution is to implement a Virtual Machine (VM) able to run arbitrary PAB code interpreting it.
 
 \subsection{Key features}
 
-Every bytecode can be a PAB if tools to make it runnable to different machine exist. Every bytecode, ideally, can become a PAB then there must be some metrics to define which one is the better PAB, those are:
+Every bytecode, ideally, can become a PAB if tools to make it runnable to different machine exist, then there are some metrics to define which one is the better than other, example of metrics are:
 
 \begin{description}[style=nextline]
   \item[Hardware Independence]
-        A bytecode can't be a PAB if tightly related to specific hardware. A PAB can be defined as such if there is no direct connection between bytecode and hardware, the only exception is if there is a small relationship but the execution on different hardware requires only little overhead.
+        A bytecode can't be a PAB if tightly related to specific hardware. A PAB can be defined as such if there is no direct connection between bytecode and hardware, the only exception is if the relations require only a little overhead for the execution on different hardware.
   \item[Sandboxing]
-        The machine used to execute the PAB is defined as \textit{embedder}. The embedder will execute arbitrary code, possibly malicious, and avoiding any security problem is the aim of the embedder, sandobxing is the solution.
-        Executing the PAB in a sandboxed environment makes impossible to compromise the embedder, the implementation of the sandboxed environment is embedder dependent but a PAB can be more or less suitable for this feature.
-  \item[Efficency]
-        The efficency of a PAB has a lot of meaning, it could be:
+        The machine used to execute the PAB is defined as \textit{embedder}. The embedder will execute arbitrary code, possibly malicious, and avoiding any security problem is the main goal, a sandboxed environment is the solution. The execution in a different environment makes almost impossible to compromise the embedder from the PAB code. Implemening a proper sandboxed environment is embedder dependent but a PAB can be more or less suitable for this feature.
+
+        \begin{figure}[h]
+          \centering
+          \includegraphics[width=0.4\linewidth]{sandboxed_env.png}
+          \caption{Sandboxing graphic example}
+          \label{fig:Sandboxing graphic example}
+        \end{figure}
+
+  \item[Efficiency]
+        The efficiency of a PAB has a lot of meaning, it could be:
 
         \begin{itemize}
           \item Compiling High-Level Language to the PAB
-          \item Execution of the PAB, it could mean compile to the final bytecode and then execute it, interpret it or more complex solution
+          \item Execution of the PAB, it could be the compilation to the final bytecode and then execution, the interpretation or more complex solutions
         \end{itemize}
 
-        Generally the first is not really related to the PAB, but more on the tools used (examples gcc, rustc, etc.). The execution efficiency is the real deal, how fast a PAB can be executed on a machine is crucial.
-  \item[Tool Simlicity]
-        The easyness of compiling an High-Level language and the executing the PAB is very important to make a it usable in the real world.
+        Generally the first is not really related to the PAB, but more on the used tools (examples gcc, rustc, etc.). The execution efficiency is the real deal, how fast a PAB can be executed on a machine is crucial.
+  \item[Tool Simplicity]
+        The easiness of compiling an High-Level language and the executing the PAB is very important to make a it usable by every one.
   \item[Support as Compilation Target]
         Writing bytecode by hand (or any text representation) is something really rare and done only in specific cases. Every compiled language has a compiler to make this, and is very important for a PAB to support the compilation from as many languages as possible.
-  % TODO: there are others important factors?
 \end{description}
 
 \subsection{Current usage}
 
-PAB are widely used and the following are a couple of examples:
+PAB are already widely used and the following are a couple of examples:
 
-\begin{description}[style=nextline]
-  \item[JVM]
-  LOL
-  \item[eBPF]
-  Linux brought eBPF into the kernel, enabling arbitrary programs to be executed in a privileged context (OS level).
-  \item[LLVM IR]
-  LLVM IR is the LLVM assembly language, it provides type safety, low-level operations, flexibility, and the capability of representing ‘all’ high-level languages cleanly. It is the common code representation used throughout all phases of the LLVM compilation strategy. \href{https://llvm.org/docs/LangRef.html\#abstract)}{llvm}
-  \item[WASM]
-  WebAssembly is a safe, portable, low-level code format designed for efficient execution and compact representation \href{https://webassembly.github.io/spec/core/}{wasm-spec}
-\end{description}
+\begin{itemize}
+  \item
+        The Java Virtual Machine (JVM) is one of the first that made the portability of the code one of the main concern of the language
+  \item
+        Linux brought eBPF into the kernel, enabling arbitrary programs to be executed in a privileged context (OS level)
+  \item
+        LLVM IR is the LLVM assembly language, it provides type safety, low-level operations, flexibility, and the capability of representing ‘all’ high-level languages cleanly. It is the common code representation used throughout all phases of the LLVM compilation strategy. ~\cite{LLVM}
+  \item
+        WebAssembly is a safe, portable, low-level code format designed for efficient execution and compact representation. ~\cite{wasm-core-spec}
+\end{itemize}
 
 \subsection{PAB in blockchains}
 
-Blockchains are Distributes Systems that needs to agree on the execution of arbitrary code (more or less, TODO: explain better) and the code has to run on different machines. PAB is the solution for both problem, but there is a little caveat in the first problem: the code execution must arrive at the same result, regardless of the machine the code is running on. What has just been described will be called \"execution determinism\" from now on.
+Blockchains are mainly distributed systems that needs to agree on the execution of arbitrary code from different machines. The code execution must conclude to the same result, regardless of the machine the code is running on. What has just been described is called `deterministic execution`. PABs are the solution for both problems.
 
 \end{document}

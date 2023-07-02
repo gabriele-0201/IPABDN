@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Arch Linux)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thesis.aux
+The style file: plain.bst
+Database file #1: refs.bib
+Warning--entry type for "LLVM" isn't style-file defined
+--line 1 of file refs.bib
+Warning--entry type for "wasm-core-spec" isn't style-file defined
+--line 7 of file refs.bib
+Warning--entry type for "wasm-polkadot-wiki" isn't style-file defined
+--line 13 of file refs.bib
+Warning--entry type for "wasmtime-book" isn't style-file defined
+--line 27 of file refs.bib
+Warning--entry type for "wasm-testsuite" isn't style-file defined
+--line 33 of file refs.bib
+Warning--entry type for "wasmi" isn't style-file defined
+--line 39 of file refs.bib
+Warning--entry type for "linear-memory" isn't style-file defined
+--line 45 of file refs.bib
+Warning--to sort, need author or key in LLVM
+Warning--to sort, need author or key in wasm-core-spec
+Warning--to sort, need author or key in wasm-polkadot-wiki
+Warning--to sort, need author or key in wasm-testsuite
+Warning--to sort, need author or key in wasmi
+Warning--to sort, need author or key in linear-memory
+Warning--to sort, need author or key in wasmtime-book
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            512 strings with 4272 characters,
+and the built_in function-call counts, 1056 in all, are:
+= -- 84
+> -- 7
+< -- 0
++ -- 7
+- -- 0
+* -- 37
+:= -- 107
+add.period$ -- 7
+call.type$ -- 7
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 49
+empty$ -- 162
+format.name$ -- 0
+if$ -- 260
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 0
+newline$ -- 24
+num.names$ -- 0
+pop$ -- 56
+preamble$ -- 1
+purify$ -- 14
+quote$ -- 0
+skip$ -- 70
+stack$ -- 0
+substring$ -- 35
+swap$ -- 7
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 7
+while$ -- 0
+width$ -- 8
+write$ -- 37
+(There were 14 warnings)

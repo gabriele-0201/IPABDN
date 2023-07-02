@@ -6,6 +6,10 @@
    (TeX-run-style-hooks
     "latex2e"
     "subfiles"
-    "subfiles10"))
+    "subfiles10")
+   (LaTeX-add-labels
+    "fig:value-shadow-stack"
+    "fig:linear_memory"
+    "fig:env-communication"))
  :latex)
 

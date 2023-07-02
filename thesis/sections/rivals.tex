@@ -1,5 +1,4 @@
 \documentclass[../main.tex]{subfiles}
-\graphicspath{{\subfix{../images/}}}
 
 \begin{document}
 
@@ -54,6 +53,42 @@ eBPF is a perfect PAB for some use cases, as the linux kernel, but it does not s
 
 \subsection{RISC-V}
 
-What is RISC-V, why seems to be a good fit for polkadot (https://forum.polkadot.network/t/exploring-alternatives-to-wasm-for-smart-contracts/2434)
+\href{https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMAFDQC/riscv-spec-20191213.pdf}{spec-1}
+
+RISC-V is a new instruction-set architecture (ISA), even if it is an actual bytecode for a specific hardware and seems to go against what has been describe so far as PAB there are running experiments that make this as a valid option as PAB.
+
+There are several reasons why RISC-V could be a good PAB even if it was designed to be an ISA:
+\begin{description}[style=nextline]
+  \item[Real ISA suitable for direct native hardware implementation]
+        RISC-V is designed to be executed on real hardware, no assumption is made on the hardware itself, the only required thing is to respect all the constraint specified in the specifications. The ISA is developed following general machine patterns with something completely new but still very related to other machine making really easy the translation.
+  \item[RISC]
+        The name RISC stands for Reduce Instruction Set Computer, the spec are then very small and simple making possible the creation of a base executor in really few lines of code.
+  \item[Completely open ISA]
+        RISC-V is an open standard, this makes possible to everyone to know the behavior and possibly create custom hardware to execute it.
+  \item[ISA separated into a small base integer ISA]
+        RISC-V is divided into smaller ISA, each one can work alone and can also be composed to achieve different functionalities. One of the most important division is the 32-bit and 64-bit address space division, it makes possible the creation of a sandboxed environment in ad easy and effective way.
+\end{description}
+
+\subsubsection{RISC-V for SmartConctract}
+
+One experiment to port RISC-V in the Polkadot ecosystem as language for SmartConctract is \href{https://github.com/koute/polkavm-experiment}{polkavm-experiment}, and the discussion is reported in this \href{https://forum.polkadot.network/t/exploring-alternatives-to-wasm-for-smart-contracts/2434}{forum}.
+
+The spec are so easy that creating an interpreter required only one day and the JIT only two days more. Those two executor were then tested against other PAB with different executors, every one executed the same code: a NES emulator written in Rust and the interpretation was how close to 60 FPS the code can get.
+
+The results are:
+\begin{itemize}
+    \item wasmi: 108ms/frame (~9.2 FPS)
+    \item wasmer singlepass: 10.8ms/frame (~92 FPS)
+    \item wasmer cranelift: 4.8ms/frame (~208 FPS)
+    \item wasmtime: 5.3ms/frame (~188 FPS)
+    \item solana\_rbpf (interpreted): 6930ms/frame (~0.14 FPS)
+    \item solana\_rbpf (JIT): ~625ms/frame (~1.6 FPS)
+    \item RISC-V interpreter: ~800ms/frame (1.25 FPS)
+    \item RISC-V JIT: ~25ms/frame (~40 FPS)
+\end{itemize}
+
+As you can see the simplicity of RISC-V made possible the creation of a JIT compiler able to be faster than lot of competitive compiler already being used in different realities.
+
+An important difference rather then eBPF are dedicated instructions for host functions (syscall) and the support in rustc and LLVM. One of the main constraint is the number of register used in RISC-V, 32 registers while most architectures use 16, this ask to the compiler or interpreter to properly manage those extra registers.
 
 \end{document}

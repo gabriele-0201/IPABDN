@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.19)  29 JUN 2023 16:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  2 JUL 2023 13:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**thesis.tex
+**thesis
 (./thesis.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
@@ -221,7 +221,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip51
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 16.
+Package hyperref Info: Option `colorlinks' set `true' on input line 17.
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
@@ -230,24 +230,24 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -313,74 +313,107 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 22.
+Package hyperref Info: Link coloring ON on input line 23.
  (./thesis.out)
 (./thesis.out)
 \@outlinefile=\write3
 \openout3 = `thesis.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 25.
+(Font)              <12> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 25.
+(Font)              <8> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 25.
- (./sections/pab.tex [1
+(Font)              <6> on input line 26.
+ (./thesis.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]) (./sections/wasm.tex
-Overfull \hbox (24.20012pt too wide) in paragraph at lines 12--13
-[]\OT1/cmr/m/n/10 WebAssembly, short-ened to Wasm, is a bi-nary in-struc-tion f
-or-mat for a stack-based vir-tual machine(wasm-
- []
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
 
-[3]
-Overfull \hbox (0.92233pt too wide) in paragraph at lines 36--37
-\OT1/cmr/m/n/10 The spec-i-fi-ca-tion does not make any as-sump-tion on the en-
-vi-ron-ment, this makes it com-pletely contraint-
- []
+ (./sections/pab.tex [2]
+<./images//sandboxed_env.png, id=193, 344.28625pt x 241.90375pt>
+File: ./images//sandboxed_env.png Graphic file (type png)
+<use ./images//sandboxed_env.png>
+Package pdftex.def Info: ./images//sandboxed_env.png  used on input line 35.
+(pdftex.def)             Requested size: 177.42868pt x 124.66487pt.
+ [3 <./images//sandboxed_env.png>])
+(./sections/wasm.tex
 
-[4] [5] [6] [7] [8]) (./sections/polkadot.tex
-<sections//polkadot_architecture.png, id=196, 1606.0pt x 1425.325pt>
-File: sections//polkadot_architecture.png Graphic file (type png)
-<use sections//polkadot_architecture.png>
-Package pdftex.def Info: sections//polkadot_architecture.png  used on input lin
-e 17.
+Package hyperref Warning: Suppressing link with empty target on input line 8.
+
+[4]
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 21.
+
+[5] [6]
+<./images//value_and_shadow_stack.png, id=228, 619.31375pt x 358.33875pt>
+File: ./images//value_and_shadow_stack.png Graphic file (type png)
+<use ./images//value_and_shadow_stack.png>
+Package pdftex.def Info: ./images//value_and_shadow_stack.png  used on input li
+ne 102.
+(pdftex.def)             Requested size: 221.78923pt x 128.3293pt.
+ [7 <./images//value_and_shadow_stack.png>] [8]
+
+Package hyperref Warning: Suppressing link with empty target on input line 145.
+
+
+<./images//linear_memory.png, id=245, 575.14874pt x 447.6725pt>
+File: ./images//linear_memory.png Graphic file (type png)
+<use ./images//linear_memory.png>
+Package pdftex.def Info: ./images//linear_memory.png  used on input line 155.
+(pdftex.def)             Requested size: 221.78923pt x 172.63109pt.
+[9 <./images//linear_memory.png>]
+<./images//env_communication.png, id=256, 582.175pt x 324.21124pt>
+File: ./images//env_communication.png Graphic file (type png)
+<use ./images//env_communication.png>
+Package pdftex.def Info: ./images//env_communication.png  used on input line 17
+2.
+(pdftex.def)             Requested size: 221.78923pt x 123.51321pt.
+ [10 <./images//env_communication.png>])
+(./sections/polkadot.tex
+<./images//polkadot_architecture.png, id=268, 1606.0pt x 1425.325pt>
+File: ./images//polkadot_architecture.png Graphic file (type png)
+<use ./images//polkadot_architecture.png>
+Package pdftex.def Info: ./images//polkadot_architecture.png  used on input lin
+e 16.
 (pdftex.def)             Requested size: 177.42868pt x 157.46043pt.
- [9] [10 <./sections//polkadot_architecture.png>] [11] [12]) (./sections/rivals
-.tex [13] [14]) [15] (./thesis.aux)
+ [11 <./images//polkadot_architecture.png>] [12]
+[13] [14]) (./sections/rivals.tex [15] [16] [17]) (./thesis.bbl) [18]
+(./thesis.aux)
 
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 65A921311F7D1D2DBEAC7BCBF72E3954;4355
-(rerunfilecheck)             After:  833866CAF1131A9095EDBBF38FA58C26;4206.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: E069BB1ABA66FD9446727EF03FDC6589;4405.
  ) 
 Here is how much of TeX's memory you used:
- 9260 strings out of 477985
- 147444 string characters out of 5840058
- 1859388 words of memory out of 5000000
- 29275 multiletter control sequences out of 15000+600000
+ 9338 strings out of 477985
+ 149182 string characters out of 5840059
+ 1864388 words of memory out of 5000000
+ 29326 multiletter control sequences out of 15000+600000
  517830 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,76p,634b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsubsection.4.2.3} has been referenced but does n
-ot exist, replaced by a fixed one
-
- </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (15 pages, 337562 bytes).
+ 75i,6n,76p,706b,717s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600p
+k></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb>
+Output written on thesis.pdf (18 pages, 434100 bytes).
 PDF statistics:
- 306 PDF objects out of 1000 (max. 8388607)
- 268 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
- 278 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 395 PDF objects out of 1000 (max. 8388607)
+ 343 compressed objects within 4 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 298 words of extra memory for PDF output out of 10000 (max. 10000000)
 

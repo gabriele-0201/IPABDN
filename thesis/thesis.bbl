@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{linear-memory}
+https://hacks.mozilla.org/2017/07/memory-in-webassembly-and-why-its-safer-than-you-think/.
+
+\bibitem{LLVM}
+Llvm language reference manual.
+
+\bibitem{wasm-polkadot-wiki}
+Polkadot wiki - wasm.
+
+\bibitem{wasm-core-spec}
+Wasm github specifications.
+
+\bibitem{wasm-testsuite}
+Wasm test suite.
+
+\bibitem{wasmi}
+Wasmi.
+
+\bibitem{wasmtime-book}
+Wasmtime book.
+
+\end{thebibliography}

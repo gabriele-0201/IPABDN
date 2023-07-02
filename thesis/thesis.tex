@@ -4,6 +4,7 @@
 \linespread {1.5}
 
 \usepackage{graphicx}
+\graphicspath{{\subfix{./images/}}}
 
 \usepackage{subfiles} % Best loaded last in the preamble
 \usepackage{enumitem}
@@ -29,20 +30,19 @@ How can a distributed network agree on the execution of an arbitrary code in an 
 
 \end{abstract}
 
-% $\tableofcontents IDK, it does not work
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
 
 \subfile{sections/pab}
 
 \subfile{sections/wasm}
 
-% Should I make a little introduction on Polkadot?
-% \section{What's a decentralized network?}
-% \subsection{Definiotion} % remark the agreement part
-% \subsection{Possible networks implementation}
-% \subsection{Blockchain} % really fast explanation
-
 \subfile{sections/polkadot}
 
 \subfile{sections/rivals}
 
+\bibliographystyle{plain}
+\bibliography{refs}
 \end{document}
