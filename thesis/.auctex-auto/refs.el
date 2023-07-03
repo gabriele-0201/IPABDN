@@ -13,6 +13,12 @@
     "wood2016polkadot"
     "burdges2020overview"
     "parachain-protocol"
-    "cumulus-docs"))
+    "cumulus-docs"
+    "buterin2014next"
+    "ebpf"
+    "ebpf-contracts"
+    "yakovenko2018solana"
+    "risc-v-spec"
+    "polkavm-forum"))
  :bibtex)
 

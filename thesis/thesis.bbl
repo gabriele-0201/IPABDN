@@ -15,6 +15,12 @@ Parachains' protocol overview.
 \bibitem{wasm-polkadot-wiki}
 Polkadot wiki - wasm.
 
+\bibitem{polkavm-forum}
+Risc-v as smartcontracts language.
+
+\bibitem{risc-v-spec}
+Risc-v spec, volume i.
+
 \bibitem{wasm-core-spec}
 Wasm github specifications.
 
@@ -27,6 +33,12 @@ Wasmi.
 \bibitem{wasmtime-book}
 Wasmtime book.
 
+\bibitem{ebpf}
+What is ebpf.
+
+\bibitem{ebpf-contracts}
+What is ebpf.
+
 \bibitem{burdges2020overview}
 Jeff Burdges, Alfonso Cevallos, Peter Czaban, Rob Habermeier, Syed Hosseini,
   Fabio Lama, Handan~Kilinc Alper, Ximin Luo, Fatemeh Shirazi, Alistair
@@ -34,9 +46,21 @@ Jeff Burdges, Alfonso Cevallos, Peter Czaban, Rob Habermeier, Syed Hosseini,
 \newblock Overview of polkadot and its design considerations.
 \newblock {\em arXiv preprint arXiv:2005.13456}, 2020.
 
+\bibitem{buterin2014next}
+Vitalik Buterin et~al.
+\newblock A next-generation smart contract and decentralized application
+  platform.
+\newblock {\em white paper}, 3(37):2--1, 2014.
+
 \bibitem{wood2016polkadot}
 Gavin Wood.
 \newblock Polkadot: Vision for a heterogeneous multi-chain framework.
 \newblock {\em White paper}, 21(2327):4662, 2016.
+
+\bibitem{yakovenko2018solana}
+Anatoly Yakovenko.
+\newblock Solana: A new architecture for a high performance blockchain v0.
+  8.13.
+\newblock {\em Whitepaper}, 2018.
 
 \end{thebibliography}
