@@ -1,10 +1,16 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{linear-memory}
-https://hacks.mozilla.org/2017/07/memory-in-webassembly-and-why-its-safer-than-you-think/.
+\bibitem{cumulus-docs}
+Cumulus docs.
 
 \bibitem{LLVM}
 Llvm language reference manual.
+
+\bibitem{linear-memory}
+Memory in webassembly.
+
+\bibitem{parachain-protocol}
+Parachains' protocol overview.
 
 \bibitem{wasm-polkadot-wiki}
 Polkadot wiki - wasm.
@@ -20,5 +26,17 @@ Wasmi.
 
 \bibitem{wasmtime-book}
 Wasmtime book.
+
+\bibitem{burdges2020overview}
+Jeff Burdges, Alfonso Cevallos, Peter Czaban, Rob Habermeier, Syed Hosseini,
+  Fabio Lama, Handan~Kilinc Alper, Ximin Luo, Fatemeh Shirazi, Alistair
+  Stewart, et~al.
+\newblock Overview of polkadot and its design considerations.
+\newblock {\em arXiv preprint arXiv:2005.13456}, 2020.
+
+\bibitem{wood2016polkadot}
+Gavin Wood.
+\newblock Polkadot: Vision for a heterogeneous multi-chain framework.
+\newblock {\em White paper}, 21(2327):4662, 2016.
 
 \end{thebibliography}

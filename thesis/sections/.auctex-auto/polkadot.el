@@ -8,6 +8,7 @@
     "subfiles"
     "subfiles10")
    (LaTeX-add-labels
-    "fig:polkadot_arch"))
+    "fig:polkadot_arch"
+    "fig:pvf_pov"))
  :latex)
 

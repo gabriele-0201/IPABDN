@@ -9,6 +9,10 @@
     "wasmtime-book"
     "wasm-testsuite"
     "wasmi"
-    "linear-memory"))
+    "linear-memory"
+    "wood2016polkadot"
+    "burdges2020overview"
+    "parachain-protocol"
+    "cumulus-docs"))
  :bibtex)
 

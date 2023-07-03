@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  2 JUL 2023 13:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  3 JUL 2023 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -378,15 +378,25 @@ Package pdftex.def Info: ./images//env_communication.png  used on input line 17
 (pdftex.def)             Requested size: 221.78923pt x 123.51321pt.
  [10 <./images//env_communication.png>])
 (./sections/polkadot.tex
-<./images//polkadot_architecture.png, id=268, 1606.0pt x 1425.325pt>
+<./images//polkadot_architecture.png, id=269, 1606.0pt x 1425.325pt>
 File: ./images//polkadot_architecture.png Graphic file (type png)
 <use ./images//polkadot_architecture.png>
 Package pdftex.def Info: ./images//polkadot_architecture.png  used on input lin
-e 16.
+e 14.
 (pdftex.def)             Requested size: 177.42868pt x 157.46043pt.
  [11 <./images//polkadot_architecture.png>] [12]
-[13] [14]) (./sections/rivals.tex [15] [16] [17]) (./thesis.bbl) [18]
-(./thesis.aux)
+<./images//validate_block_expl.png, id=289, 804.00375pt x 270.00874pt>
+File: ./images//validate_block_expl.png Graphic file (type png)
+<use ./images//validate_block_expl.png>
+Package pdftex.def Info: ./images//validate_block_expl.png  used on input line 
+89.
+(pdftex.def)             Requested size: 266.14978pt x 89.3792pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13] [14 <./images//validate_block_expl.png>]) (./sections/rivals.tex [15]
+[16] [17]) (./thesis.bbl) [18] (./thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -394,10 +404,10 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: E069BB1ABA66FD9446727EF03FDC6589;4405.
  ) 
 Here is how much of TeX's memory you used:
- 9338 strings out of 477985
- 149182 string characters out of 5840059
+ 9351 strings out of 477985
+ 149629 string characters out of 5840059
  1864388 words of memory out of 5000000
- 29326 multiletter control sequences out of 15000+600000
+ 29339 multiletter control sequences out of 15000+600000
  517830 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,6n,76p,706b,717s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -410,10 +420,10 @@ r12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (18 pages, 434100 bytes).
+Output written on thesis.pdf (18 pages, 473770 bytes).
 PDF statistics:
- 395 PDF objects out of 1000 (max. 8388607)
- 343 compressed objects within 4 object streams
- 83 named destinations out of 1000 (max. 500000)
- 298 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 303 words of extra memory for PDF output out of 10000 (max. 10000000)
 
