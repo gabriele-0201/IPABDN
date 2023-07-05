@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  5 JUL 2023 10:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  5 JUL 2023 13:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -534,7 +534,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ]
 (./sections/pab.tex
-Overfull \hbox (0.65587pt too wide) in paragraph at lines 21--22
+Overfull \hbox (0.65587pt too wide) in paragraph at lines 18--19
 \OT1/cmr/m/n/12 you want to com-pile your High-Level lan-guage to the PAB us-in
 g a Cross-Compiler.
  []
@@ -552,7 +552,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 
+l.31 
       [1
 
 
@@ -560,7 +560,7 @@ l.36
 <./images//sandboxed_env.png, id=143, 344.28625pt x 241.90375pt>
 File: ./images//sandboxed_env.png Graphic file (type png)
 <use ./images//sandboxed_env.png>
-Package pdftex.def Info: ./images//sandboxed_env.png  used on input line 39.
+Package pdftex.def Info: ./images//sandboxed_env.png  used on input line 34.
 (pdftex.def)             Requested size: 165.02345pt x 115.95006pt.
 
 
@@ -576,15 +576,23 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69         T
+l.60         T
               he Java Virtual Machine (JVM) is one of the first that made th...
 [2 <./images//sandboxed_env.png>]
 
-LaTeX Warning: Citation `LLVM' on page 3 undefined on input line 79.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-LaTeX Warning: Citation `wasm-core-spec' on page 3 undefined on input line 81.
-
+[3]
+<./images//block_prod.png, id=163, 629.35126pt x 396.48125pt>
+File: ./images//block_prod.png Graphic file (type png)
+<use ./images//block_prod.png>
+Package pdftex.def Info: ./images//block_prod.png  used on input line 80.
+(pdftex.def)             Requested size: 206.28247pt x 129.94989pt.
 )
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -594,22 +602,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3] [4
-
-
-] (./sections/wasm.tex
+[4 <./images//block_prod.png>] (./sections/wasm.tex
 
 Package hyperref Warning: Suppressing link with empty target on input line 8.
-
-
-LaTeX Warning: Citation `wasm-core-spec' on page 5 undefined on input line 13.
-
-
-LaTeX Warning: Citation `wasm-polkadot-wiki' on page 5 undefined on input line 
-13.
-
-
-LaTeX Warning: Citation `wasm-core-spec' on page 5 undefined on input line 25.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
@@ -623,10 +618,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5]
+[5
 
-LaTeX Warning: Citation `wasm-core-spec' on page 6 undefined on input line 47.
 
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -637,14 +632,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6]
 
-LaTeX Warning: Citation `wasm-polkadot-wiki' on page 7 undefined on input line 
-88.
-
-
-LaTeX Warning: Citation `wasm-testsuite' on page 7 undefined on input line 106.
-
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -653,7 +640,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [7]
-<./images//value_and_shadow_stack.png, id=177, 619.31375pt x 358.33875pt>
+<./images//value_and_shadow_stack.png, id=194, 619.31375pt x 358.33875pt>
 File: ./images//value_and_shadow_stack.png Graphic file (type png)
 <use ./images//value_and_shadow_stack.png>
 Package pdftex.def Info: ./images//value_and_shadow_stack.png  used on input li
@@ -670,9 +657,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [8 <./images//value_and_shadow_stack.png>]
 
-LaTeX Warning: Citation `wasmi' on page 9 undefined on input line 168.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -685,25 +669,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Package hyperref Warning: Suppressing link with empty target on input line 182.
 
 
-
-LaTeX Warning: Citation `linear-memory' on page 10 undefined on input line 184.
-
-
-<./images//linear_memory.png, id=193, 575.14874pt x 447.6725pt>
+<./images//linear_memory.png, id=214, 575.14874pt x 447.6725pt>
 File: ./images//linear_memory.png Graphic file (type png)
 <use ./images//linear_memory.png>
 Package pdftex.def Info: ./images//linear_memory.png  used on input line 194.
 (pdftex.def)             Requested size: 206.28247pt x 160.56085pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Citation `linear-memory' on page 10 undefined on input line 199.
-
-
-
-LaTeX Warning: Citation `wasm-core-spec' on page 10 undefined on input line 203
-.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -714,23 +686,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
-
-LaTeX Warning: Citation `wasm-core-spec' on page 11 undefined on input line 207
-.
-
-<./images//env_communication.png, id=199, 582.175pt x 324.21124pt>
+<./images//env_communication.png, id=224, 582.175pt x 324.21124pt>
 File: ./images//env_communication.png Graphic file (type png)
 <use ./images//env_communication.png>
 Package pdftex.def Info: ./images//env_communication.png  used on input line 21
 1.
 (pdftex.def)             Requested size: 206.28247pt x 114.87564pt.
-
-LaTeX Warning: Citation `wasmtime-book' on page 11 undefined on input line 222.
-
-
-
-LaTeX Warning: Citation `wasmtime-book' on page 11 undefined on input line 224.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -750,31 +711,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12] (./sections/polkadot.tex
-
-LaTeX Warning: Citation `wood2016polkadot' on page 13 undefined on input line 8
-.
-
-
-LaTeX Warning: Citation `burdges2020overview' on page 13 undefined on input lin
-e 8.
-
-
-LaTeX Warning: Citation `burdges2020overview' on page 13 undefined on input lin
-e 10.
-
-<./images//polkadot_architecture.png, id=214, 1606.0pt x 1425.325pt>
+<./images//polkadot_architecture.png, id=245, 1606.0pt x 1425.325pt>
 File: ./images//polkadot_architecture.png Graphic file (type png)
 <use ./images//polkadot_architecture.png>
 Package pdftex.def Info: ./images//polkadot_architecture.png  used on input lin
 e 14.
 (pdftex.def)             Requested size: 165.02345pt x 146.45561pt.
-
-LaTeX Warning: Citation `wood2016polkadot' on page 13 undefined on input line 1
-9.
-
-
-LaTeX Warning: Citation `burdges2020overview' on page 13 undefined on input lin
-e 25.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -789,14 +731,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
  <./images//polkadot_architecture.png>]
 
-LaTeX Warning: Citation `burdges2020overview' on page 14 undefined on input lin
-e 34.
-
-
-LaTeX Warning: Citation `burdges2020overview' on page 14 undefined on input lin
-e 53.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -806,10 +740,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [14]
 
-LaTeX Warning: Citation `parachain-protocol' on page 15 undefined on input line
- 71.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -818,15 +748,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [15]
-<./images//validate_block_expl.png, id=234, 804.00375pt x 270.00874pt>
+<./images//validate_block_expl.png, id=273, 804.00375pt x 270.00874pt>
 File: ./images//validate_block_expl.png Graphic file (type png)
 <use ./images//validate_block_expl.png>
 Package pdftex.def Info: ./images//validate_block_expl.png  used on input line 
 89.
 (pdftex.def)             Requested size: 247.54149pt x 83.12915pt.
-
-
-LaTeX Warning: Citation `cumulus-docs' on page 16 undefined on input line 102.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -856,13 +783,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [18] (./sections/rivals.tex
 
-LaTeX Warning: Citation `buterin2014next' on page 19 undefined on input line 11
-.
-
-
-LaTeX Warning: Citation `ebpf' on page 19 undefined on input line 27.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -875,17 +795,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 
-LaTeX Warning: Citation `yakovenko2018solana' on page 20 undefined on input lin
-e 37.
-
-
-LaTeX Warning: Citation `ebpf-contracts' on page 20 undefined on input line 37.
-
-
-
-LaTeX Warning: Citation `risc-v-spec' on page 20 undefined on input line 51.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -894,9 +803,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [20]
-
-LaTeX Warning: Citation `polkavm-forum' on page 21 undefined on input line 67.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -914,26 +820,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
-No file thesisv2.bbl.
-(./thesisv2.aux)
+[22] (./thesisv2.bbl [23
+
+
+
+])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[24] (./thesisv2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `thesisv2.out' has not changed.
 (rerunfilecheck)             Checksum: 318A0ECA403F3A452D9EC14E468C26C4;2533.
  ) 
 Here is how much of TeX's memory you used:
- 14539 strings out of 477985
- 235898 string characters out of 5840059
+ 14572 strings out of 477985
+ 236518 string characters out of 5840059
  1859388 words of memory out of 5000000
- 34436 multiletter control sequences out of 15000+600000
+ 34445 multiletter control sequences out of 15000+600000
  521767 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 85i,11n,82p,643b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,11n,82p,700b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
 k></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/font
@@ -943,10 +857,10 @@ mr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/
 share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesisv2.pdf (28 pages, 589346 bytes).
+Output written on thesisv2.pdf (30 pages, 615349 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 342 compressed objects within 4 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 

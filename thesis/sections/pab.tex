@@ -5,10 +5,7 @@
 \section{Platform-Agnostic Bytecode}
 \subsection{Definition}
 
-A Platform-Agnostic Bytecode (PAB) is
-%LB>> it this a standard term? where is it defined? or is it your own term? please specify
-a bytecode that follows those two main principles:
-
+A Platform-Agnostic Bytecode (PAB), from now on will be defined as a bytecode that follows those two main principles:
 \begin{itemize}
     \item Turing Completeness
     \item Support for tooling that makes it executable on every machine
@@ -28,11 +25,9 @@ Every bytecode, ideally, can become a PAB if tools to make it runnable to differ
 
 \begin{description}[style=nextline]
   \item[Hardware Independence]
-        A bytecode can't be a PAB if tightly related to specific hardware. A PAB can be defined as such if there is no direct connection between bytecode and hardware, the only exception is if the relations require only a little overhead for the execution on different hardware.
-%LB>> unclear to me: do you mean 'It is however tolerated that the PAP requires some minor adaptations to run on differnet hardware'?
-
+        A bytecode if tightly related to specific hardware can't become a PAB because translations to different hardware would be impossible. A weakly coupled bytecode though can become PAB if the coupling to a specific hardware is negligible and requires some minor adaptations to run on different hardware is required. A bytecode completely hardware independent, that does not make any specific assumption on the hardware on which will be running on, is the better one.
   \item[Sandboxing]
-        The machine used to execute the PAB is defined as \textit{embedder}. The embedder will execute arbitrary code, possibly malicious.  A sandboxed environment is the typical solution to overcome any security problem. The execution in a different environment makes almost impossible to compromise the embedder from the PAB code. Implemening a proper sandboxed environment is embedder dependent but a PAB can be more or less suitable for this feature.
+        The machine used to execute the PAB is defined as \textit{embedder}. The embedder will execute arbitrary code, possibly malicious.  A sandboxed environment is the typical solution to overcome any security problem. The execution in a different environment makes almost impossible to compromise the embedder from the PAB code. Implementing a proper sandboxed environment is embedder dependent but a PAB can be more or less suitable for this feature.
 
         \begin{figure}[h]
           \centering
@@ -53,11 +48,7 @@ Every bytecode, ideally, can become a PAB if tools to make it runnable to differ
   \item[Tool Simplicity]
         The easiness of compiling a High-Level language and  executing the PAB is very important to make it usable by every one.
   \item[Support as Compilation Target]
-        Writing bytecode by hand (or any text representation) 
-
-%LB>> what is "text representtation"? please clarify
-
-        is something really rare and done only in specific cases. Every compiled language has a compiler to make this, and is very important for a PAB to support the compilation from as many languages as possible.
+        Writing bytecode by hand is something really rare and done only in specific cases. Every compiled language has a compiler to make this, and is very important for a PAB to support the compilation from as many languages as possible.
 \end{description}
 
 \subsection{Current usage}
@@ -68,23 +59,37 @@ PAB are already widely used. A few examples are:
   \item
         The Java Virtual Machine (JVM) is one of the first that made the portability of the code one of the main concern of the language
   \item
-        Linux brought eBPF 
-%LB>> please explain the achronym
-
-        into the kernel, enabling arbitrary programs to be executed in a privileged context (OS level)
+        % Is the cite useful here?
+        Linux brought eBPF~\cite{ebpf}, explained in one of the following chapters, into the kernel, enabling arbitrary programs to be executed in a privileged context (OS level)
   \item
-        LLVM IR 
-%LB>> please explain the achronym
-        
-        is the LLVM assembly language, it provides type safety, low-level operations, flexibility, and the capability of representing ‘all’ high-level languages cleanly. It is the common code representation used throughout all phases of the LLVM compilation strategy. ~\cite{LLVM}
+        LLVM IR is the LLVM~\cite{LLVM} assembly language, it provides type safety, low-level operations, flexibility, and the capability of representing ‘all’ high-level languages cleanly. It is the common code representation used throughout all phases of the LLVM compilation strategy.
   \item
-        WebAssembly is a safe, portable, low-level code format designed for efficient execution and compact representation. ~\cite{wasm-core-spec}
+        WebAssembly~\cite{wasm-core-spec} is a safe, portable, low-level code format designed for efficient execution and compact representation.
 \end{itemize}
 
 \subsection{PAB in blockchains}
 
-Blockchains are distributed systems that needs to agree on the execution of arbitrary code performed on different machines. The code execution must conclude to the same result, regardless of the machine the code is running on. What has just been described is called `deterministic execution`. PABs are the solution for both problems.
-%LB>> "both" refers to?
+Blockchains are distributed systems that needs to agree on the execution of arbitrary code performed on different machines. The goal of each machine is to produce blocks that are connected with hashes creating a block-chain, machines that takes part of the blocks production are also called nodes. Nodes must decide which block to use to continue building new blocks on top, this decision must be taken individually by each node because all the network is trust-less. Nodes do not trust each others and they have to make sure the block they are using is correct, to do this everyone in the network give the same input should reach the same result.
 
+Let's simplify and define the block production algorithm as a function that takes an arbitrary input and produce and arbitrary output, input and output are then bundled together to produce a block. Little caveat, though, is that each input depends also on all the previous produced blocks.
+
+If Block A is the first block it contains A.input and A.output (A.input is a special input that does not depends on previous block because A is the genesis block). A node then produce block B on top of block A while another node produce block C on top of A, now new nodes can be added on top of A, B or C. A new node enter in the network and must decide where append a new block, Figure~\ref{fig:block_prod}, this question is extremely difficult and will not be entirely answered in the next chapters. You will understand only how to answer to a sub-section of the question: on top of which block the node is secure to not build a new one?
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{block_prod.png}
+  \caption{Block Production Example}
+  \label{fig:block_prod}
+\end{figure}
+
+PABs are the answer to this question. The main point of having input and output contained in the blocks, inside a trust-less network is to let the nodes re-execute blocks to make sure other nodes behaved correctly.
+
+The function that gives the output must return the same result regardless the node and the node's architecture to make everyone agree on the correctness of new blocks, that will be called `execution determinism`.
+
+The new node in the network is able to start from A.input, compute A.output, make sure the block known is correct and do the same for the other blocks. If the node has an output that differs from what reported in the block then is secure that the block is wrong and should not be used as base for a new block.
+
+\
+
+PABs are the most suitable solution to implement the function just explained paying attention to the execution determinism
 
 \end{document}

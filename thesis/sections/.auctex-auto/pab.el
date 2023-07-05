@@ -8,6 +8,7 @@
     "subfiles"
     "subfiles10")
    (LaTeX-add-labels
-    "fig:Sandboxing graphic example"))
+    "fig:Sandboxing graphic example"
+    "fig:block_prod"))
  :latex)
 
