@@ -8,61 +8,70 @@
 (\href{}{wasm-polkadot})
 (\href{https://www.ngzhian.com/relaxed-simd/core/_download/WebAssembly.pdf}{wasm-spec})
 
-WebAssembly, shortened to Wasm, is a binary instruction format for a stack-based virtual machine ~\cite{wasm-core-spec}. It is a platform-agnostic binary format, meaning it will run the exact instructions across whatever machine it operates on. ~\cite{wasm-polkadot-wiki}
+%LB>> general comment: WASM, Wasm, wasm or WebAssmbly? please use one single version.
+
+WebAssembly, shortened to Wasm, is a binary instruction format for a stack-based virtual machine ~\cite{wasm-core-spec}. It is a platform-agnostic binary format, meaning that it will run the same exact instructions across whatever machine it operates on. ~\cite{wasm-polkadot-wiki}
 
 `asm.js` was Wasm precursor, but browser vendors like Mozilla, Google, Microsoft, and Apple focused on the Wasm design. The main goal was to create a binary format with some mandatory features: compact, support for streaming complication and sanboxed execution.
+%LB>> please explain "streaming compication"
 
-Wasm is currently a compilation target for a lot of high level language, this allows languages to enter the web-world, in client or server side, but also in completely different applications.
+
+Wasm is currently a compilation target for a lot of high level language. This allows many different languages to enter the web-world, in both client and server sides, but also in completely different applications.
 
 Examples are plugins, applications are able to accept, execute and make the wasm code to interact with the environment, allowing different High-Level languages to work together having wasm as minimum common divisor.
+%LB>> please clarify the above sentence 
 
-The main design goals in the wasm specification introduction ~\cite{wasm-core-spec} are:
+
+Wasm main design goals, as specified in the wasm specification introduction ~\cite{wasm-core-spec}, are:
 \begin{description}[font=$\bullet$ \scshape\bfseries]
-  \item[Fast] It's design allow to create executor with so less overhead that the execution is almost fast as native code
+  \item[Fast] Its design allows to create executors with so less overhead that the execution is almost as fast as native code
   \item[Safe] It is completely memory-safe as long as the executor is correctly behaving, sandboxing the execution properly
   \item[Well-defined] The definition of the binary format makes easy to create a valid executor that makes the code behave correctly
-  \item[Hardware-independent] The compilation process is independent by the architecture that will run the code
-  \item[Language-independent] There's no strong influence by other binary format, language or programming model
-  \item[Platform-independent] It can be compiled and be executed on all modern architectures, embedded systems or applications as browsers
-  \item[Open] There is simple way to interoperate the with executor/environment
+  \item[Hardware-independent] The compilation process is independent from the architecture that will run the code
+  \item[Language-independent] There's no strong influence by other binary formats, languages or programming models
+
+%LB>> %LB>> please clarify the above sentence. why "influcence"? do you mean "dependency"?
+
+  \item[Platform-independent] It can be compiled and executed on all modern architectures, embedded systems or applications (like browsers)
+  \item[Open] There is a simple way to interoperate the with executor/environment
 \end{description}
 
-Other important considerations are made on the efficiency and portability, the specification describe wasm also as: compact, modular, efficient, streamable, and parallelizable.
+Other important considerations are made on the efficiency and portability. The specification describes wasm also as: compact, modular, efficient, streamable, and parallelizable.
 
 % Something not clear at first look is \"modular\", it means that the program can be split into smaller parts and those can be transmitted, cahed and consumed separately.
 
-In the following chapters the words executor or embedder have the same meaning.
+In the following chapters the words \"executor\" or \"embedder\" have the same meaning.
 
 \subsection{Specifications}
 
-The specification does not make any assumption on the embedder, this makes it completely constraint-less, it just must follows all the defined instruction set, binary encoding, validation, and execution semantics ~\cite{wasm-core-spec}.
+The specification does not make any assumption on the embedder. This makes it completely unconstrainted as far as it implements all the defined instruction set, binary encoding, validation, and execution semantics ~\cite{wasm-core-spec}.
 
-Wasm is stack-based, this means that the instruction set is very different from the standards architecture's bytecode that normally are registered-based. Wasm has also a one-to-one text representation other than the normal binary representation, of course it makes the code less compact but almost human readable.
+Wasm is stack-based. This means that the instruction set is very different from the standard architecture's bytecode that are normally registered-based. Wasm has also a one-to-one text representation other than the normal binary representation, which makes the code less compact but almost human readable.
 
-All the concepts present in the specifications are very high-level even if it is a low level language, some of them are:
+All the concepts present in the specifications are very high-level even if it is a low level language. The most relevant are:
 
 %\begin{description} [style=nextline]
 \begin{description}[font=$\bullet$ \scshape\bfseries]
   \item[Values]
-        Wasm has only four data type, integers and floating points (following IEEE 754 standard) both 32 and 64 bits
+        Wasm has only four data types: integers and floating points (following IEEE 754 standard) both 32 and 64 bits
   \item[Instructions]
-        Being a stack based language every instruction works implicit on a stack but there is a general division between:
+        Being a stack based language every instruction works implicitly on a stack but there is a general division between:
         \begin{itemize}
           \item Simple Instructions, performing basic operations on data
-          \item Control Flow, allowing to follow some high-level language control flow having nested blocks
+          \item Control Flows, allowing to follow some high-level language control flow having nested blocks
         \end{itemize}
   \item[Traps]
-        Those are instructions which immediately aborts the execution, the termination is not handled by wams itself but by the embedder
+        Those are instructions which immediately aborts the execution. The termination is not handled by wams itself but by the embedder
   \item[Functions]
-        Being so new, this assembly-like language, allow users to work with functions abstracting some standards assembly's complexity
+        Being so new, this assembly-like language allows users to work with functions abstracting some of the assembly's complexity
   \item[Linear Memory]
-        This is where the communication between the code and the environment happens, like the name says this is a contiguous area of memory given to the code. This memory is very crucial for the security considerations that we will see later.
+        This is where the communication between the code and the environment happens: the linear memory is a contiguous area of memory given to the code. This memory is very crucial for the security considerations that we will see later.
   \item[Modules]
-        A Module contains everything just explained, this is the logical container of the code. Every wasm code is made by a single module.
+        A Module is the logical container of the code. Every wasm code is made by a single module.
   \item[Exports] Once the module is instantiated all the defined exports are callable from the embedder, examples of possible exports are functions or global variables.
-  \item[Imports] Wasm can import things from the embedder, the more common example are the functions provided from the outside that are callable from the wasm code
+  \item[Imports] Wasm can import things from the embedder. The more common examples are the functions provided from the outside that are callable from the wasm code
   \item[Embedder]
-        WASM to be executed needs the embedder, the main jobs are:
+        WASM to be executed needs the embedder. Itsthe main jobs are:
         \begin{itemize}
           \item loading and initiate a new module
           \item provide imports
@@ -70,13 +79,13 @@ All the concepts present in the specifications are very high-level even if it is
         \end{itemize}
 \end{description}
 
-Other important concepts explained in the specification are wasm phases, they are:
+Other important concepts explained in the specification are wasm phases:
 
 \begin{description}[font=$\bullet$ \scshape\bfseries]
   \item[Decoding]
-        Decode the binary format to the specified abstract syntax, the implementation could also compile directly to machine code.
+        Decode the binary format to the specified abstract syntax. The implementation could also compile directly to machine code.
   \item[Validation]
-        A decoded module has to be valid, the validation consists in check a set of well-formed conditions to guarantee that the module is meaningful and safe ~\cite{wasm-polkadot-wiki}
+        A decoded module has to be valid. The validation consists in check a set of well-formed conditions to guarantee that the module is meaningful and safe ~\cite{wasm-polkadot-wiki}
   \item[Execution]
 
         \
@@ -89,13 +98,23 @@ Other important concepts explained in the specification are wasm phases, they ar
 
 \subsection{Execution}
 
-Wasm specifications can try to be unbreakable but at the end everything depends on the embedder's implementation, if it is not secure then wasm execution itself is not. Wasm can be executed in different ways, the main used in blockchains are: Ahead Of Time Complication (AOT), Just In Time Compilation (JIT), Single Pass Compilation and Interpretation.
+Wasm specifications try to be unbreakable but at the end everything depends on the embedder's implementation, if it is not secure then wasm execution itself is not. Wasm can be executed in different ways. The main used in blockchains are: Ahead Of Time Complication (AOT), Just In Time Compilation (JIT), Single Pass Compilation and Interpretation.
 
-Every type has its own advantages but also requires different tricks to make everything secure, one important thing provided by wasm is an intensive test suite to check the correctness of the embedder. ~\cite{wasm-testsuite}
+%LB>> please explain each one 
 
-The common divisor for the first three types of execution is the transpilation of a stack-based bytecode to a register one.
 
-In wasm though there are multiple stack, the Value Stack is the one used implicitly by wasm used to store temporary data or passing values around functions, another important stack is the Shadow Stack, this is not directly related to WASM but used by many toolchains in the compilation to wasm. Passing values around only by values is not always efficient and in wasm you don't have access directly to the value stack being only implicitly used by all the common instructions. The compiler uses the Shadow Stack, allocated in the Linear Memory (explained later), to put information in it and pass around pointer to this stack as value in the Value Stack.
+Every type has its own advantages but also requires different tricks to make everything secure. One important thing provided by wasm is an articulated test suite to check the correctness of the embedder. ~\cite{wasm-testsuite}
+
+The common divisor for the first three types of executions is the transpilation of a stack-based bytecode to a register one.
+
+In wasm there are multiple stacks:
+       \begin{itemize}
+          \item the Value Stack, used implicitly by Wasm to store temporary data or passing values to functions
+          \item  the Shadow Stack, this is not directly related to Wasm but used by many toolchains in the compilation to wasm.
+        \end{itemize}
+ 
+Passing values around only by values is not always efficient and in wasm you don't have access directly to the value stack being only implicitly used by all the common instructions. The compiler uses the Shadow Stack, allocated in the Linear Memory (explained later), to put information in it and pass around pointer to this stack as value in the Value Stack.
+
 
 \begin{figure}[h]
   \centering
@@ -104,51 +123,71 @@ In wasm though there are multiple stack, the Value Stack is the one used implici
   \label{fig:value-shadow-stack}
 \end{figure}
 
-Those two stacks are present in the wasm code but when it needs to be translated to the final bytecode the compiler tries to elide every access to the Value Stack allocating everything needed in the registers. Registers are limited though so is impossible to use only them and the native stack of the embedder will be used if needed.
+Those two stacks are present in the wasm code but when it needs to be translated to the final bytecode the compiler tries to elide every access to the Value Stack allocating everything needed in the registers. Registers are limited though, so is impossible to use only them and the native stack of the embedder will be used if needed.
+
+
+%LB>> i have some problems understanding the logic of the paragraphs below. How are they related to "EXECUTION"? It would help having some chart decribing the high-level execution flow, and then describe each single component is specific paragraphs.  
 
 \subsubsection{AOT}
 
-AOT is the standard compilation, all the code is compiled and then executed. Wasmtime is a wasm embedder, it is a stand alone wasm environment but it could be also used as library to create a wasm environment in your bigger application. Wasmtime offer offers this feature, it accept wasm in text or binary format and compiles it to some architecture's bytecode.
+
+AOT is the standard compilation, all the code is compiled and then executed. 
+%LB>> please explain AOT  
+
+Wasmtime is a wasm embedder, it is a stand alone wasm environment but it could be also used as library to create a wasm environment in your bigger application. Wasmtime offer offers this feature, it accept wasm in text or binary format and compiles it to some architecture's bytecode.
+%LB>> unclear. what is wasmtime? a reference implementation of an embedder? a tool used for development? is it part of some dev suite?  
+
 
 \subsubsection{JIT}
 
-JIT is a dynamic compilation where the bytecode si compiled only if it needed, the compiler first need to create an intermediate representation to being able to compile the different parts only if the execution requires to. A really simple example to make is: we have a program that given an input calls function A or B, the JIT then will understand this structure and compile the entry point and only one function between A or B based on the initial input.
+JIT is a dynamic compilation 
 
-Lots of optimizations are already been done in the first phase of compilation, from the High-Level language to WASM, now the main goal is to compile only the required parts to the final bytecode not caring too much about adding optimizations.
+%LB>> is JIT a "compilation" or a "compiler"?
 
-Wasmtime is specialized in this type of execution and it makes it really efficient keeping every secure.
+where the bytecode is compiled only when needed. The compiler needs to create first an intermediate representation, to be later able to compile the different parts only if the execution requires to. A really simple example to make is: we have a program that given an input calls function A or B. The JIT  will then understand this structure and compile the entry point and only one function between A or B based on the initial input.
+
+Lots of optimizations are already been done in the first phase of compilation, from the High-Level language to WASM. In the second phase (runtime compilation) the main goal is to compile only the required parts to the final bytecode not caring too much about adding optimizations.
+
+%LB>> is "final bytecode" the machine-specific running code?
+
+Wasmtime is specialized in this type of executions and it makes it really efficient while keeping everything secure.
+%LB>> again, need to understand what wasmtime is
 
 \subsubsection{SP} %Single Pass Compile%
 
-A Single Pass compiler is a restriction of AOT compiler, the complexity of the compilation must be O(n) so the wasm bytecode will be scanned through only once. Like every other compilation methods here the trade off si not to create efficient final code but to create the final bytecode as fast as possible.
+A Single Pass compiler is a restriction of AOT compiler, the complexity of the compilation must be O(n) so the wasm bytecode will be scanned through only once. Like every other compilation methods here the objective is not to create efficient final code but to create the final bytecode as fast as possible.
 
 Wasmer is wasm embedder with a lot of features, in particular they implemented a single pass compiler for all the most important architectures.
+%LB>> need to better understand what wasmer is
 
 \subsubsection{Interpret}
 \href{https://github.com/paritytech/Wasmi}{wasmi-spec}
 
-Interpretation is the easiest way to think how to execute wasm, it becomes like any other interpreted language executed by a specialized Virtual Machine. There are multiple ways to interpret code but we will focus on one of the most efficient wasm interpreter, wasmi.
+Interpretation is the easiest way to execute wasm, which becomes like any other interpreted language executed by a specialized Virtual Machine. There are multiple ways to interpret code but we will focus on one of the most efficient wasm interpreter, wasmi.
 
 Wasmi is an efficient WebAssembly interpreter with low-overhead and support for embedded environment such as WebAssembly itself. ~\cite{wasmi}
+%LB>> is wasmi available on every architecture? open source? who provides it? how is it maintained? are there alternatives?
 
-Currently the first wasm bytecode pass produce another stack based bytecode, called WASMI IR, and then this bytecode is interpreted by a Virtual Machine, even with this transpilation it is only 5 time slower then the compilation to native bytecode of the architecture.
+Currently the first wasm bytecode pass produce another stack based bytecode, called WASMI IR, and then this bytecode is interpreted by a Virtual Machine. Even with this transpilation it is only 5 time slower then the compilation to native bytecode of the architecture.
 
 \subsection{Security guarantee}
 
-WASM principle aim is to be extremely secure the specifications describe a lot of ways to achieve that feature, but he security guarantee depends mostly on the execution, WebAssembly is designed to be translated into machine code running directly on the host’s hardware. Being so portable wasm can be sent to someone and be executed freely, examples in every browsers. We are running wasm our machines every day and if it would not be so secure then we would had notice a lot of problems.
+WASM principle aim is to be extremely secure. The specifications describes a lot of ways to achieve that feature, but he security guarantee depends mostly on the execution. WebAssembly is designed to be translated into machine code running directly on the host’s hardware, so it can be sent to someone and be executed freely, (e.g., in browsers). We are running wasm our machines every day, so security is a main concern.
 
-Executing WASM is potentially vulnerable to side channel attacks on the hardware level ~/cite{wasm-core-spec} and isolation is the only way to make secure the execution. If the embedder translate one on one every instructions then everything can be computed on your computer, but nothing is dangerous if the code has no access to the environment where is executed.
+Executing WASM is potentially vulnerable to side channel attacks on the hardware level ~/cite{wasm-core-spec} and isolation is the only way to secure the execution.  The embedder translates one-by-one every instructions to native instructions on your computer, but nothing is dangerous if the code has no access to the environment where is executed.
 
-The problem is that a completely isolation makes wasm useless, so there's a way to communicate with the environment or also have access to it, but those features are extremely limited and designed to be secure.
+The problem is that a completely isolation makes wasm useless, so there must be a way to communicate with the environment or  have access to it, but those features are extremely limited and designed to be secure.
 
 \subsubsection{Linear Memory}
 (\href{}{linear-memory})
 
-From WebAssemply you have direct access to raw bytes, but where are allocated those bytes? WASM uses a MemoryObject provided by the embedder to describe the only accessible memory, beside the stack, the linear memory.~\cite{linear-memory}
+From WebAssemply you have direct access to raw bytes, but where are  those bytes allocated? WASM uses a MemoryObject provided by the embedder to describe the only accessible memory, besides the stack: the linear memory.~\cite{linear-memory}
 
-WASM does not have pointer types, values in the linear memory are accessed as a vector, where the first index of the memory is 0.
+WASM does not have pointer types. Values in the linear memory are accessed as a vector, where the first index of the memory is 0.
 
-Wasm, for security reason that will be explained in next chapters, works in a 32-bit address space, this makes usable only 4GiB of memory. Being the ponear Memory memory unknown to the wasm blob every load or store to the memory is made passing through the embedder that will also do bounds checks to make sure the address is inside the wasm Linear Memory.
+Wasm, for security reasons that will be explained in the next chapters, works in a 32-bit address space. This makes usable only 4GiB of memory. Being the ponear Memory memory unknown to the wasm blob every load or store to the memory is made passing through the embedder that will also do bounds checks to make sure the address is inside the wasm Linear Memory.
+
+%LB>> please clarify the above sntence 
 
 \begin{figure}[h]
   \centering
@@ -157,15 +196,15 @@ Wasm, for security reason that will be explained in next chapters, works in a 32
   \label{fig:linear_memory}
 \end{figure}
 
-This level of control makes impossible to have memory leak in the environment during the wasm execution because there is a completely memory isolation. ~\cite{linear-memory}
+This level of control makes impossible to have memory leaks in the environment during the wasm execution because there is a complete memory isolation. ~\cite{linear-memory}
 
 \subsubsection{Communication in a sandboxed environment}
 
-We just described how wasm provides no ambient access to the computing environment in which code is executed ~\cite{wasm-core-spec}, thanks to a mix of wasm design choice and embedder implementation. But how works then the interaction with the environment?
+We just described how wasm provides no ambient access to the computing environment in which the code is executed ~\cite{wasm-core-spec}, thanks to a mix of wasm design choice and embedder implementation. But how  then the interaction with the environment works?
 
-\
 
-Every interaction can be done by a set of functions provided by the embedder and imported in the Wasm module~\cite{wasm-core-spec}, those functions are called Host Functions and allow the WASM code to access to resources, operating system calls or any other type of computation offered by the embedder. Generally the Exports provided by WASM that are usable and callable from the embedder are called Runtime API.
+
+Every interaction can be done by a set of functions provided by the embedder and imported in the Wasm module~\cite{wasm-core-spec}. Those functions are called Host Functions and allow the WASM code to access to resources, operating system calls or any other types of computation offered by the embedder. Generally the Exports provided by WASM that are usable and callable from the embedder are called Runtime API.
 
 \begin{figure}[h]
   \centering
@@ -176,16 +215,18 @@ Every interaction can be done by a set of functions provided by the embedder and
 
 \subsubsection{Wasmtime Security guarantee}
 
-Wasmtime is widely used in different environments and one of those is the polkadot ecosystem, precisely wasmtime is used inside substrate. Substrate is a framework to develop blockchains that with some tweaks can become parachains, polkadot itself is a substrate based chain.
+%Wasmtime is widely used in different environments and one of those is the polkadot ecosystem, precisely wasmtime is used inside substrate. Substrate is a framework to %develop blockchains that with some tweaks can become parachains, polkadot itself is a substrate based chain.
+
+%LB>> i would drop the reference to polkadot here, move it to the appropriate paragraph
 
 Wasmtime main goals is to execute untrusted code in a safe manner.~\cite{wasmtime-book}
 
-Some features that makes executing wasm by wasmtime secure are just inherit by the wasm specifications, some examples are: the callstack is inaccessible, pointers are compiled to offsets into linear memory, there's no undefined behavior and every interaction with the outside world is done through imported and exported functions.~\cite{wasmtime-book}
+Some features that makes executing wasm by wasmtime secure are just inherited by the wasm specifications. Some examples are: the callstack is inaccessible, pointers are compiled to offsets into linear memory, there's no undefined behavior and every interaction with the outside world is done through imported and exported functions.~\cite{wasmtime-book}
 
-Wasmtime to those features adds a lot of mitigations to limit issues:
+Wasmtime adds  a lot of mitigations to those features to limit risks:
 \begin{itemize}
   \item Linear memories by default are preceded with a 2GB guard region
-  \item Wasmtime will zero memory used by a WebAssembly instance after it's finished.
+  \item Wasmtime will zero the memory used by a WebAssembly instance after it's finished.
   \item Wasmtime uses explicit checks to determine if a WebAssembly function should be considered to stack overflow
   \item The implementation language of wasmtime, Rust, helps catch mistakes when writing Wasmtime itself at compile time
 \end{itemize}
