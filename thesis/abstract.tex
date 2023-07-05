@@ -1,0 +1,13 @@
+%definisco il layout dell'abstract
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+%Genero l'ambiente per l'abstract
+\newcommand\summaryname{Abstract}
+\newenvironment{Abstract}%
+    {\begin{center}%
+    \bfseries{\summaryname} \end{center}}
+    
+\begin{Abstract}
+How can a distributed network agree on the execution of an arbitrary code in a trust-free way? Currently there are plenty of solutions to achieve that. Every solution differs by the network's structure and protocols but the common ground is the presence of a bytecode that is able to run arbitrary code in a deterministic manner. This paper will describe the basic characteristics of a Platform Agnostic Bytecode and how is used in Polkadot, a distributed network that `aims to provide a scalable and interoperable framework for multiple chains with pooled security`(polkadot-overview paper).
+\end{Abstract}

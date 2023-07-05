@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  3 JUL 2023 12:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  5 JUL 2023 10:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -340,7 +340,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 <./images//sandboxed_env.png, id=193, 344.28625pt x 241.90375pt>
 File: ./images//sandboxed_env.png Graphic file (type png)
 <use ./images//sandboxed_env.png>
-Package pdftex.def Info: ./images//sandboxed_env.png  used on input line 35.
+Package pdftex.def Info: ./images//sandboxed_env.png  used on input line 39.
 (pdftex.def)             Requested size: 177.42868pt x 124.66487pt.
  [3 <./images//sandboxed_env.png>])
 (./sections/wasm.tex
@@ -350,34 +350,33 @@ Package hyperref Warning: Suppressing link with empty target on input line 8.
 [4]
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 21.
+(Font)              using `OT1/cmr/bx/n' instead on input line 27.
 
 [5] [6]
 <./images//value_and_shadow_stack.png, id=228, 619.31375pt x 358.33875pt>
 File: ./images//value_and_shadow_stack.png Graphic file (type png)
 <use ./images//value_and_shadow_stack.png>
 Package pdftex.def Info: ./images//value_and_shadow_stack.png  used on input li
-ne 102.
+ne 121.
 (pdftex.def)             Requested size: 221.78923pt x 128.3293pt.
  [7 <./images//value_and_shadow_stack.png>] [8]
 
-Package hyperref Warning: Suppressing link with empty target on input line 145.
+Package hyperref Warning: Suppressing link with empty target on input line 182.
 
 
 <./images//linear_memory.png, id=245, 575.14874pt x 447.6725pt>
 File: ./images//linear_memory.png Graphic file (type png)
 <use ./images//linear_memory.png>
-Package pdftex.def Info: ./images//linear_memory.png  used on input line 155.
+Package pdftex.def Info: ./images//linear_memory.png  used on input line 194.
 (pdftex.def)             Requested size: 221.78923pt x 172.63109pt.
 [9 <./images//linear_memory.png>]
 <./images//env_communication.png, id=256, 582.175pt x 324.21124pt>
 File: ./images//env_communication.png Graphic file (type png)
 <use ./images//env_communication.png>
-Package pdftex.def Info: ./images//env_communication.png  used on input line 17
-2.
+Package pdftex.def Info: ./images//env_communication.png  used on input line 21
+1.
 (pdftex.def)             Requested size: 221.78923pt x 123.51321pt.
- [10 <./images//env_communication.png>])
-(./sections/polkadot.tex
+) (./sections/polkadot.tex [10 <./images//env_communication.png>]
 <./images//polkadot_architecture.png, id=269, 1606.0pt x 1425.325pt>
 File: ./images//polkadot_architecture.png Graphic file (type png)
 <use ./images//polkadot_architecture.png>
@@ -391,26 +390,26 @@ File: ./images//validate_block_expl.png Graphic file (type png)
 Package pdftex.def Info: ./images//validate_block_expl.png  used on input line 
 89.
 (pdftex.def)             Requested size: 266.14978pt x 89.3792pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13] [14 <./images//validate_block_expl.png>]) (./sections/rivals.tex [15]
-[16] [17]) (./thesis.bbl [18]) [19] (./thesis.aux)
+ [13 <./images//validate_block_expl.png>] [14]) (./sections/rivals.tex [15] [16
+])
+(./thesis.bbl [17]) [18] (./thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: E069BB1ABA66FD9446727EF03FDC6589;4405.
  ) 
 Here is how much of TeX's memory you used:
- 9364 strings out of 477985
- 149830 string characters out of 5840059
- 1864388 words of memory out of 5000000
- 29345 multiletter control sequences out of 15000+600000
+ 9366 strings out of 477985
+ 149847 string characters out of 5840059
+ 1863388 words of memory out of 5000000
+ 29348 multiletter control sequences out of 15000+600000
  517830 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,76p,706b,717s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,76p,620b,764s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600p
 k></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
@@ -420,10 +419,10 @@ r12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (19 pages, 475040 bytes).
+Output written on thesis.pdf (18 pages, 474675 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
- 361 compressed objects within 4 object streams
- 89 named destinations out of 1000 (max. 500000)
+ 411 PDF objects out of 1000 (max. 8388607)
+ 357 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
  303 words of extra memory for PDF output out of 10000 (max. 10000000)
 

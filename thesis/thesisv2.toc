@@ -1,0 +1,35 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {0.1}Platform-Agnostic Bytecode}{1}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}Definition}{1}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {0.1.2}Execution}{1}{subsection.0.1.2}%
+\contentsline {subsection}{\numberline {0.1.3}Key features}{1}{subsection.0.1.3}%
+\contentsline {subsection}{\numberline {0.1.4}Current usage}{3}{subsection.0.1.4}%
+\contentsline {subsection}{\numberline {0.1.5}PAB in blockchains}{3}{subsection.0.1.5}%
+\contentsline {section}{\numberline {0.2}WASM}{5}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}Definitions}{5}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {0.2.2}Specifications}{6}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {0.2.3}Execution}{7}{subsection.0.2.3}%
+\contentsline {subsubsection}{AOT}{8}{section*.4}%
+\contentsline {subsubsection}{JIT}{9}{section*.5}%
+\contentsline {subsubsection}{SP}{9}{section*.6}%
+\contentsline {subsubsection}{Interpret}{9}{section*.7}%
+\contentsline {subsection}{\numberline {0.2.4}Security guarantee}{10}{subsection.0.2.4}%
+\contentsline {subsubsection}{Linear Memory}{10}{section*.8}%
+\contentsline {subsubsection}{Communication in a sandboxed environment}{11}{section*.10}%
+\contentsline {subsubsection}{Wasmtime Security guarantee}{11}{section*.12}%
+\contentsline {section}{\numberline {0.3}Polkadot}{13}{section.0.3}%
+\contentsline {subsection}{\numberline {0.3.1}What's Polkadot?}{13}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {0.3.2}Polkadot's protocol}{13}{subsection.0.3.2}%
+\contentsline {subsubsection}{State Transition Function}{14}{section*.14}%
+\contentsline {subsection}{\numberline {0.3.3}WASM in Polkadot}{15}{subsection.0.3.3}%
+\contentsline {subsubsection}{PVF}{15}{section*.15}%
+\contentsline {subsubsection}{PoV}{16}{section*.17}%
+\contentsline {subsubsection}{SmartContracts}{17}{section*.18}%
+\contentsline {subsection}{\numberline {0.3.4}The crucial Role of WASM in Polkadot}{17}{subsection.0.3.4}%
+\contentsline {section}{\numberline {0.4}WASM Rivals}{19}{section.0.4}%
+\contentsline {subsection}{\numberline {0.4.1}EVM}{19}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {0.4.2}eBPF}{19}{subsection.0.4.2}%
+\contentsline {subsubsection}{What is eBPF}{19}{section*.19}%
+\contentsline {subsubsection}{Solana eBPF}{20}{section*.20}%
+\contentsline {subsection}{\numberline {0.4.3}RISC-V}{20}{subsection.0.4.3}%
+\contentsline {subsubsection}{RISC-V for SmartConctract}{21}{section*.21}%

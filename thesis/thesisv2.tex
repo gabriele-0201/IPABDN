@@ -1,0 +1,65 @@
+\input{model/Modello_Tesi}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=0.1]{images/logo.png}\\
+
+%Per il frontespizio del dipartimenti di Ing. dell'Informazione commentare le riga precedente e decommentare la successiva
+%\includegraphics[scale=0.2]{images/logo_unipd.png} \hfill \includegraphics[scale=0.2]{images/logo_dei.png}\\
+\vspace{0.8cm}
+\textsc{\LARGE Universit\`{a} degli Studi di Padova}\\
+\vspace{0.45cm}
+\textsc{\large Dipartimento di Ingegneria dell'Informazione}\\
+\vspace{0.4cm}
+\textsc{\large Corso di Laurea Triennale in}\\
+\textsc{\large Ingegneria Informatica}\\
+\vfill
+% Title
+{ \LARGE \bfseries The Importance of a Plaform-Agnosting Bytecode for a Decentralized Network
+}\\
+\vfill
+\textit{\large Relatore:} \hfill \textit{\large Laureando:}\\
+\textsc{\large Prof. Luca Boldrin} \hfill \textsc{Gabriele Miotti}\\
+\hfill \textsc{2000165}\\
+
+\vfill
+% Bottom of the page
+{\large Anno Accademico 2022/2023}
+\end{center}
+\end{titlepage}
+
+\thispagestyle{empty} %pagina bianca dopo il titolo
+\cleardoublepage
+
+\pagenumbering{roman} %numerazione romana per l'indice, l'abstract e i ringraziamenti
+\thispagestyle{empty}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\input{abstract.tex}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\tableofcontents %Indice
+
+\clearpage{\pagestyle{plain}\cleardoublepage} %Numerazione araba per i capitoli
+\pagenumbering{arabic}
+
+
+\clearpage{\pagestyle{plain}\cleardoublepage} %Comando per iniziare il capitolo su pagina dispari
+\subfile{sections/pab}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\subfile{sections/wasm}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\subfile{sections/polkadot}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\subfile{sections/rivals}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

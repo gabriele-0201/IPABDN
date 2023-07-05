@@ -27,8 +27,8 @@
 \contentsline {subsection}{\numberline {3.4}The crucial Role of WASM in Polkadot}{15}{subsection.3.4}%
 \contentsline {section}{\numberline {4}WASM Rivals}{15}{section.4}%
 \contentsline {subsection}{\numberline {4.1}EVM}{15}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}eBPF}{16}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}What is eBPF}{16}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2}eBPF}{15}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}What is eBPF}{15}{subsubsection.4.2.1}%
 \contentsline {subsubsection}{\numberline {4.2.2}Solana eBPF}{16}{subsubsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.3}RISC-V}{17}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}RISC-V}{16}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}RISC-V for SmartConctract}{17}{subsubsection.4.3.1}%
