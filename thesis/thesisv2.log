@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  6 JUL 2023 13:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  6 JUL 2023 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -500,7 +500,7 @@ Package hyperref Info: Link coloring OFF on input line 3.
 \@outlinefile=\write3
 \openout3 = `thesisv2.out'.
 
-<images/logo.png, id=84, 943.525pt x 949.5475pt>
+<images/logo.png, id=88, 943.525pt x 949.5475pt>
 File: images/logo.png Graphic file (type png)
 <use images/logo.png>
 Package pdftex.def Info: images/logo.png  used on input line 7.
@@ -557,7 +557,7 @@ l.31
 
 
 ]
-<./images//sandboxed_env.png, id=143, 344.28625pt x 241.90375pt>
+<./images//sandboxed_env.png, id=148, 344.28625pt x 241.90375pt>
 File: ./images//sandboxed_env.png Graphic file (type png)
 <use ./images//sandboxed_env.png>
 Package pdftex.def Info: ./images//sandboxed_env.png  used on input line 34.
@@ -579,7 +579,7 @@ been already used, duplicate ignored
 l.60         T
               he Java Virtual Machine (JVM) is one of the first that made th...
 [2 <./images//sandboxed_env.png>]
-<./images//block_prod.png, id=156, 629.35126pt x 396.48125pt>
+<./images//block_prod.png, id=161, 629.35126pt x 396.48125pt>
 File: ./images//block_prod.png Graphic file (type png)
 <use ./images//block_prod.png>
 Package pdftex.def Info: ./images//block_prod.png  used on input line 81.
@@ -640,7 +640,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [7]
-<./images//value_and_shadow_stack.png, id=192, 619.31375pt x 358.33875pt>
+<./images//value_and_shadow_stack.png, id=197, 619.31375pt x 358.33875pt>
 File: ./images//value_and_shadow_stack.png Graphic file (type png)
 <use ./images//value_and_shadow_stack.png>
 Package pdftex.def Info: ./images//value_and_shadow_stack.png  used on input li
@@ -674,12 +674,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
-<./images//linear_memory.png, id=215, 575.14874pt x 447.6725pt>
+<./images//linear_memory.png, id=220, 575.14874pt x 447.6725pt>
 File: ./images//linear_memory.png Graphic file (type png)
 <use ./images//linear_memory.png>
 Package pdftex.def Info: ./images//linear_memory.png  used on input line 168.
 (pdftex.def)             Requested size: 206.28247pt x 160.56085pt.
-<./images//env_communication.png, id=219, 582.175pt x 324.21124pt>
+<./images//env_communication.png, id=224, 582.175pt x 324.21124pt>
 File: ./images//env_communication.png Graphic file (type png)
 <use ./images//env_communication.png>
 Package pdftex.def Info: ./images//env_communication.png  used on input line 18
@@ -711,7 +711,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12 <./images//env_communication.png>] (./sections/polkadot.tex
-<./images//polkadot_architecture.png, id=240, 1606.0pt x 1425.325pt>
+<./images//polkadot_architecture.png, id=245, 1606.0pt x 1425.325pt>
 File: ./images//polkadot_architecture.png Graphic file (type png)
 <use ./images//polkadot_architecture.png>
 Package pdftex.def Info: ./images//polkadot_architecture.png  used on input lin
@@ -730,7 +730,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
  <./images//polkadot_architecture.png>]
-Overfull \hbox (8.17647pt too wide) in paragraph at lines 46--47
+Overfull \hbox (8.17647pt too wide) in paragraph at lines 45--46
 []\OT1/cmr/m/n/12 Follow a sub-protocol to en-sure data shard-ing, data are mai
 nly parachain
  []
@@ -753,11 +753,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [15]
-<./images//validate_block_expl.png, id=268, 804.00375pt x 270.00874pt>
+<./images//validate_block_expl.png, id=273, 804.00375pt x 270.00874pt>
 File: ./images//validate_block_expl.png Graphic file (type png)
 <use ./images//validate_block_expl.png>
 Package pdftex.def Info: ./images//validate_block_expl.png  used on input line 
-93.
+87.
 (pdftex.def)             Requested size: 330.05322pt x 110.84026pt.
 
 
@@ -825,9 +825,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22] (./thesisv2.bbl [23
+[22] (./sections/conclusions.tex)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[23
 
 
+] [24
+
+
+] (./thesisv2.bbl [25
 
 ])
 
@@ -838,19 +851,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24] (./thesisv2.aux)
+[26] (./thesisv2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `thesisv2.out' has not changed.
-(rerunfilecheck)             Checksum: D8B37F0A4D8AB0AE0D35E681997FB4B7;2533.
+
+Package rerunfilecheck Warning: File `thesisv2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesisv2.out':
+(rerunfilecheck)             Before: 49400952052AB94D9D69D2C40E347D4F;2594
+(rerunfilecheck)             After:  955EB306075892971E8A51EC16A34139;2704.
  ) 
 Here is how much of TeX's memory you used:
- 14569 strings out of 477985
- 236488 string characters out of 5840059
+ 14582 strings out of 477985
+ 236716 string characters out of 5840059
  1859388 words of memory out of 5000000
- 34444 multiletter control sequences out of 15000+600000
- 521767 words of font info for 63 fonts, out of 8000000 for 9000
+ 34449 multiletter control sequences out of 15000+600000
+ 521936 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  85i,12n,82p,701b,683s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
@@ -861,11 +880,12 @@ c/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/
 share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesisv2.pdf (30 pages, 616194 bytes).
+e1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt12.pfb>
+Output written on thesisv2.pdf (32 pages, 623941 bytes).
 PDF statistics:
- 407 PDF objects out of 1000 (max. 8388607)
- 337 compressed objects within 4 object streams
- 97 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 355 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
+ 209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

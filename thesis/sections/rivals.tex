@@ -4,27 +4,28 @@
 
 \section{WASM Rivals}
 
-WASM is not the only PAB used in the blockchain space, other technologies use different solutions involving different protocols and algorithms. Examples are Ethereum with the custom PAB executed by the EVM (Ethereum Virtual Machine) or Solana that used eBPF to implement SmartConctracts.
+Wasm is not the only PAB used in the blockchain space, other technologies use different solutions involving different protocols and algorithms. Examples are Ethereum with the custom PAB executed by the EVM (Ethereum Virtual Machine) or Solana that used eBPF to implement SmartConctracts, in the following section those solutions and others will be analyzed.
+% TODO: Does Solana and eBPF should be cited here?
 
 \subsection{EVM}
 
-Ethereum Virtual Machine code ~\cite{buterin2014next} is one of the first PAB used in blockchain, it does not follow the features used to describe a perfect PAB, it was created to be a perfect blockchain's bytecode and the Ethereum Virtual Machine is the glue that makes it executable on every machine.
+Ethereum Virtual Machine code ~\cite{buterin2014next} is one of the first PAB used in blockchain, it follows the principles used to describe a perfect PAB, it was created to be a perfect blockchain's bytecode and the Ethereum Virtual Machine is the glue that makes it executable on every machine.
 
-The EVM is the main building block of the Ethereum technology, it executes stack based code and manage all the memory and access to the storage, follows therefore the same principles of an embedder for wasm with many features tied to the measurement of the computation on-chain, called gas.
+The EVM is the main building block of the Ethereum technology, it executes stack based code and manage all the memory and access to the storage. EVM can be compared to a generic embedder for wasm with many features tied to the measurement of the computation on-chain, called gas.
 
 \subsection{eBPF}
 
 \subsubsection{What is eBPF}
 
-eBPF stands for 'Extended Berkeley Packet Filter', what is now eBPF makes the acronym an incorrect representation of it.
+eBPF~\cite{ebpf} stands for 'Extended Berkeley Packet Filter', what is now eBPF makes the acronym an incorrect representation of it.
 
 Linux brought eBPF into the kernel, enabling sandboxed programs to run inside a privileged context (OS level). For lot of different reasons keeping the kernel upgraded was a difficult task and eBPF intend to solve this problem.
 
 How can a new feature be developed once and be added to the Linux kernel? Keeping in mind that running arbitrary code developed by whoever in the kernel is absolutely not safe and the same code must be able to run on different architectures?
 
-The operating system guarantee efficiency ans security through a JIT compiler and a verification engine for every eBPF program. To achieve that every kernel contains an eBPF VM able to checks the termination of the problem and the security guarantees.
+The operating system guarantee efficiency ans security through a JIT compiler and a verification engine for every eBPF program. To achieve that every kernel contains an eBPF VM able to checks the termination of the program and the security guarantees.
 
-Main points of eBPF to make the verification process possible are:~\cite{ebpf}
+Main points of eBPF to make the verification process possible are:
 \begin{enumerate}
   \item There are no functions in the code, there is only an unique blanket of code
   \item Limited control flow
@@ -48,9 +49,9 @@ eBPF is a perfect PAB for some use cases, as the linux kernel, but it does not s
 
 \subsection{RISC-V}
 
-RISC-V is a new instruction-set architecture (ISA)~\cite{risc-v-spec}, even if it is an actual bytecode for a specific hardware and seems to go against what has been describe so far as PAB there are running experiments that make this as a valid option as PAB.
+RISC-V is a new instruction-set architecture (ISA)~\cite{risc-v-spec}, even if it is an actual bytecode for a specific hardware and seems to go against what has been described so far as PAB there are running experiments that makes this a valid option as PAB.
 
-There are several reasons why RISC-V could be a good PAB even if it was designed to be an ISA:
+There are several reasons why RISC-V could be a good PAB even if it wasn't designed for:
 \begin{description}[style=nextline]
   \item[Real ISA suitable for direct native hardware implementation]
         RISC-V is designed to be executed on real hardware, no assumption is made on the hardware itself, the only required thing is to respect all the constraint specified in the specifications. The ISA is developed following general machine patterns with something completely new but still very related to other machines making really easy the translation.
@@ -66,7 +67,7 @@ There are several reasons why RISC-V could be a good PAB even if it was designed
 
 One experiment~\cite{polkavm-forum} to port RISC-V in the Polkadot ecosystem as language for SmartConctract is hosted here: \href{https://github.com/koute/polkavm-experiment}{polkavm-experiment}.
 
-The spec are so easy that creating an interpreter required only one day and the JIT only two days more. Those two executor were then tested against other PAB with different executors, every one executed the same code: a NES emulator written in Rust and the interpretation was how close to 60 FPS the code can get.
+The spec is so easy that creating an interpreter required only one day and the JIT only two days more. Those two executors were then tested against other PABs with different executors, everyone executed the same code: an NES emulator written in Rust and the interpretation was how close to 60 FPS the code can get.
 
 The results are:
 \begin{itemize}
@@ -82,6 +83,6 @@ The results are:
 
 As you can see the simplicity of RISC-V made possible the creation of a JIT compiler able to be faster than lot of competitive compiler already being used in different realities.
 
-An important difference rather then eBPF are dedicated instructions for host functions (syscall) and the support in rustc and LLVM. One of the main constraint is the number of register used in RISC-V, 32 registers while most architectures use 16, the compiler or interpreter then must properly manage those extra registers.
+An important difference rather than eBPF is dedicated instructions for syscall (used as Host Function in the SmartContract) and the support in rustc and LLVM. One of the main constraints is the number of registers used in RISC-V, 32 registers while most architectures use 16, the compiler or interpreter then must properly manage those extra registers.
 
 \end{document}

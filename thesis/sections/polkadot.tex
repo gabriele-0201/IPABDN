@@ -38,14 +38,12 @@ The protocol is composed by multiple phases and it defines the communication bet
         \begin{itemize}
                 \item Run full relay chain node to keep up the latest state
                 \item Build new block on top of the latest state and submit blocks to the parachain's validator
-                % TODO: maybe here the term 'state' is not so clear
         \end{itemize}
   \item The relay chain's validators:
     \begin{itemize}
       \item The ones associated to parachians produce the new relay chain block candidate
       \item Follow a sub-protocol to ensure data sharding, data are mainly parachain blocks and sharding is the process of making the validators collectively and robustly responsible for the availability of these blocks using erasure coding
       \item Submit votes to resolve forks and have a single head
-            %TODO: explain forks and single head???
       \item Manage messages between parachians
     \end{itemize}
 \end{enumerate}
@@ -54,15 +52,11 @@ The protocol is composed by multiple phases and it defines the communication bet
 
 The protocol demonstrate how the main goal is to verify what's happened on parachains, described by the parachain logic. One of the few required thing to a parachain is indeed a State Transition Function, this describe the parachain logic and produce the transition between two states. Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics.~\cite{burdges2020overview}
 
-% TODO: again, proper explanation of state
-
 The STF is also present in every validator node because it describe the relay chain logic. Generally STFs in polkadot are Wasm blob, currently all STFs are written in Wasm, for a parachain would be possible to use different PAB to create the STF but with complex solutions to respect what will be described later.
 
 Every parachain or relay chain node can be divided into two parts: the STF (or Runtime) and the Client. The latter one implements everything else required to make the protocol work, from storage management to transaction gossiping.
 
 Generally, the runtime is compiled into Wasm and stored as part of the state, this allows making fork-less upgrades because the code transition happens under consensus in the STF.
-
-% TODO: explain consensus ...
 
 \subsection{Wasm in Polkadot}
 
@@ -118,7 +112,8 @@ The witness data is what makes possible the state transition validation without 
 
 The state in polkadot is managed as a Merkle-Patricia Base 16 Trie where the hash of the root define the state proof, the state proof of the previous block is stored in the relay chain and the witness data are:
 
-%TODO: explain Merkle-Patricia Base 16 Trie ?
+% TODO: explain Merkle-Patricia Base 16 Trie ?
+% maybe poit to the repo: https://github.com/paritytech/trie
 
 \begin{itemize}
   \item Data used in the state transition by the collator
