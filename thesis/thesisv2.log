@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  6 JUL 2023 11:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  6 JUL 2023 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -716,7 +716,7 @@ File: ./images//polkadot_architecture.png Graphic file (type png)
 <use ./images//polkadot_architecture.png>
 Package pdftex.def Info: ./images//polkadot_architecture.png  used on input lin
 e 14.
-(pdftex.def)             Requested size: 165.02345pt x 146.45561pt.
+(pdftex.def)             Requested size: 206.28247pt x 183.05864pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -730,6 +730,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
  <./images//polkadot_architecture.png>]
+Overfull \hbox (8.17647pt too wide) in paragraph at lines 46--47
+[]\OT1/cmr/m/n/12 Follow a sub-protocol to en-sure data shard-ing, data are mai
+nly parachain
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -752,8 +757,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: ./images//validate_block_expl.png Graphic file (type png)
 <use ./images//validate_block_expl.png>
 Package pdftex.def Info: ./images//validate_block_expl.png  used on input line 
-89.
-(pdftex.def)             Requested size: 247.54149pt x 83.12915pt.
+93.
+(pdftex.def)             Requested size: 330.05322pt x 110.84026pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -838,7 +843,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `thesisv2.out' has not changed.
-(rerunfilecheck)             Checksum: 318A0ECA403F3A452D9EC14E468C26C4;2533.
+(rerunfilecheck)             Checksum: D8B37F0A4D8AB0AE0D35E681997FB4B7;2533.
  ) 
 Here is how much of TeX's memory you used:
  14569 strings out of 477985
@@ -847,7 +852,7 @@ Here is how much of TeX's memory you used:
  34444 multiletter control sequences out of 15000+600000
  521767 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 85i,12n,82p,701b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,12n,82p,701b,683s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
 k></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/font
@@ -857,7 +862,7 @@ mr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/
 share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesisv2.pdf (30 pages, 615828 bytes).
+Output written on thesisv2.pdf (30 pages, 616194 bytes).
 PDF statistics:
  407 PDF objects out of 1000 (max. 8388607)
  337 compressed objects within 4 object streams
