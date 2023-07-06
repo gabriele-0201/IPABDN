@@ -86,13 +86,13 @@ Wasm specifications try to be unbreakable but at the end everything depends on t
 
 \subsubsection{Execution Types}
 
-There are two main categories of execution types: compilation and interpretation, those are then made by multiple sub-categories based on the technical details. The main difference is: in compilation the Wasm code is re-compiled to the architecture's bytecode and the natively executed on the machine. The interpretation, instead, uses a Virtual Machine to parse the Wasm code and execute it inside of the machine.
+There are two main categories of execution types: compilation and interpretation, those are then made by multiple sub-categories based on the technical details. The main difference is: in compilation the Wasm code is re-compiled to the architecture's bytecode and then natively executed on the machine. The interpretation, instead, uses a Virtual Machine to parse the Wasm code and execute it inside of the machine.
 
 \
 
 Every type has its own advantages but also requires different tricks to make everything secure. One important thing provided by Wasm is an articulated test suite to check the correctness of the embedder.~\cite{wasm-testsuite}
 
-The common divisor for every compilation type of execution is the transpilation of a stack-based bytecode to a register one; something similar happens also in the interpretation because the Wasm code is stack-based but it needs to be executed on a register-based one.
+The common divisor for every compilation type of execution is the transpilation of a stack-based bytecode to a register one; something similar happens also in the interpretation because the Wasm code is stack-based but generally it needs to be executed on a register-based one.
 
 In Wasm there are multiple stacks:
 \begin{itemize}
@@ -120,7 +120,7 @@ The main types of execution used in blockchains are: Ahead Of Time Complication 
   \item[AOT]
         is the standard compilation, all the code is compiled and then executed.
   \item[JIT]
-        is a dynamic compilation type where the bytecode is compiled only when needed. The compiler needs to create first an intermediate representation, to be later able to compile the different parts only if the execution requires to. A really simple example to make is: we have a program that given an input calls function A or B. The JIT process will cover the understanding of the structure and compiles the entry point and only one function between A or B based on the initial input.
+        is a dynamic compilation type where the bytecode is compiled only when needed. The compiler needs to create first an intermediate representation, to be later able to compile the different parts only if the execution requires to. A really simple example to make is: we have a program with two entry point, function A and B. The JIT process will cover the understanding of the structure, recognize the two functions and compile only the needed one, either A or B.
 
         Lots of optimizations are already been done in the first phase of compilation, from the High-Level language to Wasm. In the second phase (runtime compilation) the main goal is to compile only the required parts to the machine-specific bytecode not caring too much about adding optimizations.
   \item[SPC]
@@ -134,17 +134,15 @@ The main types of execution used in blockchains are: Ahead Of Time Complication 
 
 There are multiple embedders able to execute Wasm using techniques not even explained before, we will focus on the embedders used in blockchains, they are Wasmtime, Wasmi and Wasmer.
 
-Those three cover all the techniques just exaplined:
-
+Those three cover all the techniques just explained:
 
 \begin{description}[font=$\bullet$ \scshape\bfseries]
   \item[Wasmtime]
-        is a stand alone Wasm environment but it could be also used as library to create a Wasm environment in your bigger application. Wasmtime offers multiple features, it accepts Wasm in text or binary format and you're able to JIT or AOT.
+        is a stand alone Wasm environment but it could be also used as library to create a Wasm environment in your bigger application. Wasmtime offers multiple features, it accepts Wasm in text or binary format and you're able to used JIT or AOT types of execution.
   \item[Wasmi]
+        ~\cite{wasmi} is an efficient Wasm interpreter with low-overhead and support for embedded environment such as Wasm itself.
 
-        ~\cite{wasmi} is an efficient WebAssembly interpreter with low-overhead and support for embedded environment such as WebAssembly itself.
-
-        There are multiple ways to interpret code but we will focus on how wasmi does it, the first Wasm bytecode pass produce another stack based bytecode, called WASMI IR (Intermediate Representation). Thereafter this representation is interpreted by a Virtual Machine, even with this transpilation it is only 5 time slower then the compilation to native bytecode of the architecture.
+        There are multiple ways to interpret code, Wasmi makes a first Wasm bytecode pass to produce another stack-based bytecode, called WASMI IR (Intermediate Representation). Thereafter this representation is interpreted by a Virtual Machine, even with this transpilation it is only 5 times slower then the compilation to the native bytecode of the architecture.
 
         \item[Wasmer] has a lot of features, both AOT and JIT but in particular they implemented a single pass compiler for all the most important architectures.
 \end{description}
