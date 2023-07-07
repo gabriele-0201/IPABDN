@@ -69,12 +69,13 @@ PAB are already widely used. A few examples are:
 
 \subsection{PAB in blockchains}
 
-Blockchains are distributed systems that need to agree on the execution of arbitrary code performed on different machines. The goal of each machine is to produce blocks that are connected with hashes creating a block chain, machines that take part in the block production are also called nodes. Nodes are part of a trust-less network, nodes can't rely on the blocks produce by other nodes, they must verify in someway the correctness of those blocks by themselves.
+Blockchains are distributed systems that need to agree on the execution of arbitrary code performed on different machines. While it is not the purpose of this work to provide a detailed explanation of blockchains, it is essential for our purposes to understand that the goal of each machine is to produce blocks that are connected with hashes to the previous blocks, so creating a block chain. Machines that take part in the block production are also called nodes, and they are part of a trust-less network. This means that nodes can't simply trust other nodes and rely on the blocks produced by them, on the contrary they must verify in some way the correctness of those blocks by themselves.
 % MAYBE is worth to explain what a blockchain is??
+%LB>> No, i would simply add a sentence like the one I inserted above
 
-Let's simplify and define the block production algorithm as a function that takes an arbitrary input and produce and arbitrary output, input and output are then bundled together to produce a block. Little caveat, though, is that each input depends also on all the previous produced blocks.
+Let's simplify and define the block production algorithm as a function that takes an arbitrary input and produces and arbitrary output. Input and output are then bundled together to produce a block (little caveat, though, is that each input depends also on all the previous produced blocks).
 
-If Block A is the first block it contains A.input and A.output (A.input is a special input that does not depend on the previous block because A is the genesis block). A node then produces block B on top of block A while another node produces block C on top of A, now new nodes can be added on top of A, B, or C. A new node that just joins the network must decide where to append a new block, Figure~\ref{fig:block_prod}, this question is extremely difficult and will not be entirely answered in the next chapters. You will understand only how to answer a sub-section of the question: on top of which block the node is secure to not build a new one?
+If Block A is the first block, it contains A.input and A.output (A.input is a special input that does not depend on the previous block because A is the genesis block). A node then produces block B on top of block A while another node produces block C on top of A. At this point the new blocks can be arpitrarily added on top of either A, B, or C. A new node that just joins the network must decide where to append a new block, Figure~\ref{fig:block_prod}.  This question is extremely complex and outside our scope. We will however provide an answer to a part of the question: on top of which block the node must not attach the new block.
 
 \begin{figure}[h]
   \centering
@@ -83,15 +84,15 @@ If Block A is the first block it contains A.input and A.output (A.input is a spe
   \label{fig:block_prod}
 \end{figure}
 
-PABs are the answer to this question. The main point of having input and output contained in the blocks, inside a trust-less network, is to let the nodes re-execute blocks to make sure other nodes behaved correctly.
+PABs are the answer to this question. The main point of having input and output contained in the blocks, inside a trust-less network, is to let the nodes re-validate blocks to make sure other nodes behaved correctly.
 
-The function that gives the output must return the same result regardless of the node and the node's architecture to make everyone agree on the correctness of new blocks, that will be called `execution determinism`.
+The function that gives the output must return the same result regardless of the node and the node's architecture to make everyone agree on the correctness of new blocks. This property is  called `execution determinism`.
 
-The new node in the network is able to start from A.input, compute A.output, make sure the block known is correct and do the same for the other blocks. If the node has an output that differs from what reported in the block then is secure that the block is wrong and should not be used as base for a new block.
+The new node in the network will validate all the blocks in the chain. It will start from the block A,  re-compute A.output starting from A.input, make sure the block is correct (i.e., compare the computed A.output with the A.output contained in the block). The new node will then repeat the process for each block up in the chain until the leafs. Every invalid block will be discarded as a possible base on which to append a new block.
 
 \
 
-PABs are the most suitable solution to implement the function just explained, they can represent any type of logic (first principle of a PAB) and be executed on every machine (second principle), the only missing feature requested by blockchains is execution determinism, that can be also be addressed by PABs as you will see in the next chapters.
+PABs are the most suitable solution to implement this validation. PABs can encode any type of logic (first principle of a PAB) and can be executed on every machine (second principle). PABs can also fully address execution determinism, as we will describe in the following chapters.
 
 
 \end{document}
