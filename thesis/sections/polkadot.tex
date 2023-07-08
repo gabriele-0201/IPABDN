@@ -105,7 +105,8 @@ The Proof of Validity is made by all the things needed by Runtime Validation, it
 
 The witness data is what makes possible the state transition validation without knowing the entire state of the parachain by the relay-chain.
 
-The state in polkadot is managed as a Merkle-Patricia Base 16 Trie where the hash of the root define the state proof, the state proof of the previous block is stored in the relay chain and the witness data are:
+The state in polkadot is represented by a key-value database where each key is unique and there is no assumption on it. The database itself is arranged as a Merkle-Patricia Base 16 Trie that allows to describe the entire state in a single constant state proof. Each block stored in the relay chain contains the state proof of the previous block, and the witness data are then composed by:
+
 
 % TODO: explain Merkle-Patricia Base 16 Trie ?
 % maybe poit to the repo: https://github.com/paritytech/trie
