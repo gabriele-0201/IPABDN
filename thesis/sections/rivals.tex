@@ -1,21 +1,15 @@
-\documentclass[../main.tex]{subfiles}
-
-\begin{document}
-
-\section{WASM Rivals}
-
 Wasm is not the only PAB used in the blockchain space, other technologies use different solutions involving different protocols and algorithms. Examples are Ethereum with the custom PAB executed by the EVM (Ethereum Virtual Machine) or Solana that used eBPF to implement SmartConctracts, in the following section those solutions and others will be analyzed.
 % TODO: Does Solana and eBPF should be cited here?
 
-\subsection{EVM}
+\section{EVM}
 
 Ethereum Virtual Machine code ~\cite{buterin2014next} is one of the first PAB used in blockchain, it follows the principles used to describe a perfect PAB, it was created to be a perfect blockchain's bytecode and the Ethereum Virtual Machine is the glue that makes it executable on every machine.
 
 The EVM is the main building block of the Ethereum technology, it executes stack based code and manage all the memory and access to the storage. EVM can be compared to a generic embedder for wasm with many features tied to the measurement of the computation on-chain, called gas.
 
-\subsection{eBPF}
+\section{eBPF}
 
-\subsubsection{What is eBPF}
+\subsection{What is eBPF}
 
 eBPF~\cite{ebpf} stands for 'Extended Berkeley Packet Filter', what is now eBPF makes the acronym an incorrect representation of it.
 
@@ -33,7 +27,7 @@ Main points of eBPF to make the verification process possible are:
   \item The execution can't pass twice on the same code
 \end{enumerate}
 
-\subsubsection{Solana eBPF}
+\subsection{Solana eBPF}
 
 Not every program can compile to eBPF but a distributed systems need to execute arbitrary code and limitation as strict as normal eBPF are too much, Solana~\cite{yakovenko2018solana} then forked the eBPF backend of LLVM and removed lots of constraint, keeping the finality guarantee by the standard gas metering.~\cite{ebpf-contracts}
 
@@ -47,7 +41,7 @@ eBPF is a perfect PAB for some use cases, as the linux kernel, but it does not s
   \item 8 bytes instructions are too long
 \end{enumerate}
 
-\subsection{RISC-V}
+\section{RISC-V}
 
 RISC-V is a new instruction-set architecture (ISA)~\cite{risc-v-spec}, even if it is an actual bytecode for a specific hardware and seems to go against what has been described so far as PAB there are running experiments that makes this a valid option as PAB.
 
@@ -63,7 +57,7 @@ There are several reasons why RISC-V could be a good PAB even if it wasn't desig
         RISC-V is divided into smaller ISA, each one can work alone and can also be composed to achieve different functionalities. One of the most important division is the 32-bit and 64-bit address space division, it makes possible the creation of a sandboxed environment in ad easy and effective way.
 \end{description}
 
-\subsubsection{RISC-V for SmartConctract}
+\subsection{RISC-V for SmartConctract}
 
 One experiment~\cite{polkavm-forum} to port RISC-V in the Polkadot ecosystem as language for SmartConctract is hosted here: \href{https://github.com/koute/polkavm-experiment}{polkavm-experiment}.
 
@@ -84,5 +78,3 @@ The results are:
 As you can see the simplicity of RISC-V made possible the creation of a JIT compiler able to be faster than lot of competitive compiler already being used in different realities.
 
 An important difference rather than eBPF is dedicated instructions for syscall (used as Host Function in the SmartContract) and the support in rustc and LLVM. One of the main constraints is the number of registers used in RISC-V, 32 registers while most architectures use 16, the compiler or interpreter then must properly manage those extra registers.
-
-\end{document}

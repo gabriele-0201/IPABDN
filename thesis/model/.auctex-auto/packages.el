@@ -23,7 +23,6 @@
     "colortbl"
     "hyperref"
     "url"
-    "subfiles"
     "enumitem"))
  :latex)
 

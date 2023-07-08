@@ -1,9 +1,4 @@
-\documentclass[../main.tex]{subfiles}
-
-\begin{document}
-
-\section{WASM}
-\subsection{Definitions}
+\section{Definitions}
 
 WebAssembly, shortened to Wasm, is a binary instruction format for a stack-based virtual machine ~\cite{wasm-core-spec}. It is a platform-agnostic binary format, meaning that it will run the same exact instructions across whatever machine it operates on. ~\cite{wasm-polkadot-wiki}
 
@@ -29,7 +24,7 @@ Other important considerations are made on the efficiency and portability. The s
 
 In the following chapters the words `executor` or `embedder` have the same meaning.
 
-\subsection{Specifications}
+\section{Specifications}
 
 The specification does not make any assumption on the embedder. This makes it completely unconstrainted as far as it implements all the defined instruction set, binary encoding, validation, and execution semantics ~\cite{wasm-core-spec}.
 
@@ -80,11 +75,11 @@ Other important concepts explained in the specification are Wasm phases:
         \end{itemize}
 \end{description}
 
-\subsection{Execution}
+\section{Execution}
 
 Wasm specifications try to be unbreakable but at the end everything depends on the embedder's implementation, if it is not secure then Wasm execution itself is not.
 
-\subsubsection{Execution Types}
+\subsection{Execution Types}
 
 There are two main categories of execution types: compilation and interpretation, those are then made by multiple sub-categories based on the technical details. The main difference is: in compilation the Wasm code is re-compiled to the architecture's bytecode and then natively executed on the machine. The interpretation, instead, uses a Virtual Machine to parse the Wasm code and execute it inside of the machine.
 
@@ -130,7 +125,7 @@ The main types of execution used in blockchains are: Ahead Of Time Complication 
 
 \end{description}
 
-\subsubsection{Embedders}
+\subsection{Embedders}
 
 There are multiple embedders able to execute Wasm using techniques not even explained before, we will focus on the embedders used in blockchains, they are Wasmtime, Wasmi and Wasmer.
 
@@ -147,7 +142,7 @@ Those three cover all the techniques just explained:
         \item[Wasmer] has a lot of features, both AOT and JIT but in particular they implemented a single pass compiler for all the most important architectures.
 \end{description}
 
-\subsection{Security guarantee}
+\section{Security guarantee}
 
 Wasm principle aim is to be extremely secure. The specifications describes a lot of ways to achieve that feature, but he security guarantee depends mostly on the execution. WebAssembly is designed to be translated into machine code running directly on the host’s hardware, so it can be sent to someone and be executed freely, (e.g., in browsers). We are running Wasm our machines every day, so security is a main concern.
 
@@ -155,7 +150,7 @@ Executing Wasm is potentially vulnerable to side channel attacks on the hardware
 
 The problem is that a completely isolation makes Wasm useless, so there must be a way to communicate with the environment or  have access to it, but those features are extremely limited and designed to be secure.
 
-\subsubsection{Linear Memory}
+\subsection{Linear Memory}
 
 From WebAssemply you have direct access to raw bytes, but where are  those bytes allocated? Wasm uses a MemoryObject provided by the embedder to describe the only accessible memory, besides the stack: the linear memory.~\cite{linear-memory}
 
@@ -172,7 +167,7 @@ Wasm, for security reasons that will be explained in the next chapters, works in
 
 This level of control makes impossible to have memory leaks in the environment during the Wasm execution because there is a complete memory isolation. ~\cite{linear-memory}
 
-\subsubsection{Communication in a sandboxed environment}
+\subsection{Communication in a sandboxed environment}
 
 We just described how Wasm provides no ambient access to the computing environment in which the code is executed ~\cite{wasm-core-spec}, thanks to a mix of Wasm design choice and embedder implementation. But how  then the interaction with the environment works?
 
@@ -185,7 +180,7 @@ Every interaction can be done by a set of functions provided by the embedder and
   \label{fig:env-communication}
 \end{figure}
 
-\subsubsection{Wasmtime Security guarantee}
+\subsection{Wasmtime Security guarantee}
 
 Wasmtime is widely used in different environments and as you will see in the next chapter one of those is the polkadot ecosystem.
 
@@ -200,5 +195,3 @@ Wasmtime adds  a lot of mitigations to those features to limit risks:
   \item Wasmtime uses explicit checks to determine if a WebAssembly function should be considered to stack overflow
   \item The implementation language of Wasmtime, Rust, helps catch mistakes when writing Wasmtime itself at compile time
 \end{itemize}
-
-\end{document}

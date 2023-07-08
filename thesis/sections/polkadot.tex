@@ -1,9 +1,4 @@
-\documentclass[../main.tex]{subfiles}
-
-\begin{document}
-
-\section{Polkadot}
-\subsection{What's Polkadot?}
+\section{What's Polkadot?}
 
 Polkadot is an heterogeneous multi-chain system~\cite{wood2016polkadot}, the aim is to provide a scalable and interoperable framework for multiple chains with shared security.~\cite{burdges2020overview}
 
@@ -20,7 +15,7 @@ Polkadot provides the bedrock relay-chain upon which a large number of validatab
 
 In the Figure \ref{fig:polkadot_arch} you can see in the middle the relay chain that connects multiple parachains.
 
-\subsection{Polkadot's protocol}
+\section{Polkadot's protocol}
 
 Briefly the Polkadot system consists of a single open collaborative decentralised network (relay chain), that interacts with many other external chains (para chains)~\cite{burdges2020overview}. For the relay chain the internals of the parachians are not relevant, parachains need only to adhere to a specific interface. The relay chain then ensure that the parachain is trustable as a whole, not single nodes.
 
@@ -48,7 +43,7 @@ The protocol is composed by multiple phases and it defines the communication bet
     \end{itemize}
 \end{enumerate}
 
-\subsubsection{State Transition Function}
+\subsection{State Transition Function}
 
 The protocol demonstrate how the main goal is to verify what's happened on parachains, described by the parachain logic. One of the few required thing to a parachain is indeed a State Transition Function, this describe the parachain logic and produce the transition between two states. Like any transaction-based transition system, Polkadot state changes via an executing ordered set of instructions, known as extrinsics.~\cite{burdges2020overview}
 
@@ -58,7 +53,7 @@ Every parachain or relay chain node can be divided into two parts: the STF (or R
 
 Generally, the runtime is compiled into Wasm and stored as part of the state, this allows making fork-less upgrades because the code transition happens under consensus in the STF.
 
-\subsection{Wasm in Polkadot}
+\section{Wasm in Polkadot}
 
 Substrate is a framework to build blockchains, it is separate from Polkadot, and with it you're able to build so-called Solo Chains, a blockchain able to run on its own that does not care about the polkadot protocols.
 
@@ -68,7 +63,7 @@ Substrate compiles the runtime to Wasm and the client has an embedder, wasmtime,
 
 The problems occur when you want to be part of the polkadot ecosystem, where there is pooled security, and the logic not only must be executed by the nodes that compose the parachain but also by the validators of the relay chain. This is made possible following a protocol made by multiple phases that are built on top of two building blocks: the Parachain Validation Function (PVF) and the Proof of Validity (PoV).~\cite{parachain-protocol}
 
-\subsubsection{PVF}
+\subsection{PVF}
 
 Using Substrate you end up with a Substrate-Runtime, it is only a wasm blob that implements the State Transition Function of your blockchain but to be a parachain you need to provide to the relay chain something that differs a bit from the Substrate-Runtime.
 
@@ -97,7 +92,7 @@ From the \ref{fig:pvf_pov} you can see how the parachain-runtime interacts in th
 
 This encapsulation with a substitution of the host functions makes  validator able to execute different STFs without knowing anything about the parachain that is validating.
 
-\subsubsection{PoV}
+\subsection{PoV}
 
 The Proof of Validity is made by all the things needed by Runtime Validation, it is mainly composed by:~\cite{cumulus-docs}
 
@@ -122,7 +117,7 @@ The state in polkadot is managed as a Merkle-Patricia Base 16 Trie where the has
 
 Instead, the Outgoing messages are everything that needs to be delivered to other parachains, the underneath protocol is XCMP following the XCM format which enables the parachain communication between parachains or with the relay chain.
 
-\subsubsection{SmartContracts}
+\subsection{SmartContracts}
 
 SmartContracts are arbitrary codes that can be uploaded on-chain and executed in the state transition function. Even though the STF is arbitrary code that can be updated but the convenience of SmartContracts is the easiness of creating and uploading custom logic on-chain. To make this technology different blockchain came up with different ideas and the one used by Polkadot is to have a recursive embedder.
 
@@ -135,7 +130,7 @@ The Client is the embedder of the STF and the STF becomes also the embedder of t
 
 Where the first one has the aim to limit the number of operations that can be executed in the STF and the second instead is to limit the amount of used storage.
 
-\subsection{The crucial Role of WASM in Polkadot}
+\section{The crucial Role of WASM in Polkadot}
 
 As you may understood from the above sections, the distributed algorithms, the security assumptions, all the cryptography that makes all of this possible would be useless if nodes can't execute in a secure and deterministic manner code that implements all the just described features.
 
@@ -143,6 +138,4 @@ The amount of tools and projects that are using Wasm makes it very suitable for 
 
 An important tools is \href{https://github.com/WebAssembly/binaryen}{Binaryen} with the wasm-opt optimization phases, largely used in polkadot, that loads WebAssembly and runs Binaryen IR passes on it to make it more space and complexity efficient.
 
-% \subsubsection{SPREE}
-
-\end{document}
+% \subsection{SPREE}

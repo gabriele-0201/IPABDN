@@ -5,6 +5,7 @@ Cumulus docs.
 
 \bibitem{LLVM}
 Llvm language reference manual.
+\newblock \url{https://llvm.org/docs/LangRef.html#abstract}.
 
 \bibitem{linear-memory}
 Memory in webassembly.

@@ -1,9 +1,4 @@
-\documentclass[../main.tex]{subfiles}
-
-\begin{document}
-
-\section{Platform-Agnostic Bytecode}
-\subsection{Definition}
+\section{Definition}
 
 A Platform-Agnostic Bytecode (PAB), from now on will be defined as a bytecode that follows those two main principles:
 \begin{itemize}
@@ -13,13 +8,13 @@ A Platform-Agnostic Bytecode (PAB), from now on will be defined as a bytecode th
 
 A bytecode like this ideally is designed to be executed on a virtual machine that follows general patterns. This design should make easier the compilation to another real machine's bytecode. Examples of real architectures with specified bytecode are AMD and Intel with x86 or ARM with aarch64. % TODO: check this last sentence
 
-\subsection{Execution}
+\section{Execution}
 
 PABs require multiple phases of compilation. The first one is encountered when you want to compile your High-Level language to the PAB using a Cross-Compiler. Once you have the PAB code, you should be able to run it on every machine using another compiler that will create the final executable code.
 
 Re-compiling is not the only way to execute a PAB, another common solution is to implement a Virtual Machine (VM) able to run arbitrary PAB code interpreting it.
 
-\subsection{Key features}
+\section{Key features}
 
 Every bytecode, ideally, can become a PAB if tools to make it runnable to different machine exist. There are however some metrics to define which one is better than others; example of metrics are:
 
@@ -51,7 +46,7 @@ Every bytecode, ideally, can become a PAB if tools to make it runnable to differ
         Writing bytecode by hand is something really rare and done only in specific cases. Every compiled language has a compiler to make this, and is very important for a PAB to support the compilation from as many languages as possible.
 \end{description}
 
-\subsection{Current usage}
+\section{Current usage}
 
 PAB are already widely used. A few examples are:
 
@@ -67,15 +62,13 @@ PAB are already widely used. A few examples are:
         WebAssembly~\cite{wasm-core-spec} is a safe, portable, low-level code format designed for efficient execution and compact representation.
 \end{itemize}
 
-\subsection{PAB in blockchains}
+\section{PAB in blockchains}
 
 Blockchains are distributed systems that need to agree on the execution of arbitrary code performed on different machines. While it is not the purpose of this work to provide a detailed explanation of blockchains, it is essential for our purposes to understand that the goal of each machine is to produce blocks that are connected with hashes to the previous blocks, so creating a block chain. Machines that take part in the block production are also called nodes, and they are part of a trust-less network. This means that nodes can't simply trust other nodes and rely on the blocks produced by them, on the contrary they must verify in some way the correctness of those blocks by themselves.
-% MAYBE is worth to explain what a blockchain is??
-%LB>> No, i would simply add a sentence like the one I inserted above
 
 Let's simplify and define the block production algorithm as a function that takes an arbitrary input and produces and arbitrary output. Input and output are then bundled together to produce a block (little caveat, though, is that each input depends also on all the previous produced blocks).
 
-If Block A is the first block, it contains A.input and A.output (A.input is a special input that does not depend on the previous block because A is the genesis block). A node then produces block B on top of block A while another node produces block C on top of A. At this point the new blocks can be arpitrarily added on top of either A, B, or C. A new node that just joins the network must decide where to append a new block, Figure~\ref{fig:block_prod}.  This question is extremely complex and outside our scope. We will however provide an answer to a part of the question: on top of which block the node must not attach the new block.
+If Block A is the first block, it contains A.input and A.output (A.input is a special input that does not depend on the previous block because A is the genesis block). A node then produces block B on top of block A while another node produces block C on top of A. At this point the new blocks can be arbitrarily added on top of either A, B, or C. A new node that just joins the network must decide where to append a new block, Figure~\ref{fig:block_prod}.  This question is extremely complex and outside our scope. We will however provide an answer to a part of the question: on top of which block the node must not attach the new block.
 
 \begin{figure}[h]
   \centering
@@ -93,6 +86,3 @@ The new node in the network will validate all the blocks in the chain. It will s
 \
 
 PABs are the most suitable solution to implement this validation. PABs can encode any type of logic (first principle of a PAB) and can be executed on every machine (second principle). PABs can also fully address execution determinism, as we will describe in the following chapters.
-
-
-\end{document}

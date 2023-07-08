@@ -1,50 +1,77 @@
-\documentclass{article}
-
-\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth= 2cm]{geometry}
-\linespread {1.5}
-
-\usepackage{graphicx}
-\graphicspath{{\subfix{./images/}}}
-
-\usepackage{subfiles} % Best loaded last in the preamble
-\usepackage{enumitem}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
-    }
-
-\title{The Importance of a Plaform-Agnosting Bytecode for a Decentralized Network}
-\author{Gabriele Miotti}
-\date{May 2023}
+\input{model/Modello_Tesi}
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=0.1]{images/logo.png}\\
 
-\begin{abstract}
+%Per il frontespizio del dipartimenti di Ing. dell'Informazione commentare le riga precedente e decommentare la successiva
+%\includegraphics[scale=0.2]{images/logo_unipd.png} \hfill \includegraphics[scale=0.2]{images/logo_dei.png}\\
+\vspace{0.8cm}
+\textsc{\LARGE Universit\`{a} degli Studi di Padova}\\
+\vspace{0.45cm}
+\textsc{\large Dipartimento di Ingegneria dell'Informazione}\\
+\vspace{0.4cm}
+\textsc{\large Corso di Laurea Triennale in}\\
+\textsc{\large Ingegneria Informatica}\\
+\vfill
+% Title
+{ \LARGE \bfseries The Importance of a Plaform-Agnosting Bytecode for a Decentralized Network
+}\\
+\vfill
+\textit{\large Relatore:} \hfill \textit{\large Laureando:}\\
+\textsc{\large Prof. Luca Boldrin} \hfill \textsc{Gabriele Miotti}\\
+\hfill \textsc{2000165}\\
 
-How can a distributed network agree on the execution of an arbitrary code in a trust-free way? Currently there are plenty of solutions to achieve that. Every solution differs by the network's structure and protocols but the common ground is the presence of a bytecode that is able to run arbitrary code in a deterministic manner. This paper will describe the basic characteristics of a Platform Agnostic Bytecode and how is used in Polkadot, a distributed network that `aims to provide a scalable and interoperable framework for multiple chains with pooled security`(polkadot-overview paper).
+\vfill
+% Bottom of the page
+{\large Anno Accademico 2022/2023}
+\end{center}
+\end{titlepage}
 
-\end{abstract}
+\thispagestyle{empty} %pagina bianca dopo il titolo
+\cleardoublepage
 
-{
-  \hypersetup{linkcolor=black}
-  \tableofcontents
-}
+\pagenumbering{roman} %numerazione romana per l'indice, l'abstract e i ringraziamenti
+\thispagestyle{empty}
 
-\subfile{sections/pab}
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\input{abstract.tex}
 
-\subfile{sections/wasm}
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\tableofcontents %Indice
 
-\subfile{sections/polkadot}
+\clearpage{\pagestyle{plain}\cleardoublepage} %Numerazione araba per i capitoli
+\pagenumbering{arabic}
 
-\subfile{sections/rivals}
+\clearpage{\pagestyle{plain}\cleardoublepage} %Comando per iniziare il capitolo su pagina dispari
+\chapter{PAB} %Nome capitolo
+\label{chapter:pab} %Label per creare riferimenti al capitolo
+\input{sections/pab.tex}
 
-% Conclusions?
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\chapter{Wasm}
+\label{chapter:wasm}
+\input{sections/wasm.tex}
 
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\chapter{Polkadot}
+\label{chapter:polkadot}
+\input{sections/polkadot.tex}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\chapter{Rivals}
+\label{chapter:rivals}
+\input{sections/rivals.tex}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\chapter{Conclusions}
+\label{chapter:conclusions}
+\input{sections/conclusions.tex}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
 \bibliographystyle{plain}
 \bibliography{refs}
+
 \end{document}

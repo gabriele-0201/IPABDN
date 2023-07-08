@@ -3,32 +3,31 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
 The style file: plain.bst
 Database file #1: refs.bib
-Warning--entry type for "LLVM" isn't style-file defined
---line 1 of file refs.bib
 Warning--entry type for "wasm-core-spec" isn't style-file defined
---line 7 of file refs.bib
+--line 6 of file refs.bib
 Warning--entry type for "wasm-polkadot-wiki" isn't style-file defined
---line 13 of file refs.bib
+--line 12 of file refs.bib
 Warning--entry type for "wasmtime-book" isn't style-file defined
---line 27 of file refs.bib
+--line 26 of file refs.bib
 Warning--entry type for "wasm-testsuite" isn't style-file defined
---line 33 of file refs.bib
+--line 32 of file refs.bib
 Warning--entry type for "wasmi" isn't style-file defined
---line 39 of file refs.bib
+--line 38 of file refs.bib
 Warning--entry type for "linear-memory" isn't style-file defined
---line 45 of file refs.bib
+--line 44 of file refs.bib
 Warning--entry type for "parachain-protocol" isn't style-file defined
---line 69 of file refs.bib
+--line 68 of file refs.bib
 Warning--entry type for "cumulus-docs" isn't style-file defined
---line 75 of file refs.bib
+--line 74 of file refs.bib
 Warning--entry type for "ebpf" isn't style-file defined
---line 91 of file refs.bib
+--line 90 of file refs.bib
 Warning--entry type for "ebpf-contracts" isn't style-file defined
---line 97 of file refs.bib
+--line 96 of file refs.bib
 Warning--entry type for "risc-v-spec" isn't style-file defined
---line 110 of file refs.bib
+--line 109 of file refs.bib
 Warning--entry type for "polkavm-forum" isn't style-file defined
---line 116 of file refs.bib
+--line 115 of file refs.bib
+Warning--to sort, need author or key in ebpf
 Warning--to sort, need author or key in LLVM
 Warning--to sort, need author or key in wasm-core-spec
 Warning--to sort, need author or key in wasm-polkadot-wiki
@@ -38,22 +37,21 @@ Warning--to sort, need author or key in linear-memory
 Warning--to sort, need author or key in wasmtime-book
 Warning--to sort, need author or key in parachain-protocol
 Warning--to sort, need author or key in cumulus-docs
-Warning--to sort, need author or key in ebpf
 Warning--to sort, need author or key in ebpf-contracts
 Warning--to sort, need author or key in risc-v-spec
 Warning--to sort, need author or key in polkavm-forum
 You've used 17 entries,
             2118 wiz_defined-function locations,
-            548 strings with 5053 characters,
-and the built_in function-call counts, 3219 in all, are:
-= -- 273
+            549 strings with 5102 characters,
+and the built_in function-call counts, 3230 in all, are:
+= -- 276
 > -- 98
 < -- 0
 + -- 48
 - -- 30
 * -- 162
-:= -- 427
-add.period$ -- 25
+:= -- 430
+add.period$ -- 26
 call.type$ -- 17
 change.case$ -- 64
 chr.to.int$ -- 0
@@ -61,17 +59,17 @@ cite$ -- 30
 duplicate$ -- 133
 empty$ -- 381
 format.name$ -- 30
-if$ -- 729
+if$ -- 732
 int.to.chr$ -- 0
 int.to.str$ -- 17
 missing$ -- 4
-newline$ -- 62
+newline$ -- 63
 num.names$ -- 8
 pop$ -- 125
 preamble$ -- 1
 purify$ -- 47
 quote$ -- 0
-skip$ -- 160
+skip$ -- 158
 stack$ -- 0
 substring$ -- 111
 swap$ -- 17
@@ -82,5 +80,5 @@ type$ -- 68
 warning$ -- 13
 while$ -- 11
 width$ -- 19
-write$ -- 109
-(There were 26 warnings)
+write$ -- 111
+(There were 25 warnings)
