@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{binaryen}
+Binaryen github.
+\newblock \url{https://github.com/WebAssembly/binaryen}.
+
 \bibitem{cumulus-docs}
 Cumulus docs.
 \newblock
@@ -21,6 +25,14 @@ Parachains' protocol overview.
 \bibitem{wasm-polkadot-wiki}
 Polkadot wiki - wasm.
 \newblock \url{https://wiki.polkadot.network/docs/learn-wasm}.
+
+\bibitem{polkavm-experiment}
+Polkavm github.
+\newblock \url{https://github.com/koute/polkavm-experiment}.
+
+\bibitem{rbpf}
+Rbpf github.
+\newblock \url{https://github.com/qmonnet/rbpf}.
 
 \bibitem{polkavm-forum}
 Risc-v as smartcontracts language.

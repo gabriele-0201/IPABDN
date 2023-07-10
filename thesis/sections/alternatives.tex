@@ -11,11 +11,9 @@ The EVM is the main building block of the Ethereum technology, it executes stack
 
 \subsection{What is eBPF}
 
-eBPF~\cite{ebpf} stands for 'Extended Berkeley Packet Filter', what is now eBPF makes the acronym an incorrect representation of it.
+Linux brought eBPF~\cite{ebpf} into the kernel, enabling sandboxed programs to run inside a privileged context (OS level). For lot of different reasons keeping the kernel upgraded was a difficult task and eBPF intend to solve this problem.
 
-Linux brought eBPF into the kernel, enabling sandboxed programs to run inside a privileged context (OS level). For lot of different reasons keeping the kernel upgraded was a difficult task and eBPF intend to solve this problem.
-
-How can a new feature be developed once and be added to the Linux kernel? Keeping in mind that running arbitrary code developed by whoever in the kernel is absolutely not safe and the same code must be able to run on different architectures?
+How can a new feature be developed once and be added to the Linux kernel? Keeping in mind that running arbitrary code developed by whoever in the kernel is absolutely not safe and the same code must be able to run on different architectures.
 
 The operating system guarantee efficiency ans security through a JIT compiler and a verification engine for every eBPF program. To achieve that every kernel contains an eBPF VM able to checks the termination of the program and the security guarantees.
 
@@ -31,7 +29,7 @@ Main points of eBPF to make the verification process possible are:
 
 Not every program can compile to eBPF but a distributed systems need to execute arbitrary code and limitation as strict as normal eBPF are too much, Solana~\cite{yakovenko2018solana} then forked the eBPF backend of LLVM and removed lots of constraint, keeping the finality guarantee by the standard gas metering.~\cite{ebpf-contracts}
 
-Solana also create a new virtual machine for eBPF, \href{https://github.com/qmonnet/rbpf}, able to check, compile and execute the eBPF code on the blockchain.
+Solana also create a new virtual machine for eBPF, rbpf~\cite{rbpf}, able to: check, compile and execute the eBPF code on the blockchain.
 
 eBPF is a perfect PAB for some use cases, as the linux kernel, but it does not seem to be a good fit for blockchains, examples are:
 \begin{enumerate}
@@ -54,12 +52,12 @@ There are several reasons why RISC-V could be a good PAB even if it wasn't desig
   \item[Completely open ISA]
         RISC-V is an open standard, this makes possible to everyone to know the behavior and possibly create custom hardware to execute it.
   \item[ISA separated into a small base integer ISA]
-        RISC-V is divided into smaller ISA, each one can work alone and can also be composed to achieve different functionalities. One of the most important division is the 32-bit and 64-bit address space division, it makes possible the creation of a sandboxed environment in ad easy and effective way.
+        RISC-V is divided into smaller ISA, each one can work alone and can also be composed to achieve different functionalities. One of the most important division is the 32-bit and 64-bit address space division, it makes possible the creation of a sandboxed environment in an easy and effective way.
 \end{description}
 
 \subsection{RISC-V for SmartConctract}
 
-One experiment~\cite{polkavm-forum} to port RISC-V in the Polkadot ecosystem as language for SmartConctract is hosted here: \href{https://github.com/koute/polkavm-experiment}{polkavm-experiment}.
+One experiment~\cite{polkavm-forum} to port RISC-V in the Polkadot ecosystem as language for SmartConctract is polkavm-experiment~\cite{polkavm-experiment}.
 
 The spec is so easy that creating an interpreter required only one day and the JIT only two days more. Those two executors were then tested against other PABs with different executors, everyone executed the same code: an NES emulator written in Rust and the interpretation was how close to 60 FPS the code can get.
 

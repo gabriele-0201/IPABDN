@@ -7,13 +7,13 @@
     "sections/pab"
     "sections/wasm"
     "sections/polkadot"
-    "sections/rivals"
+    "sections/alternatives"
     "sections/conclusions")
    (LaTeX-add-labels
     "chapter:pab"
     "chapter:wasm"
     "chapter:polkadot"
-    "chapter:rivals"
+    "chapter:alternatives"
     "chapter:conclusions")
    (LaTeX-add-bibliographies
     "refs"))

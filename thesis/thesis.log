@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  8 JUL 2023 11:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  10 JUL 2023 10:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -714,7 +714,7 @@ File: images//polkadot_architecture.png Graphic file (type png)
 <use images//polkadot_architecture.png>
 Package pdftex.def Info: images//polkadot_architecture.png  used on input line 
 9.
-(pdftex.def)             Requested size: 206.28247pt x 183.05864pt.
+(pdftex.def)             Requested size: 288.7942pt x 256.3082pt.
  [15
 
 
@@ -770,7 +770,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19 <./images//validate_block_expl.png>])
+[19 <./images//validate_block_expl.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -779,11 +779,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
+[20])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[21] [22
+
+
+]
 Chapter 4.
-(./sections/rivals.tex [21
-
-
+(./sections/alternatives.tex [23
 
 ]
 
@@ -794,60 +804,60 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[23])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
 [24]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[25])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[26]
 Chapter 5.
-(./sections/conclusions.tex) [25
+(./sections/conclusions.tex) [27
 
 
 
-] [26
+] [28
 
 
 ] (./thesis.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 13--16
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
 []\OT1/cmr/m/n/12 Memory in we-bassem-bly.  []$\OT1/cmtt/m/n/12 https : / / hac
 ks . mozilla . org / 2017 / 07 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
+Underfull \hbox (badness 10000) in paragraph at lines 26--28
 []\OT1/cmr/m/n/12 Polkadot wiki - wasm.  []$\OT1/cmtt/m/n/12 https : / / wiki .
  polkadot . network / docs /
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 36--38
+Underfull \hbox (badness 1472) in paragraph at lines 48--50
 []\OT1/cmr/m/n/12 Wasm github spec-i-fi-ca-tions.  []$\OT1/cmtt/m/n/12 https : 
 / / webassembly . github . io / spec /
  []
 
+[29
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--58
+]
+Underfull \hbox (badness 10000) in paragraph at lines 68--70
 []\OT1/cmr/m/n/12 What is ebpf.  []$\OT1/cmtt/m/n/12 https : / / forum . polkad
 ot . network / t /
  []
 
-[27
-
-])
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -856,21 +866,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28] (./thesis.aux)
+[30] (./thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 376AFC1C4638C8A7A7252E6EEF5CB01D;4140.
+(rerunfilecheck)             Checksum: 696B907A214ADFF9E031A67775EF3836;4170.
  ) 
 Here is how much of TeX's memory you used:
- 14492 strings out of 477985
- 234318 string characters out of 5840059
+ 14500 strings out of 477985
+ 234449 string characters out of 5840059
  1861388 words of memory out of 5000000
- 34369 multiletter control sequences out of 15000+600000
+ 34372 multiletter control sequences out of 15000+600000
  521642 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 85i,12n,82p,746b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,12n,82p,746b,672s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
 k></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/font
@@ -881,10 +891,10 @@ share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt12.pfb>
-Output written on thesis.pdf (34 pages, 633327 bytes).
+Output written on thesis.pdf (36 pages, 634775 bytes).
 PDF statistics:
- 507 PDF objects out of 1000 (max. 8388607)
- 430 compressed objects within 5 object streams
- 102 named destinations out of 1000 (max. 500000)
+ 522 PDF objects out of 1000 (max. 8388607)
+ 443 compressed objects within 5 object streams
+ 107 named destinations out of 1000 (max. 500000)
  305 words of extra memory for PDF output out of 10000 (max. 10000000)
 

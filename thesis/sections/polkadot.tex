@@ -6,7 +6,7 @@ At the center of the entire system there is the `relay chain`, responsible for p
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\linewidth]{polkadot_architecture.png}
+  \includegraphics[width=0.7\linewidth]{polkadot_architecture.png}
   \caption{Polkadot's Architecture}
   \label{fig:polkadot_arch}
 \end{figure}
@@ -120,9 +120,10 @@ Instead, the Outgoing messages are everything that needs to be delivered to othe
 
 \subsection{SmartContracts}
 
-SmartContracts are arbitrary codes that can be uploaded on-chain and executed in the state transition function. Even though the STF is arbitrary code that can be updated but the convenience of SmartContracts is the easiness of creating and uploading custom logic on-chain. To make this technology different blockchain came up with different ideas and the one used by Polkadot is to have a recursive embedder.
+SmartContracts are arbitrary codes that can be uploaded on-chain and executed in the State Transition Function. Even though the STF is arbitrary code that can be updated the convenience of SmartContracts is the easiness of creating and uploading custom logic on-chain. To make this technology different blockchain came up with different ideas and the one used by Polkadot is to have a recursive embedder.
 
-The Client is the embedder of the STF and the STF becomes also the embedder of the SmartContracs, this is made possible thanks to Wasmi because it can be executed even in wasm itself. To make the execution of arbitrary, possibly malicious code, secure there are different solutions:
+
+The Client is the embedder of the STF and the STF becomes also the embedder of the SmartContracs, this is made possible thanks to Wasmi because it can be executed in wasm itself. To make the execution of arbitrary, possibly malicious, code secure there are different solutions:
 
 \begin{itemize}
   \item Gas / Fuel measuring
@@ -137,6 +138,6 @@ As you may understood from the above sections, the distributed algorithms, the s
 
 The amount of tools and projects that are using Wasm makes it very suitable for polkadot, an environment with very constrained resources: there is limited space on every block, every state transition must be computed in a limited amount of time and multiple nodes must reach the same results. Wasm has already multiple tools like space and efficiency optimizer that make it even better for polkadot.
 
-An important tools is \href{https://github.com/WebAssembly/binaryen}{Binaryen} with the wasm-opt optimization phases, largely used in polkadot, that loads WebAssembly and runs Binaryen IR passes on it to make it more space and complexity efficient.
+An important tools is Binaryen~\cite{binaryen} with the wasm-opt optimization phases, largely used in polkadot, that loads WebAssembly and runs Binaryen IR passes on it to make it more space and complexity efficient.
 
 % \subsection{SPREE}

@@ -19,6 +19,9 @@
     "ebpf-contracts"
     "yakovenko2018solana"
     "risc-v-spec"
-    "polkavm-forum"))
+    "polkavm-forum"
+    "binaryen"
+    "rbpf"
+    "polkavm-experiment"))
  :bibtex)
 

@@ -24,11 +24,11 @@
 \contentsline {subsection}{\numberline {3.3.2}PoV}{19}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}SmartContracts}{20}{subsection.3.3.3}%
 \contentsline {section}{\numberline {3.4}The crucial Role of WASM in Polkadot}{20}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Rivals}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}EVM}{21}{section.4.1}%
-\contentsline {section}{\numberline {4.2}eBPF}{21}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}What is eBPF}{21}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Solana eBPF}{22}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}RISC-V}{23}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}RISC-V for SmartConctract}{23}{subsection.4.3.1}%
-\contentsline {chapter}{\numberline {5}Conclusions}{25}{chapter.5}%
+\contentsline {chapter}{\numberline {4}Alternatives}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}EVM}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}eBPF}{23}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}What is eBPF}{23}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Solana eBPF}{24}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}RISC-V}{24}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}RISC-V for SmartConctract}{25}{subsection.4.3.1}%
+\contentsline {chapter}{\numberline {5}Conclusions}{27}{chapter.5}%
