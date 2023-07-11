@@ -11,7 +11,7 @@ At the center of the entire system there is the `relay chain`, responsible for p
   \label{fig:polkadot_arch}
 \end{figure}
 
-Polkadot provides the bedrock relay-chain upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side.~\cite{wood2016polkadot} What has just been described are the parachains that are not obligated to be blockchains, they  must just respect all the polkadot protocol.
+Polkadot provides the bedrock relay chain upon which a large number of validatable, globally-coherent dynamic data-structures may be hosted side-by-side.~\cite{wood2016polkadot} What has just been described are the parachains that are not obligated to be blockchains, they  must just respect all the polkadot protocol.
 
 In the Figure \ref{fig:polkadot_arch} you can see in the middle the relay chain that connects multiple parachains.
 
@@ -103,7 +103,7 @@ The Proof of Validity is made by all the things needed by Runtime Validation, it
   \item Outgoing messages
 \end{itemize}
 
-The witness data is what makes it possible for the relay-chain to execute the state transition validation without knowing the entire state of the parachain.
+The witness data is what makes it possible for the relay chain to execute the state transition validation without knowing the entire state of the parachain.
 
 The state in polkadot is represented by a key-value database where each key is unique and there is no assumption on it. The database itself is arranged as a Merkle-Patricia Base 16 Trie that allows to describe the entire state in a single constant state proof. Each block stored in the relay chain contains the state proof of the previous block, and the witness data are then composed by:
 
@@ -120,7 +120,7 @@ The Outgoing messages are everything that needs to be delivered to other paracha
 
 \subsection{SmartContracts}
 
-SmartContracts are arbitrary programs that can be uploaded on-chain and executed in the State Transition Function. Even though the STF is itself an arbitrary program that can be updated,  SmartContracts add additional convenience by empowering final users to easily create and uploade custom logic on-chain. To implement SmartContracts different blockchains offer different solutions. Polkadot implements SmartContracts via a recursive embedder.
+SmartContracts are arbitrary programs that can be uploaded on-chain and executed in the State Transition Function. Even though the STF is itself an arbitrary program that can be updated, SmartContracts add additional convenience by empowering final users to easily create and uploade custom logic on-chain. To implement SmartContracts different blockchains offer different solutions. Polkadot implements SmartContracts via a recursive embedder.
 
 
 The Client is the embedder of the STF and the STF becomes itself the embedder of the SmartContracs. This is made possible thanks to Wasmi because it can be executed in wasm itself. There are different solutions to secure the execution of arbitrary, possibly malicious, code:
