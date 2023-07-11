@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {1.2}Execution}{1}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Key features}{2}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Current usage}{3}{section.1.4}%
-\contentsline {section}{\numberline {1.5}PAB in blockchains}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.5}PAB in blockchains}{4}{section.1.5}%
 \contentsline {chapter}{\numberline {2}Wasm}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Definitions}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Specifications}{8}{section.2.2}%
@@ -23,7 +23,7 @@
 \contentsline {subsection}{\numberline {3.3.1}PVF}{18}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}PoV}{19}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}SmartContracts}{20}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}The crucial Role of WASM in Polkadot}{20}{section.3.4}%
+\contentsline {section}{\numberline {3.4}The crucial Role of Wasm in Polkadot}{20}{section.3.4}%
 \contentsline {chapter}{\numberline {4}Alternatives}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}EVM}{23}{section.4.1}%
 \contentsline {section}{\numberline {4.2}eBPF}{23}{section.4.2}%

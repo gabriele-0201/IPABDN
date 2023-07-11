@@ -2,7 +2,7 @@
  "packages"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("inputenc" "utf8") ("babel" "english") ("geometry" "left=3cm" "right=3cm" "bottom=3cm") ("caption" "hang" "small" "sf" "font=scriptsize" "labelfont=bf") ("footmisc" "stable") ("varioref" "english") ("color" "usenames") ("hyperref" "hidelinks")))
+                     '(("inputenc" "utf8") ("babel" "english") ("geometry" "left=3cm" "right=3cm" "bottom=3cm") ("caption" "hang" "small" "sf" "font=scriptsize" "labelfont=bf") ("footmisc" "stable") ("varioref" "english") ("color" "usenames") ("hyperref" "hidelinks") ("pdfx" "a-1b")))
    (TeX-run-style-hooks
     "inputenc"
     "babel"
@@ -23,6 +23,7 @@
     "colortbl"
     "hyperref"
     "url"
-    "enumitem"))
+    "enumitem"
+    "pdfx"))
  :latex)
 

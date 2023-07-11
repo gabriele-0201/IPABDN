@@ -9,6 +9,10 @@ Cumulus docs.
 \newblock
   \url{https://github.com/paritytech/cumulus/blob/master/docs/overview.md}.
 
+\bibitem{ebpf-contracts}
+ebpf contracts.
+\newblock \url{https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084}.
+
 \bibitem{LLVM}
 Llvm language reference manual.
 \newblock \url{https://llvm.org/docs/LangRef.html#abstract}.
@@ -63,10 +67,6 @@ Wasmtime book.
 \bibitem{ebpf}
 What is ebpf.
 \newblock \url{https://ebpf.io/what-is-ebpf/}.
-
-\bibitem{ebpf-contracts}
-What is ebpf.
-\newblock \url{https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084}.
 
 \bibitem{burdges2020overview}
 Jeff Burdges, Alfonso Cevallos, Peter Czaban, Rob Habermeier, Syed Hosseini,

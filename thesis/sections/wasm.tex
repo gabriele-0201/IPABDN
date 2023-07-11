@@ -146,7 +146,7 @@ Those three cover all the techniques just explained:
 
 Wasm principle aim is to be extremely secure. The specifications describes a lot of ways to achieve that feature, but the security guarantee depends mostly on the execution. WebAssembly is designed to be translated into machine code running directly on the host’s hardware, so it can be sent to someone and executed freely, (e.g., in browsers). We are running Wasm our machines every day, so security is a main concern.
 
-Executing Wasm is potentially vulnerable to side channel attacks on the hardware level ~/cite{wasm-core-spec} and isolation is the only way to secure the execution.  The embedder translates one-by-one every instructions to native instructions on your computer, but nothing is dangerous if the code has no access to the environment where is executed.
+Executing Wasm is potentially vulnerable to side channel attacks on the hardware level~\cite{wasm-core-spec} and isolation is the only way to secure the execution.  The embedder translates one-by-one every instructions to native instructions on your computer, but nothing is dangerous if the code has no access to the environment where is executed.
 
 The problem is that a completely isolation makes Wasm useless, so there must be a way to communicate with the environment or  have access to it, but those features are extremely limited and designed to be secure.
 

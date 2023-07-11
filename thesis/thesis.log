@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  10 JUL 2023 10:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.7.1)  11 JUL 2023 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -392,7 +392,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
 \Hy@SectionHShift=\skip62
-))
+)
 (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip63
@@ -401,10 +401,93 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box55
 \enit@count@id=\count290
 \enitdp@description=\count291
-) (./model/layout.tex))
+))
+(/usr/share/texmf-dist/tex/latex/pdfx/pdfx.sty
+Package: pdfx 2019/02/27 v1.6.3 PDF/X and PDF/A support (CVR/HTH/RRM/PS)
+\pdfx@minorversion=\count292
+
+(/usr/share/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(/usr/share/texmf-dist/tex/latex/everyshi/everyshi.sty
+Package: everyshi 2020/11/18 v4.00 EveryShipout Package
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+){/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} (/usr/share/texmf-dist/tex
+/latex/pdfx/l8u-penc.def
+File: l8u-penc.def 2017/06/23 v0.8 Custom LaTeX file, for UTF8 encoded letters 
+and symbols
+LaTeX Info: Composite with undeclared \b in encoding L8U on input line 278.
+)
+\pdfxsafeforxmp@toks=\toks27
+\pdfx@tmptoks=\toks28
+
+
+Package hyperref Warning: Option `pdftex' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+
+Package hyperref Warning: Option `pdfa' has already been used,
+(hyperref)                setting the option has no effect on input line 1461.
+
+Package hyperref Info: Option `unicode' set `true' on input line 1463.
+(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+Package hyperref Info: Option `psdextra' set `true' on input line 1465.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def
+File: puenc-greekbasic.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (
+greek block) (HO)
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/psdextra.def
+File: psdextra.def 2023-02-07 v7.00v Hyperref: Additions to PDF string support
+)
+(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
+Package: colorprofiles 2018/11/01 v1.0.1 color profiles for PDF/X and PDF/A sup
+port
+
+(/usr/share/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex))
+(/usr/share/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
+File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
+)
+(/usr/share/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
+(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def
+File: 8bit.def 2008/03/30 v1.1d Input encoding file
+)
+** pdfx: No file thesis.xmpdata . Metadata will be incomplete!
+<<sRGB.icc>> (/usr/share/texmf-dist/tex/latex/pdfx/8bit.def
+File: 8bit.def 2008/03/30 v1.1d Input encoding file
+)
+Package hyperref Info: Option `unicode' set `true' on input line 2411.
+Package hyperref Info: Option `unicode' set `true' on input line 2412.
+
+(/usr/share/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
+(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
+(/usr/share/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/xmpincl/xmpincl.sty
+Package: xmpincl 2021/09/22 v2.4 Include XMP data in pdflatex
+)
+(/usr/share/texmf-dist/tex/latex/pdfx/8bit.def
+File: 8bit.def 2008/03/30 v1.1d Input encoding file
+)
+Using XMP template file: pdfa.xmp
+\xmpinclWrite=\write3
+\xmpinclRead=\read4
+\openout3 = `pdfa.xmpi'.
+
+<<pdfa.xmpi>>) (./model/layout.tex))
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count292
+\l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box56
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
@@ -461,23 +544,23 @@ LaTeX Font Info:    ... okay on input line 3.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count293
+\c@lstlisting=\count294
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count294
+\scratchcounter=\count295
 \scratchdimen=\dimen173
 \scratchbox=\box57
-\nofMPsegments=\count295
-\nofMParguments=\count296
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count297
+\nofMPsegments=\count296
+\nofMParguments=\count297
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count298
 \MPscratchDim=\dimen174
-\MPnumerator=\count298
-\makeMPintoPDFobject=\count299
-\everyMPtoPDFconversion=\toks28
+\MPnumerator=\count299
+\makeMPintoPDFobject=\count300
+\everyMPtoPDFconversion=\toks30
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -490,10 +573,10 @@ e
 Package hyperref Info: Link coloring OFF on input line 3.
  (./thesis.out)
 (./thesis.out)
-\@outlinefile=\write3
-\openout3 = `thesis.out'.
+\@outlinefile=\write4
+\openout4 = `thesis.out'.
 
-<images/logo.png, id=136, 943.525pt x 949.5475pt>
+<images/logo.png, id=138, 943.525pt x 949.5475pt>
 File: images/logo.png Graphic file (type png)
 <use images/logo.png>
 Package pdftex.def Info: images/logo.png  used on input line 7.
@@ -501,7 +584,7 @@ Package pdftex.def Info: images/logo.png  used on input line 7.
  [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/logo.png>] [2
+ <./images/logo.png>] [2
 
 ] (./abstract.tex) [1
 
@@ -509,7 +592,8 @@ Package pdftex.def Info: images/logo.png  used on input line 7.
 ] [2
 
 
-] (./thesis.toc
+]
+(./thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -519,8 +603,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [3
 
 ])
-\tf@toc=\write4
-\openout4 = `thesis.toc'.
+\tf@toc=\write5
+\openout5 = `thesis.toc'.
 
 
 
@@ -540,9 +624,6 @@ g a Cross-Compiler.
  []
 
 
-Underfull \vbox (badness 1067) has occurred while \output is active []
-
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -555,7 +636,7 @@ l.20
 
 
 ]
-<images//sandboxed_env.png, id=211, 344.28625pt x 241.90375pt>
+<images//sandboxed_env.png, id=212, 344.28625pt x 241.90375pt>
 File: images//sandboxed_env.png Graphic file (type png)
 <use images//sandboxed_env.png>
 Package pdftex.def Info: images//sandboxed_env.png  used on input line 29.
@@ -574,8 +655,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43   \item[Tool Simplicity]
-                              [2 <./images//sandboxed_env.png>]
+l.40         \end{itemize}
+                           [2 <./images//sandboxed_env.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -585,7 +666,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3]
-<images//block_prod.png, id=231, 629.35126pt x 396.48125pt>
+<images//block_prod.png, id=232, 629.35126pt x 396.48125pt>
 File: images//block_prod.png Graphic file (type png)
 <use images//block_prod.png>
 Package pdftex.def Info: images//block_prod.png  used on input line 75.
@@ -639,7 +720,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-<images//value_and_shadow_stack.png, id=267, 619.31375pt x 358.33875pt>
+<images//value_and_shadow_stack.png, id=268, 619.31375pt x 358.33875pt>
 File: images//value_and_shadow_stack.png Graphic file (type png)
 <use images//value_and_shadow_stack.png>
 Package pdftex.def Info: images//value_and_shadow_stack.png  used on input line
@@ -676,7 +757,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12]
-<images//linear_memory.png, id=286, 575.14874pt x 447.6725pt>
+<images//linear_memory.png, id=288, 575.14874pt x 447.6725pt>
 File: images//linear_memory.png Graphic file (type png)
 <use images//linear_memory.png>
 Package pdftex.def Info: images//linear_memory.png  used on input line 163.
@@ -691,7 +772,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [13 <./images//linear_memory.png>]
-<images//env_communication.png, id=298, 582.175pt x 324.21124pt>
+<images//env_communication.png, id=300, 582.175pt x 324.21124pt>
 File: images//env_communication.png Graphic file (type png)
 <use images//env_communication.png>
 Package pdftex.def Info: images//env_communication.png  used on input line 178.
@@ -709,7 +790,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [14 <./images//env_communication.png>]
 Chapter 3.
 (./sections/polkadot.tex
-<images//polkadot_architecture.png, id=311, 1606.0pt x 1425.325pt>
+<images//polkadot_architecture.png, id=313, 1606.0pt x 1425.325pt>
 File: images//polkadot_architecture.png Graphic file (type png)
 <use images//polkadot_architecture.png>
 Package pdftex.def Info: images//polkadot_architecture.png  used on input line 
@@ -734,6 +815,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [16]
+Overfull \hbox (4.04082pt too wide) in paragraph at lines 60--61
+[]\OT1/cmr/m/n/12 Substrate is the main, and unique for now, frame-work used to
+ build blockchains
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -743,7 +829,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [17]
-<images//validate_block_expl.png, id=335, 804.00375pt x 270.00874pt>
+<images//validate_block_expl.png, id=336, 804.00375pt x 270.00874pt>
 File: images//validate_block_expl.png Graphic file (type png)
 <use images//validate_block_expl.png>
 Package pdftex.def Info: images//validate_block_expl.png  used on input line 82
@@ -770,7 +856,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19 <./images//validate_block_expl.png>]
+[19 <./images//validate_block_expl.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -779,7 +865,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20])
+[20]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -824,7 +910,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [26]
 Chapter 5.
-(./sections/conclusions.tex) [27
+(./sections/conclusions.tex
+Overfull \hbox (14.93793pt too wide) in paragraph at lines 3--4
+[]\OT1/cmr/m/n/12 Inventing some-thing from scratch could sat-isfy ev-ery re-qu
+ire-ment of a blockchain,
+ []
+
+) [27
 
 
 
@@ -832,32 +924,32 @@ Chapter 5.
 
 
 ] (./thesis.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 17--20
+Underfull \hbox (badness 10000) in paragraph at lines 13--15
+[]\OT1/cmr/m/n/12 ebpf con-tracts.  []$\OT1/cmtt/m/n/12 https : / / forum . pol
+kadot . network / t /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
 []\OT1/cmr/m/n/12 Memory in we-bassem-bly.  []$\OT1/cmtt/m/n/12 https : / / hac
 ks . mozilla . org / 2017 / 07 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--28
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 []\OT1/cmr/m/n/12 Polkadot wiki - wasm.  []$\OT1/cmtt/m/n/12 https : / / wiki .
  polkadot . network / docs /
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 48--50
+Underfull \hbox (badness 1472) in paragraph at lines 52--54
 []\OT1/cmr/m/n/12 Wasm github spec-i-fi-ca-tions.  []$\OT1/cmtt/m/n/12 https : 
 / / webassembly . github . io / spec /
  []
 
 [29
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
-[]\OT1/cmr/m/n/12 What is ebpf.  []$\OT1/cmtt/m/n/12 https : / / forum . polkad
-ot . network / t /
- []
-
-)
+])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -871,16 +963,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 696B907A214ADFF9E031A67775EF3836;4170.
+(rerunfilecheck)             Checksum: 3E4C38E3B5E0C2F29A9377DE3557DBD1;2110.
  ) 
 Here is how much of TeX's memory you used:
- 14500 strings out of 477985
- 234449 string characters out of 5840059
+ 18177 strings out of 477985
+ 286740 string characters out of 5840059
  1861388 words of memory out of 5000000
- 34372 multiletter control sequences out of 15000+600000
+ 37978 multiletter control sequences out of 15000+600000
  521642 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 85i,12n,82p,746b,672s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,12n,82p,746b,2379s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/gabriele/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
 k></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/font
@@ -891,10 +983,9 @@ share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt12.pfb>
-Output written on thesis.pdf (36 pages, 634775 bytes).
+Output written on thesis.pdf (36 pages, 693823 bytes).
 PDF statistics:
- 522 PDF objects out of 1000 (max. 8388607)
- 443 compressed objects within 5 object streams
+ 520 PDF objects out of 1000 (max. 8388607)
  107 named destinations out of 1000 (max. 500000)
- 305 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 317 words of extra memory for PDF output out of 10000 (max. 10000000)
 
