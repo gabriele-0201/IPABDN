@@ -6,13 +6,13 @@ A Platform-Agnostic Bytecode (PAB), from now on will be defined as a bytecode th
     \item Support for tooling that makes it executable on every machine
 \end{itemize}
 
-A bytecode like this ideally is designed to be executed on a virtual machine that follows general patterns. This design should make easier the compilation to another real machine's bytecode. Examples of real architectures with specified bytecode are AMD and Intel with x86 or ARM with aarch64. % TODO: check this last sentence
+A bytecode implementing these principles is ideally designed to be executed on a virtual machine that follows general patterns. This design should make easier the compilation to another real machine's bytecode. Examples of real architectures with specified bytecode are AMD and Intel with x86 or ARM with aarch64. % TODO: check this last sentence
 
 \section{Execution}
 
 PABs require multiple phases of compilation. The first one is encountered when you want to compile your High-Level language to the PAB using a Cross-Compiler. Once you have the PAB code, you should be able to run it on every machine using another compiler that will create the final executable code.
 
-Re-compiling is not the only way to execute a PAB, another common solution is to implement a Virtual Machine (VM) able to run arbitrary PAB code interpreting it.
+Re-compiling is not the only way to execute a PAB. Another common solution is to implement a Virtual Machine (VM) able to run arbitrary PAB code interpreting it.
 
 \section{Key features}
 
@@ -20,9 +20,9 @@ Every bytecode, ideally, can become a PAB if tools to make it runnable to differ
 
 \begin{description}[style=nextline]
   \item[Hardware Independence]
-        A bytecode if tightly related to specific hardware can't become a PAB because translations to different hardware would be impossible. A weakly coupled bytecode though can become PAB if the coupling to a specific hardware is negligible and requires some minor adaptations to run on different hardware is required. A bytecode completely hardware independent, that does not make any specific assumption on the hardware on which will be running on, is the better one.
+        If tightly related to specific hardware, a bytecode can't become a PAB because translations to different hardware would be impossible. A weakly coupled bytecode though can become a PAB if the coupling to a specific hardware is negligible and requires some minor adaptations to run on different hardware is required. A  completely hardware independent bytecode, that does not make any specific assumption on the hardware on which will be running on, is the best.
   \item[Sandboxing]
-        The machine used to execute the PAB is defined as \textit{embedder}. The embedder will execute arbitrary code, possibly malicious.  A sandboxed environment is the typical solution to overcome any security problem. The execution in a different environment makes almost impossible to compromise the embedder from the PAB code. Implementing a proper sandboxed environment is embedder dependent but a PAB can be more or less suitable for this feature.
+        The machine used to execute the PAB is defined as \textit{embedder}. The embedder will execute arbitrary code, possibly malicious.  A sandboxed environment is the typical solution to overcome any security problem. The execution in a different environment makes it almost impossible to compromise the embedder from the PAB code. Implementing a proper sandboxed environment is embedder dependent but a PAB can be more or less suitable for this feature.
 
         \begin{figure}[h]
           \centering
@@ -39,7 +39,7 @@ Every bytecode, ideally, can become a PAB if tools to make it runnable to differ
           \item the efficiency of the execution of the PAB. In this case it could refer to the compilation to the final bytecode and the subsequent execution, the interpretation or more complex solutions
         \end{itemize}
 
-        Generally the first is not really related to the PAB, but more on the used tools (examples gcc, rustc, etc.). The execution efficiency is the real deal: how fast a PAB can be executed on a machine is crucial.
+        Generally the first is not really related to the PAB, but more on the used tools (examples gcc, rustc, etc.). The execution efficiency is the real issue: how fast a PAB can be executed on a machine is crucial.
   \item[Tool Simplicity]
         The easiness of compiling a High-Level language and  executing the PAB is very important to make it usable by every one.
   \item[Support as Compilation Target]
