@@ -3,15 +3,15 @@ Wasm is not the only PAB used in the blockchain space, other technologies use di
 
 \section{EVM}
 
-Ethereum Virtual Machine code ~\cite{buterin2014next} is one of the first PAB used in blockchain, it follows the principles used to describe a perfect PAB, it was created to be a perfect blockchain's bytecode and the Ethereum Virtual Machine is the glue that makes it executable on every machine.
+Ethereum Virtual Machine code ~\cite{buterin2014next} is one of the first PABs used in blockchain, it follows the principles used to describe a perfect PAB. It was created to be a perfect blockchain's bytecode and the Ethereum Virtual Machine is the glue that makes it executable on every machine.
 
-The EVM is the main building block of the Ethereum technology, it executes stack based code and manage all the memory and access to the storage. EVM can be compared to a generic embedder for wasm with many features tied to the measurement of the computation on-chain, called gas.
+The EVM is the main building block of the Ethereum technology, it executes stack based code and manages all the memory and access to the storage. EVM can be compared to a generic embedder for wasm with many features tied to the measurement of the computation on-chain, called gas.
 
 \section{eBPF}
 
 \subsection{What is eBPF}
 
-Linux brought eBPF~\cite{ebpf} into the kernel, enabling sandboxed programs to run inside a privileged context (OS level). For lot of different reasons keeping the kernel upgraded was a difficult task and eBPF intend to solve this problem.
+Linux brought eBPF~\cite{ebpf} into the kernel, enabling sandboxed programs to run inside a privileged context (OS level). For several different reasons, keeping the kernel upgraded was a difficult task and eBPF intended to solve this problem.
 
 How can a new feature be developed once and be added to the Linux kernel? Keeping in mind that running arbitrary code developed by whoever in the kernel is absolutely not safe and the same code must be able to run on different architectures.
 
